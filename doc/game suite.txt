@@ -1,0 +1,92 @@
+https://bg-lobby.googlecode.com/svn/trunk/
+aj4er9tW4Xz3
+
+66 good cards:
+	11 china white
+	11 silk purple
+	11 tea green
+	11 perfume yellow
+	11 glaze red
+	11 ore black
+20 special cards:
+	14 ship
+	2 concession
+	2 worker
+	2 trading
+30 good token
+	5 per color
+60 coins
+
+game board:
+	market (with 6 place holder
+	good deck (1 place holder
+	special card list
+	token pool 
+	coins pool
+player board
+	player's ships (2+ place holder
+	coins earned (secret)
+	good card hand
+	special cards
+
+	
+game start:
+	shuffle good deck
+	distribute 3 good cards to every player
+	distribute 6 good cards to market
+	distribute 2 ships to every player
+	clockwise, every player loads a token to ship in turns. 
+	repeat loading once.
+	
+game flow:
+	2-4 players in turns
+		phase 1 (either 1 of below 3):
+			change 1 token
+			buy 1 special card
+			pass
+		phase 2 (either 1 of below 2):
+			play any number of good cards of one color, to override cards in market, and calculate incoming for every player (number of that color in market multiple by number of tokens on own ship)
+			get 2 good cards
+			
+game over:
+	when good deck is run out, the player who has most coins wins
+	
+special cards (accumalive effects):
+	ship(10 coins): ~
+	trading(8 coins): at phase2, player may get 1 extra good card
+	worker(12 coins): for changing token at phase1, player may change 1 more token. Can be used when buying this card immedietely
+	concession(11 coins): for calc incoming at phase2, player can get 2 extra coins if he has any incoming
+	
+===============ATC===========
+>I can start a new game by select player number (1 player for test)
+>I can see the game board prepared and cards distributed
+>I can load token to my ship twice
+>I can play game with other AI players in turn, clock-wisely, start from anyone
+>I can have customized dialog instead of UIActionSheet
+>I can choose 1 of 3 actions in phase1
+I can change 1 token from token pool to one of my ship (1.1)
+I can buy a special card with my coins (1.2)
+I can pass phase1 (1.3)
+I can choose 1 of 2 actions in phase2
+I can play any number of good cards of one color from hand to override cards in market (2.1)
+I can calc incoming for every player (2.1)
+I can get 2 good cards from pool to hand (2.2)
+I can win or draw if I got most coins
+I can lose game and restart game
+I can choose to change 1 more token for every worker I have(1.1)
+I can load a token when I buy a ship immediately(1.2)
+I can choose to use worker's ability when I buy it immediately(1.2)
+I can get 2 more coins if I have any incoming for every concession I have(2.1)
+I can choose to get 1 more good card for every trading I have(2.2)
+I can see NPC play with a simple AI
+I can pause, stop or resume game
+//I can animation for cards, tokens, coins
+//I can save high score when I win
+//I can see a iAd on the top
+//I can change player's name
+//I can connect to game center to upload my scores & achievements
+
+
+
+	
+	

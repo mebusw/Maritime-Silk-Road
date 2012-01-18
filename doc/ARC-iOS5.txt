@@ -1,0 +1,9 @@
+/* ARC: enable it in build setting
+	no [release] is allowed, neither [super dealloc]
+	storing Object Pointers in a class instead of a struct
+	Casual Casting Between id and void*
+	@autoreleasepool instead of NSAutoReleasePool
+	strong is default qualifier of @property
+*/
+//  ******Edit > Refactor > Convert to Objective-C ARC*******
+//@property  Pool *pool;

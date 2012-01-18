@@ -1,0 +1,6 @@
+README
+
+git config --global user.name "Your Name"
+git config --global user.email mebusw@163.com
+git remote add origin git@github.com:mebusw/Maritime-Silk-Road.git
+git push -u origin master
