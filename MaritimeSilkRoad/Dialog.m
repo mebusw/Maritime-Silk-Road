@@ -13,7 +13,7 @@
 #import "GameLayer.h"
 
 @implementation Dialog
-@synthesize _target, _sel;
+@synthesize _target, _sel, title;
 
 -(id) initWithTarget:(id)target sel:(SEL)sel {
     self = [super initWithFile:IMG_DIALOG];
@@ -28,22 +28,33 @@
     return self;
 }
 
-- (void) menuTapped: (CCMenuItem *) menuItem  {
-    NSNumber *num = [NSNumber numberWithInt:menuItem.tag];
-    ((GameLayer*)_target).isDialoging = NO;
-    [_target performSelectorOnMainThread:_sel withObject:num waitUntilDone:NO];
-    [self removeFromParentAndCleanup:YES];
-}
 
-- (void) animate {
+- (void) animateShowing {
     id fadeIn = [CCFadeIn actionWithDuration:0.1];
-	id scale1 = [CCSpawn actions:fadeIn, [CCScaleTo actionWithDuration:0.3 scale:1.3], nil];
-	id scale2 = [CCScaleTo actionWithDuration:0.1 scale:0.8];
+	id scale1 = [CCSpawn actions:fadeIn, [CCScaleTo actionWithDuration:0.1 scale:0.3], nil];
+	id scale2 = [CCScaleTo actionWithDuration:0.2 scale:1.2];
 	id scale3 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
 	id pulse = [CCSequence actions:scale1, scale2, scale3, nil];
 	[self runAction:pulse];
 }
 
+- (void) animateHiding {
+    id fadeOut = [CCFadeOut actionWithDuration:0.1];
+	id scale1 = [CCScaleTo actionWithDuration:0.2 scale:1.2];
+	id scale2 = [CCSpawn actions:fadeOut, [CCScaleTo actionWithDuration:0.1 scale:0.3], nil];
+	id pulse = [CCSequence actions:scale1, scale2, nil];
+	[self runAction:pulse];
+}
+
+- (void) menuTapped: (CCMenuItem *) menuItem  {
+    NSNumber *num = [NSNumber numberWithInt:menuItem.tag];
+    [self animateHiding];
+    ((GameLayer*)_target).isDialoging = NO;
+    [_target performSelectorOnMainThread:_sel withObject:num waitUntilDone:NO];
+    [self removeFromParentAndCleanup:YES];
+}
+
+#pragma mark - Good Dialog
 /**
  * the goods dialog looks like:
  ===================
@@ -79,10 +90,12 @@
 
 	[dialog addChild:menu z:1];
 	
-    [dialog animate];
+    [dialog animateShowing];
 	
 	return dialog;
 }
+
+#pragma mark - Action Dialog
 
 /**
  * the action dialog looks like:
@@ -126,10 +139,12 @@
 	menu.position = ccp(size.width / 2, size.height / 2);
 
     [dialog addChild:menu];
-	[dialog animate];
+	[dialog animateShowing];
     
 	return dialog;
 }
+
+#pragma mark - Yes/No Dialog
 
 /**
  * the YesNo dialog looks like:
@@ -156,7 +171,7 @@
 	CCMenu *menu = [CCMenu menuWithItems:items[0], items[1], nil];
 	[menu alignItemsVertically];
     [dialog addChild:menu];
-	[dialog animate];
+	[dialog animateShowing];
 	return dialog;
 }
 

@@ -97,10 +97,13 @@
 - (void) chooseCardFromHand: (id)delegate {
 }
 
- - (void) chooseCardFromMarket: (id)delegate { 
+- (void) chooseCardFromMarket: (id)delegate { 
 }
 
 - (void) chooseActionForPhase1: (id)delegate {
+}
+
+- (void) chooseAShipForAction11: (id)delegate {
 }
 
 - (void) chooseActionForPhase2: (id)delegate {
@@ -141,6 +144,17 @@
     [delegate performSelectorOnMainThread:@selector(didChooseActionForPhase1:) withObject:num waitUntilDone:NO];
 }
 
+- (void) chooseAShipForAction11: (id)delegate {
+	//stupid AI start >>>>
+	ActionEnum rnd;
+    rnd = (NSInteger) (CCRANDOM_0_1() * specials[kSpecialShip]);
+    //stupid AI end <<<<
+    
+    NSNumber *num = [NSNumber numberWithInt:rnd];
+    [delegate performSelectorOnMainThread:@selector(didChooseAShip:) withObject:num waitUntilDone:NO];
+    
+}
+
 /**
  * @override
  */
@@ -150,7 +164,7 @@
 
 @end
 
-#pragma mark - User
+#pragma mark - Human
 @implementation User
 /**
  * @override
@@ -196,11 +210,16 @@
     [delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];
 }
 
+- (void) chooseAShipForAction11: (id)delegate {
+    //TODO
+    //just wait human to tap on board, not using dialog for now
+}
 /**
  * @override
  */
 - (void) chooseActionForPhase2: (id)delegate {
-    
+    Dialog *dialog = [Dialog dialogWithPhase:PHASE2 target:delegate selector:@selector(didChooseActionForPhase2:)];
+    [delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];    
 }
 
 @end

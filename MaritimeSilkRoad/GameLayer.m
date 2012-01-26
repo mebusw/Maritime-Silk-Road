@@ -159,6 +159,7 @@
                 break;
         }
 	
+        //update players' labels
         for (int i = 0; i < players.count; i++) {
             Player *p = [players objectAtIndex:i];
 
@@ -168,9 +169,11 @@
             }
             [labelPlayers[i] setString:str]; 
         }
+        //update lables of tokens in pool
         for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
             [labelTokens[i] setString:[NSString stringWithFormat:@"%d", pool.token[i]]];
         }
+        
         User *user = [players objectAtIndex:0];
         [labelYourCoin setString:STR(@"Coin %d", user.coin)];
         [labelYourSpecials setString:STR(@"w%d c%d t%d", user.specials[kSpecialWorker], user.specials[kSpecialConcession], user.specials[kSpecialTrade])];
@@ -263,7 +266,7 @@
 }
 
 - (void) phase1 {
-	DLog(@"%d %@", _phaseTurns, activePlayer);
+	DLog(@"tun=%d %@", _phaseTurns, activePlayer);
     if (_phaseTurns > 0) {
         [activePlayer chooseActionForPhase1:self];
     } else {
@@ -275,8 +278,11 @@
 }
 
 - (void) p11ChangeGood {
-    
+	DLog(@"turn=%d %@", _phaseTurns, activePlayer);
+    //TODO isDialoging
+    [activePlayer chooseAShipForAction11:self];
 }
+
 - (void) phase2 {
     
 }
@@ -290,7 +296,7 @@
 
 - (void) didChooseAGoodType: (NSNumber *)num {
     GoodTypeEnum goodType = [num intValue];
-    DLog(@"goodType %d", goodType);
+    DLog(@"goodType=%d gameState=%d", goodType, gameState);
 
     switch (gameState) {
         case kLoadGoods:
@@ -302,6 +308,10 @@
             break;
         case kP11ChangeGood:
             DLog(@"kP11ChangeGood");
+            //TODO swap token
+            [self nextPlayer];
+            _phaseTurns--;
+            gameState = kPhase1;
             break;
         default:
             DLog(@"state %d can't be handled by this func", gameState);
@@ -325,10 +335,7 @@
         default:
             break;
     }
-    
-    
-    [self nextPlayer];
-    _phaseTurns--;
+
 }
 
 
@@ -340,6 +347,7 @@
 -(void) didChooseAShip: (NSNumber*) num {
     int ship = [num intValue];
 	DLog(@"ship %d", ship);    
+    [activePlayer chooseAGoodType:self pool:pool];
 }
 
 @end

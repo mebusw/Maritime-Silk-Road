@@ -71,6 +71,12 @@
 
 /**
  * @abstract
+ * open dialog to choose for changing a good  (0~n)
+ */
+- (void) chooseAShipForAction11: (id)delegate;
+
+/**
+ * @abstract
  * open dialog to choose the action of phase 2 (0~1)
  */
 - (void) chooseActionForPhase2: (id)delegate;
