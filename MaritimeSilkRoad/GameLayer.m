@@ -211,13 +211,13 @@
 	// create Human player
     DLog(@"");
 	players = [[NSMutableArray alloc] initWithCapacity:playerNbr];
-	human = [[Human alloc] init];
+	human = [[Human alloc] initWithDelegate:self];
     human.name = names[0];
 	[players addObject:human];
 	
 	// create AI players
 	for (int i = 1; i < playerNbr; i++) {
-		NPC *npc = [[NPC alloc] init];
+		NPC *npc = [[NPC alloc] initWithDelegate:self];
         npc.name = names[i];
 		[players addObject:npc];
 	}
@@ -257,7 +257,7 @@
 
 - (void) loadGoods {
 	if (_loadGoodsTurns > 0) {
-        [activePlayer chooseAGoodType:self pool:pool];
+        [activePlayer chooseAGoodTypeFromPool:pool];
 
 	} else {
         _phaseTurns = playerNbr;
@@ -268,7 +268,7 @@
 - (void) phase1 {
 	DLog(@"tun=%d %@", _phaseTurns, activePlayer);
     if (_phaseTurns > 0) {
-        [activePlayer chooseActionForPhase1:self];
+        [activePlayer chooseActionForPhase1];
     } else {
         _phaseTurns = playerNbr;
         gameState = kPhase2;
@@ -280,7 +280,7 @@
 - (void) p11ChangeGood {
 	DLog(@"turn=%d %@", _phaseTurns, activePlayer);
     //TODO isDialoging
-    [activePlayer chooseAShipForAction11:self];
+    [activePlayer chooseAShipForAction11];
 }
 
 - (void) phase2 {
@@ -308,6 +308,7 @@
             break;
         case kP11ChangeGood:
             //TODO swap token
+            
             [self nextPlayer];
             _phaseTurns--;
             gameState = kPhase1;
@@ -346,7 +347,7 @@
 -(void) didChooseAShip: (NSNumber*) num {
     int ship = [num intValue];
 	DLog(@"ship %d", ship);    
-    [activePlayer chooseAGoodType:self pool:pool];
+    [activePlayer chooseAGoodTypeFromPool:pool];
 }
 
 @end

@@ -19,7 +19,9 @@
     int cardHand[GOOD_TYPE_COUNT];
 	int ships[SHIP_COUNT];
 	int specials[SPECIAL_TYPE_COUNT];
+    id _delegate;
 }
+
 
 @property (nonatomic, retain) NSString *name;
 @property (readonly) int* ships;
@@ -27,6 +29,7 @@
 @property (readonly) int* cardHand;
 @property (nonatomic, assign) int coin;
 
+- (id)initWithDelegate:(id) delegate;
 - (bool) addCardToHand: (GoodTypeEnum)goodType;
 - (bool) playCardofType: (GoodTypeEnum)goodType;
 - (bool) addSpecial: (SpecialTypeEnum)specialType;
@@ -34,16 +37,21 @@
 - (int) cardHandCount;
 
 /** Abstract Methods */
-- (void) chooseAGoodType:(id)delegate pool:(Pool*)pool;
-- (void) chooseAGoodType:(id)delegate pool:(Pool*)pool;
-- (void) chooseToUseAbility: (id)delegate;
-- (void) chooseSpecialType: (id)delegate;
-- (void) chooseCardFromHand: (id)delegate;
-- (void) chooseCardFromMarket: (id)delegate;
-- (void) chooseActionForPhase1: (id)delegate;
-- (void) chooseAShipForAction11: (id)delegate;
-- (void) chooseActionForPhase2: (id)delegate;
+- (void) chooseAGoodTypeFromPool:(Pool*)pool;
 
+- (void) chooseToUseAbility;
+
+- (void) chooseSpecialType;
+
+- (void) chooseCardFromHand;
+
+- (void) chooseCardFromMarket;
+
+- (void) chooseActionForPhase1;
+
+- (void) chooseAShipForAction11;
+
+- (void) chooseActionForPhase2;
 @end
 
 /**

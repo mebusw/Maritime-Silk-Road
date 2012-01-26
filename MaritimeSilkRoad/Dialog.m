@@ -38,6 +38,9 @@
 	[self runAction:pulse];
 }
 
+/**
+ unused
+ */
 - (void) animateHiding {
     id fadeOut = [CCFadeOut actionWithDuration:0.1];
 	id scale1 = [CCScaleTo actionWithDuration:0.2 scale:1.2];
@@ -48,7 +51,6 @@
 
 - (void) menuTapped: (CCMenuItem *) menuItem  {
     NSNumber *num = [NSNumber numberWithInt:menuItem.tag];
-    [self animateHiding];
     ((GameLayer*)_target).isDialoging = NO;
     [_target performSelectorOnMainThread:_sel withObject:num waitUntilDone:NO];
     [self removeFromParentAndCleanup:YES];

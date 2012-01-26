@@ -32,10 +32,15 @@
     return specials;
 }
 
-
 - (id)init {
+    NSAssert(NO, @"not support");
+    return nil;
+}
+
+- (id)initWithDelegate:(id) delegate {
     if (self = [super init]) {
-		coin = 0;
+        _delegate = delegate;
+        coin = 0;
         for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
             cardHand[i] = 0;
         }
@@ -84,21 +89,21 @@
     return sum;
 }
 
-- (void) chooseAGoodType:(id)delegate pool:(Pool*)pool {}
+- (void) chooseAGoodTypeFromPool:(Pool*)pool {}
 
-- (void) chooseToUseAbility: (id)delegate {}
+- (void) chooseToUseAbility {}
 
-- (void) chooseSpecialType: (id)delegate {}
+- (void) chooseSpecialType {}
 
-- (void) chooseCardFromHand: (id)delegate {}
+- (void) chooseCardFromHand {}
 
-- (void) chooseCardFromMarket: (id)delegate {}
+- (void) chooseCardFromMarket {}
 
-- (void) chooseActionForPhase1: (id)delegate {}
+- (void) chooseActionForPhase1 {}
 
-- (void) chooseAShipForAction11: (id)delegate {}
+- (void) chooseAShipForAction11 {}
 
-- (void) chooseActionForPhase2: (id)delegate {}
+- (void) chooseActionForPhase2 {}
 
 @end
 
@@ -106,7 +111,7 @@
 @implementation NPC
 @synthesize AI;
 
-- (void) chooseAGoodType:(id)delegate pool:(Pool*)pool  {
+- (void) chooseAGoodTypeFromPool:(Pool*)pool  {
     
 	//stupid AI start >>>>
 	GoodTypeEnum rnd;
@@ -116,43 +121,39 @@
     //stupid AI end <<<<
 
     NSNumber *num = [NSNumber numberWithInt:rnd];
-    [delegate performSelectorOnMainThread:@selector(didChooseAGoodType:) withObject:num waitUntilDone:NO];
+    [_delegate performSelectorOnMainThread:@selector(didChooseAGoodType:) withObject:num waitUntilDone:NO];
 }
 
-- (void) chooseActionForPhase1: (id)delegate {
+- (void) chooseActionForPhase1 {
 	//stupid AI start >>>>
 	ActionEnum rnd;
     rnd = PHASE1 + (NSInteger) (CCRANDOM_0_1() * 2);
     //stupid AI end <<<<
     
     NSNumber *num = [NSNumber numberWithInt:rnd];
-    [delegate performSelectorOnMainThread:@selector(didChooseActionForPhase1:) withObject:num waitUntilDone:NO];
+    [_delegate performSelectorOnMainThread:@selector(didChooseActionForPhase1:) withObject:num waitUntilDone:NO];
 }
 
-- (void) chooseAShipForAction11: (id)delegate {
+- (void) chooseAShipForAction11 {
 	//stupid AI start >>>>
 	ActionEnum rnd;
     rnd = (NSInteger) (CCRANDOM_0_1() * specials[kSpecialShip]);
     //stupid AI end <<<<
     
     NSNumber *num = [NSNumber numberWithInt:rnd];
-    [delegate performSelectorOnMainThread:@selector(didChooseAShip:) withObject:num waitUntilDone:NO];
+    [_delegate performSelectorOnMainThread:@selector(didChooseAShip:) withObject:num waitUntilDone:NO];
     
 }
 
-- (void) chooseToUseAbility: (id)delegate {
-}
+- (void) chooseToUseAbility {}
 
-- (void) chooseSpecialType: (id)delegate {
-}
+- (void) chooseSpecialType {}
 
-- (void) chooseCardFromHand: (id)delegate {
-}
+- (void) chooseCardFromHand {}
 
-- (void) chooseCardFromMarket: (id)delegate { 
-}
+- (void) chooseCardFromMarket {}
 
-- (void) chooseActionForPhase2: (id)delegate {
+- (void) chooseActionForPhase2 {
 }
 
 
@@ -162,44 +163,41 @@
 
 @implementation Human
 
-- (void) chooseAGoodType:(id)delegate pool:(Pool*)pool {
-    Dialog *dialog = [Dialog dialogWithGoodCounts:pool.token target:delegate selector:@selector(didChooseAGoodType:)];
-    [delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_GOODS];
+- (void) chooseAGoodTypeFromPool:(Pool *)pool {
+    Dialog *dialog = [Dialog dialogWithGoodCounts:pool.token target:_delegate selector:@selector(didChooseAGoodType:)];
+    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_GOODS];
     
 }
 
-- (void) chooseToUseAbility: (id)delegate {
-    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Use xxx Ability?" delegate:delegate cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Yes", @"No", nil] ;
-	as.tag = kDlgUserAbility;
-    [as showInView:[[CCDirector sharedDirector] openGLView]]; 
+- (void) chooseToUseAbility {
+ 
 }
 
-- (void) chooseSpecialType: (id)delegate {
+- (void) chooseSpecialType {
 }
 
-- (void) chooseCardFromHand: (id)delegate {
+- (void) chooseCardFromHand {
 }
 
 
- - (void) chooseCardFromMarket: (id)delegate {
- }
-
-- (void) chooseActionForPhase1: (id)delegate {
-    Dialog *dialog = [Dialog dialogWithPhase:PHASE1 target:delegate selector:@selector(didChooseActionForPhase1:)];
-    [delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];
+- (void) chooseCardFromMarket {
 }
 
-- (void) chooseAShipForAction11: (id)delegate {
-    Dialog *dialog = [Dialog dialogWithShips:ships count:specials[kSpecialShip] target:delegate selector:@selector(didChooseAShip:)];
-    [delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_SHIPS];
+- (void) chooseActionForPhase1 {
+    Dialog *dialog = [Dialog dialogWithPhase:PHASE1 target:_delegate selector:@selector(didChooseActionForPhase1:)];
+    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];
+}
+
+- (void) chooseAShipForAction11 {
+    Dialog *dialog = [Dialog dialogWithShips:ships count:specials[kSpecialShip] target:_delegate selector:@selector(didChooseAShip:)];
+    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_SHIPS];
 
 }
-/**
- * @override
- */
+
+
 - (void) chooseActionForPhase2: (id)delegate {
-    Dialog *dialog = [Dialog dialogWithPhase:PHASE2 target:delegate selector:@selector(didChooseActionForPhase2:)];
-    [delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];    
+    Dialog *dialog = [Dialog dialogWithPhase:PHASE2 target:_delegate selector:@selector(didChooseActionForPhase2:)];
+    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];    
 }
 
 @end
