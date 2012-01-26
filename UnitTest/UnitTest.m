@@ -2,12 +2,11 @@
 //  UnitTest.m
 //  UnitTest
 //
-//  Created by MagicStudio on 11-11-10.
-//  Copyright 2011年 __MyCompanyName__. All rights reserved.
+//  Created by mebusw on 12-1-26.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import "UnitTest.h"
-#import "Pool.h"
 
 @implementation UnitTest
 
@@ -25,14 +24,9 @@
     [super tearDown];
 }
 
-- (void)testfetchAGood
+- (void)testExample
 {
-    Pool *pool = [[Pool alloc] init];
-    STAssertEquals(GOOD_TYPE_COUNT * GOOD_COUNT_PER_TYPE, pool.remainingCards, @"not 66 cards");
-    STAssertTrue([pool fetchAGood] > kGoodNone, @"can not fetched a good");
-    STAssertEquals(GOOD_TYPE_COUNT * GOOD_COUNT_PER_TYPE - 1, pool.remainingCards, @"not 65 cards");
+    //STFail(@"Unit tests are not implemented yet in UnitTest");
 }
-
-
 
 @end

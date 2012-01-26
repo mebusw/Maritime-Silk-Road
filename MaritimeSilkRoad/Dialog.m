@@ -37,9 +37,9 @@
 
 - (void) animate {
     id fadeIn = [CCFadeIn actionWithDuration:0.1];
-	id scale1 = [CCSpawn actions:fadeIn, [CCScaleTo actionWithDuration:0.15 scale:1.3], nil];
-	id scale2 = [CCScaleTo actionWithDuration:0.1 scale:0.6];
-	id scale3 = [CCScaleTo actionWithDuration:0.05 scale:1.0];
+	id scale1 = [CCSpawn actions:fadeIn, [CCScaleTo actionWithDuration:0.3 scale:1.3], nil];
+	id scale2 = [CCScaleTo actionWithDuration:0.1 scale:0.8];
+	id scale3 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
 	id pulse = [CCSequence actions:scale1, scale2, scale3, nil];
 	[self runAction:pulse];
 }
