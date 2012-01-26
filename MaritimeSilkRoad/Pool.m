@@ -12,36 +12,45 @@
 
 @synthesize remainingCards;
 
+- (void)shuffleGoods
+{
+    remainingCards = 0;
+    for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
+        for (int j = 0; j < GOOD_COUNT_PER_TYPE; j++) {
+            goodCards[remainingCards++] = i;
+        }
+    }
+    
+    for (int i = 0; i < remainingCards; i++) {
+        int rnd = (int) (CCRANDOM_0_1() * remainingCards);
+        CC_SWAP(goodCards[i], goodCards[rnd]);
+    }
+    DLog(@"remainingCards %d", remainingCards);
+}
+
+- (void)prepareSpecials
+{
+    specialCards[kSpecialShip] = SHIP_COUNT;
+    specialCards[kSpecialTrade] = OTHER_SPECIAL_COUNT;
+    specialCards[kSpecialWorker] = OTHER_SPECIAL_COUNT;
+    specialCards[kSpecialConcession] = OTHER_SPECIAL_COUNT;
+}
+
+- (void)prepareTokens
+{
+    for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
+        token[i] = TOKEN_PER_TYPE;
+    }
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
-		// shuffle the good deck
-		remainingCards = 0;
-        for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
-			for (int j = 0; j < GOOD_COUNT_PER_TYPE; j++) {
-				goodCards[remainingCards++] = i;
-			}
-        }
-		
-		for (int i = 0; i < remainingCards; i++) {
-			int rnd = (int) (CCRANDOM_0_1() * remainingCards);
-			CC_SWAP(goodCards[i], goodCards[rnd]);
-		}
-        DLog(@"remainingCards %d", remainingCards);
-//        for (int i = 0; i< remainingCards; i++)
-//            DLog(@"card is type %d", goodCards[i]);
-
-		// prepare special deck
-        specialCards[kSpecialShip] = SHIP_COUNT;
-        specialCards[kSpecialTrade] = OTHER_SPECIAL_COUNT;
-        specialCards[kSpecialWorker] = OTHER_SPECIAL_COUNT;
-        specialCards[kSpecialConcession] = OTHER_SPECIAL_COUNT;
-		
-		//prepare the tokens
-		for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
-			token[i] = TOKEN_PER_TYPE;
-		}
+        
+        [self shuffleGoods];
+        [self prepareSpecials];
+		[self prepareTokens];
 		
     }
     
