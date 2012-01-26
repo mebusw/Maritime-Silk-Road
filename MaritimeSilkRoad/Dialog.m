@@ -54,6 +54,11 @@
     [self removeFromParentAndCleanup:YES];
 }
 
++ (NSString*) goodNameMapping: (int)type {
+    static NSString *goodNames[GOOD_TYPE_COUNT] = {@"China", @"Glaze", @"Ore", @"Perfume", @"Silk", @"Tea"};
+    return goodNames[type];
+}
+
 #pragma mark - Good Dialog
 /**
  * the goods dialog looks like:
@@ -64,7 +69,7 @@
  ===================
  */
 + (Dialog*) dialogWithGoodCounts:(int*)goodCounts target:(id)target selector:(SEL)sel {
-   	NSString *goodNames[GOOD_TYPE_COUNT] = {@"China", @"Glaze", @"Ore", @"Perfume", @"Silk", @"Tea"};
+   	
 	CCMenuItem *items[GOOD_TYPE_COUNT];
 	
 	Dialog *dialog = [[Dialog alloc] initWithTarget:target sel:sel];
@@ -76,7 +81,7 @@
     title.position = ccp(size.width / 2, size.height - 15);
 
 	for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
-		NSString *str = [NSString stringWithFormat:@"%@ (%d)", goodNames[i], goodCounts[i]];
+		NSString *str = [NSString stringWithFormat:@"%@ (%d)", [Dialog goodNameMapping:i], goodCounts[i]];
 		CCLabelTTF *label = [CCLabelTTF labelWithString:str fontName:FONT_NAME fontSize:16];
 		CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
 		items[i] = itm;
@@ -94,6 +99,47 @@
 	
 	return dialog;
 }
+
+#pragma mark - Ship Dialog
+/**
+ * the ship dialog looks like:
+ ===================
+ =   Tea, Tea, China, ...
+ ===================
+ */
++ (Dialog*) dialogWithShips:(int*)ships count:(int)count target:(id)target selector:(SEL)sel {
+    CCMenuItem *items[count];
+    
+	Dialog *dialog = [[Dialog alloc] initWithTarget:target sel:sel];
+    CGSize size = dialog.contentSize;
+    
+    CCLabelTTF *title = [CCLabelTTF labelWithString:@"Choose A good from unused tokens" fontName:FONT_NAME fontSize:16];
+    title.color = ccRED;
+    [dialog addChild:title];
+    title.position = ccp(size.width / 2, size.height - 15);
+    
+	CCMenu *menu = [CCMenu menuWithItems:nil];
+    
+    for (int i = 0; i < count; i++) {
+		NSString *str = [NSString stringWithFormat:@"(%d)", ships[i]];
+		CCLabelTTF *label = [CCLabelTTF labelWithString:str fontName:FONT_NAME fontSize:16];
+		CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
+		items[i] = itm;
+		itm.tag = i;
+        [menu addChild:itm];
+	}
+    
+    
+	[menu alignItemsHorizontally];
+	menu.position = ccp(size.width / 2, size.height / 2);
+    
+	[dialog addChild:menu z:1];
+	
+    [dialog animateShowing];
+	
+	return dialog;
+}
+
 
 #pragma mark - Action Dialog
 

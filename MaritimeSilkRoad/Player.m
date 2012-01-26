@@ -15,6 +15,7 @@
 #define DIALOG_GOODS   	100
 #define DIALOG_ACTIONS 	101
 #define DIALOG_YESNO	102
+#define DIALOG_SHIPS 	103
 
 @implementation Player
 
@@ -211,8 +212,9 @@
 }
 
 - (void) chooseAShipForAction11: (id)delegate {
-    //TODO
-    //just wait human to tap on board, not using dialog for now
+    Dialog *dialog = [Dialog dialogWithShips:ships count:specials[kSpecialShip] target:delegate selector:@selector(didChooseAShip:)];
+    [delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_SHIPS];
+
 }
 /**
  * @override

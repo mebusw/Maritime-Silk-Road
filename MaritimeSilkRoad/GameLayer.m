@@ -307,7 +307,6 @@
             }
             break;
         case kP11ChangeGood:
-            DLog(@"kP11ChangeGood");
             //TODO swap token
             [self nextPlayer];
             _phaseTurns--;
