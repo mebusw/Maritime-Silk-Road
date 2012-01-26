@@ -29,7 +29,7 @@
     CCLabelTTF *labelPlayers[MAX_PLAYER];
     ShipsPanel *shipsPanel;
     HandMarketPanel *handMarketPanel;
-    User *human;
+    Human *human;
 }
 @property BOOL isDialoging; //if dialog is open, then no need to schedule for next state
 @property GameStateEnum gameState;

@@ -22,13 +22,13 @@ typedef enum {
     CCSprite *touchingCard;
     PanelTouchStates state;
     CCLabelTTF *labelHands[GOOD_TYPE_COUNT];
-    User *_human;
+    Human *_human;
     int *_market;
     BOOL needRefresh;
 }
 @property (nonatomic) BOOL isBtnFinishVisible;
 
--(id) initWithHuman:(User*) human market:(int*)market;
+-(id) initWithHuman:(Human*) human market:(int*)market;
 -(void) refresh;
 -(void) setMarketAtIndex:(int)index good:(GoodTypeEnum)good;
 

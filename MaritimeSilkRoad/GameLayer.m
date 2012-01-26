@@ -174,7 +174,7 @@
             [labelTokens[i] setString:[NSString stringWithFormat:@"%d", pool.token[i]]];
         }
         
-        User *user = [players objectAtIndex:0];
+        Human *user = [players objectAtIndex:0];
         [labelYourCoin setString:STR(@"Coin %d", user.coin)];
         [labelYourSpecials setString:STR(@"w%d c%d t%d", user.specials[kSpecialWorker], user.specials[kSpecialConcession], user.specials[kSpecialTrade])];
         [shipsPanel refresh];
@@ -211,7 +211,7 @@
 	// create Human player
     DLog(@"");
 	players = [[NSMutableArray alloc] initWithCapacity:playerNbr];
-	human = [[User alloc] init];
+	human = [[Human alloc] init];
     human.name = names[0];
 	[players addObject:human];
 	

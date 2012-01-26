@@ -33,52 +33,15 @@
 - (bool) loadGoodToShip: (GoodTypeEnum)goodType atIndex:(NSUInteger)ship;
 - (int) cardHandCount;
 
-/**
- * @abstract
- * open dialog to choose the type of good when load a token to ship
- */
+/** Abstract Methods */
 - (void) chooseAGoodType:(id)delegate pool:(Pool*)pool;
- 
-/**
- * @abstract
- * open dialog to choose to use a special ability or not
- */
+- (void) chooseAGoodType:(id)delegate pool:(Pool*)pool;
 - (void) chooseToUseAbility: (id)delegate;
-
-/**
- * @abstract
- * open dialog to choose the type of special in pool
- */
 - (void) chooseSpecialType: (id)delegate;
-
-/**
- * @abstract
- * open dialog to choose the index of card in hand
- */
 - (void) chooseCardFromHand: (id)delegate;
-
-/**
- * @abstract
- * open dialog to choose the index of card in market (0~5)
- */
 - (void) chooseCardFromMarket: (id)delegate;
-
-/**
- * @abstract
- * open dialog to choose the action of phase 1 (0~2)
- */
 - (void) chooseActionForPhase1: (id)delegate;
-
-/**
- * @abstract
- * open dialog to choose for changing a good  (0~n)
- */
 - (void) chooseAShipForAction11: (id)delegate;
-
-/**
- * @abstract
- * open dialog to choose the action of phase 2 (0~1)
- */
 - (void) chooseActionForPhase2: (id)delegate;
 
 @end
@@ -96,7 +59,7 @@
 /**
  * The human player.
  */
-@interface User : Player {
+@interface Human : Player {
 
 }
 

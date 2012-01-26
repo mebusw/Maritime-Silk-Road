@@ -11,7 +11,7 @@
 #define TOKEN_WIDTH     20
 @implementation ShipsPanel
 
--(id) initWithHuman:(User*) human {
+-(id) initWithHuman:(Human*) human {
     self = [super init];
     if (self) {
         self.isTouchEnabled = YES;

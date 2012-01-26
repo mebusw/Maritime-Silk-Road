@@ -19,12 +19,12 @@ typedef enum {
 } ShipTouchStates;
 
 @interface ShipsPanel : CCLayer {
-    User *user;
+    Human *user;
     ShipTouchStates state;
 
 }
 
--(id) initWithHuman:(User*) human;
+-(id) initWithHuman:(Human*) human;
 
 -(void) refresh;
 

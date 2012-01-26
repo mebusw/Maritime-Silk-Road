@@ -19,7 +19,7 @@
 @implementation HandMarketPanel
 @synthesize isBtnFinishVisible;
 
--(id) initWithHuman:(User*) human market:(int*)market{
+-(id) initWithHuman:(Human*) human market:(int*)market{
 	if( (self=[super init]) ) {
 		self.isTouchEnabled = YES;
 		state = kPanelWaiting;

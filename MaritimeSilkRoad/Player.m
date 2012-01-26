@@ -84,31 +84,21 @@
     return sum;
 }
 
+- (void) chooseAGoodType:(id)delegate pool:(Pool*)pool {}
 
-- (void) chooseAGoodType:(id)delegate pool:(Pool*)pool  {
-	@throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)] userInfo:nil];
-}
+- (void) chooseToUseAbility: (id)delegate {}
 
-- (void) chooseToUseAbility: (id)delegate {
-}
+- (void) chooseSpecialType: (id)delegate {}
 
-- (void) chooseSpecialType: (id)delegate {
-}
+- (void) chooseCardFromHand: (id)delegate {}
 
-- (void) chooseCardFromHand: (id)delegate {
-}
+- (void) chooseCardFromMarket: (id)delegate {}
 
-- (void) chooseCardFromMarket: (id)delegate { 
-}
+- (void) chooseActionForPhase1: (id)delegate {}
 
-- (void) chooseActionForPhase1: (id)delegate {
-}
+- (void) chooseAShipForAction11: (id)delegate {}
 
-- (void) chooseAShipForAction11: (id)delegate {
-}
-
-- (void) chooseActionForPhase2: (id)delegate {
-}
+- (void) chooseActionForPhase2: (id)delegate {}
 
 @end
 
@@ -116,9 +106,6 @@
 @implementation NPC
 @synthesize AI;
 
-/**
- * @override
- */
 - (void) chooseAGoodType:(id)delegate pool:(Pool*)pool  {
     
 	//stupid AI start >>>>
@@ -132,9 +119,6 @@
     [delegate performSelectorOnMainThread:@selector(didChooseAGoodType:) withObject:num waitUntilDone:NO];
 }
 
-/**
- * @override
- */
 - (void) chooseActionForPhase1: (id)delegate {
 	//stupid AI start >>>>
 	ActionEnum rnd;
@@ -156,56 +140,50 @@
     
 }
 
-/**
- * @override
- */
-- (void) chooseActionForPhase2: (id)delegate {
-    
+- (void) chooseToUseAbility: (id)delegate {
 }
+
+- (void) chooseSpecialType: (id)delegate {
+}
+
+- (void) chooseCardFromHand: (id)delegate {
+}
+
+- (void) chooseCardFromMarket: (id)delegate { 
+}
+
+- (void) chooseActionForPhase2: (id)delegate {
+}
+
 
 @end
 
 #pragma mark - Human
-@implementation User
-/**
- * @override
- */
+
+@implementation Human
+
 - (void) chooseAGoodType:(id)delegate pool:(Pool*)pool {
     Dialog *dialog = [Dialog dialogWithGoodCounts:pool.token target:delegate selector:@selector(didChooseAGoodType:)];
     [delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_GOODS];
     
 }
 
-/**
- * @override
- */
 - (void) chooseToUseAbility: (id)delegate {
     UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Use xxx Ability?" delegate:delegate cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Yes", @"No", nil] ;
 	as.tag = kDlgUserAbility;
     [as showInView:[[CCDirector sharedDirector] openGLView]]; 
 }
 
-/**
- * @override
- */
 - (void) chooseSpecialType: (id)delegate {
 }
 
-/**
- * @override
- */
 - (void) chooseCardFromHand: (id)delegate {
 }
 
-/**
- * @override
- */
+
  - (void) chooseCardFromMarket: (id)delegate {
  }
 
-/**
- * @override
- */
 - (void) chooseActionForPhase1: (id)delegate {
     Dialog *dialog = [Dialog dialogWithPhase:PHASE1 target:delegate selector:@selector(didChooseActionForPhase1:)];
     [delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];
