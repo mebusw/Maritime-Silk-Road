@@ -50,6 +50,7 @@
 - (void) phase1;
 - (void) p11ChangeGood;
 - (void) phase2;
+- (void) gameOver;
 
 -(void) didChooseAShip: (NSNumber*) num;
 

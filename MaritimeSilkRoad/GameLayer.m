@@ -11,6 +11,7 @@
 #import "Dialog.h"
 #import "ShipsPanel.h"
 #import "HandMarketPanel.h"
+#import "InfoBox.h"
 
 @implementation GameLayer
 
@@ -156,6 +157,7 @@
             case kP22GetCard:
                 break;
             case kGameOver:
+                [self gameOver];
                 break;
         }
 	
@@ -284,6 +286,16 @@
 }
 
 - (void) phase2 {
+    DLog(@"", nil);
+    gameState = kGameOver;
+    InfoBox *ibox = [InfoBox infoBoxWith];
+    [self addChild:ibox z:Z_MOST_FRONT];
+    CGSize size = self.contentSize;
+    ibox.position = ccp(size.width / 2, size.height / 2);
+}
+
+-(void) gameOver {
+    
     
 }
 

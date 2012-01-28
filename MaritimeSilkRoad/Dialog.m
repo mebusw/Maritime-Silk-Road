@@ -112,7 +112,7 @@
 + (Dialog*) dialogWithShips:(int*)ships count:(int)count target:(id)target selector:(SEL)sel {
     CCMenuItem *items[count];
     
-	Dialog *dialog = [[Dialog alloc] initWithTarget:target sel:sel];
+	Dialog *dialog = [[[Dialog alloc] initWithTarget:target sel:sel] autorelease];
     CGSize size = dialog.contentSize;
     
     CCLabelTTF *title = [CCLabelTTF labelWithString:@"Choose A good from unused tokens" fontName:FONT_NAME fontSize:16];
@@ -156,7 +156,7 @@
 	NSString *phase2Actions[] = {@"Sell", @"Take Cards"};
 	CCMenuItem *items[3];
 
-    Dialog *dialog = [[Dialog alloc] initWithTarget:target sel:sel];
+    Dialog *dialog = [[[Dialog alloc] initWithTarget:target sel:sel] autorelease];
     CCMenu *menu;
     
 	switch(phase) {

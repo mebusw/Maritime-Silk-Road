@@ -7,6 +7,7 @@
 //
 
 #import "UnitTest.h"
+#import "ccMacros.h"
 
 @implementation UnitTest
 
@@ -26,7 +27,11 @@
 
 - (void)testExample
 {
-    //STFail(@"Unit tests are not implemented yet in UnitTest");
+    float f;
+    f = CCRANDOM_0_1() * 2;
+    DLog(@"rnd=%f %d", f, (NSInteger)f);
+    f = CCRANDOM_0_1() * 2;
+    DLog(@"rnd=%f %d", f, (NSInteger)f);
 }
 
 @end

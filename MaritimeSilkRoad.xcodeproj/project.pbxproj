@@ -163,6 +163,7 @@
 		8F5D58B414D0FADA004DE70E /* UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D58B314D0FADA004DE70E /* UnitTest.m */; };
 		8F5D58C414D0FC6C004DE70E /* PoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D58C214D0FC47004DE70E /* PoolTest.m */; };
 		8F5D58C814D1009E004DE70E /* Pool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A799751146C0CEE001550C8 /* Pool.m */; };
+		8FBDA24214D44AF3002EC68B /* InfoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA24114D44AF3002EC68B /* InfoBox.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -453,6 +454,8 @@
 		8F5D58B514D0FADA004DE70E /* UnitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTest-Prefix.pch"; sourceTree = "<group>"; };
 		8F5D58C114D0FC47004DE70E /* PoolTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolTest.h; sourceTree = "<group>"; };
 		8F5D58C214D0FC47004DE70E /* PoolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolTest.m; sourceTree = "<group>"; };
+		8FBDA24014D44AF3002EC68B /* InfoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBox.h; sourceTree = "<group>"; };
+		8FBDA24114D44AF3002EC68B /* InfoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBox.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -522,6 +525,8 @@
 		4A7E8B6614663EA9003BEC0B /* MaritimeSilkRoad */ = {
 			isa = PBXGroup;
 			children = (
+				8FBDA24014D44AF3002EC68B /* InfoBox.h */,
+				8FBDA24114D44AF3002EC68B /* InfoBox.m */,
 				4A790DAD1497A3B200524C5A /* CollectionUtils.h */,
 				4A790DAE1497A3B200524C5A /* Dialog.h */,
 				4A790DAF1497A3B200524C5A /* Dialog.m */,
@@ -1173,6 +1178,7 @@
 				4A790DB01497A3B200524C5A /* Dialog.m in Sources */,
 				4A76DADE149C9B030029B908 /* ShipsPanel.m in Sources */,
 				4A76DAE2149CA46C0029B908 /* HandMarketPanel.m in Sources */,
+				8FBDA24214D44AF3002EC68B /* InfoBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1342,6 +1348,7 @@
 				8F5D58B814D0FADA004DE70E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

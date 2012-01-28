@@ -51,10 +51,10 @@ game flow:
 game over:
 	when good deck is run out, the player who has most coins wins
 	
-special cards (accumalive effects):
+special cards (accumulative effects):
 	ship(10 coins): ~
 	trading(8 coins): at phase2, player may get 1 extra good card
-	worker(12 coins): for changing token at phase1, player may change 1 more token. Can be used when buying this card immedietely
+	worker(12 coins): for changing token at phase1, player may change 1 more token. Can be used when buying this card immediately
 	concession(11 coins): for calc incoming at phase2, player can get 2 extra coins if he has any incoming
 	
 ===============ATC===========
@@ -64,7 +64,7 @@ special cards (accumalive effects):
 >I can play game with other AI players in turn, clock-wisely, start from anyone
 >I can have customized dialog instead of UIActionSheet
 >I can choose 1 of 3 actions in phase1
-I can change 1 token from token pool to one of my ship (1.1)
+>I can change 1 token from token pool to one of my ship (1.1)
 I can see animate when an action performed
 I can buy a special card with my coins (1.2)
 I can pass phase1 (1.3)
