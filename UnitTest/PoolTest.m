@@ -43,6 +43,7 @@ Pool *pool;
 
 - (void) testPutAInvalidToken {
     STAssertThrowsSpecific([pool putAToken:kGoodNone], NSException, @"no exception");
+    
 //    @try {
 //        [pool putAToken:kGoodNone];
 //        STFail(@"no exception");

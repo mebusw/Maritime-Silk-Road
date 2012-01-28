@@ -300,14 +300,17 @@
 
     switch (gameState) {
         case kLoadGoods:
-            if ([pool fetchAToken: goodType]) {
-                [activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / playerNbr)];	
-                [self nextPlayer];
-                _loadGoodsTurns--; 
-            }
+            [pool fetchAToken: goodType];
+            [activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / playerNbr)];	
+            [self nextPlayer];
+            _loadGoodsTurns--; 
+        
             break;
-        case kP11ChangeGood:
-            //TODO swap token
+        case kP11ChangeGood: 
+            [pool fetchAToken: goodType];
+            GoodTypeEnum goodOnChosenShip = activePlayer.ships[_chosenShip];
+            activePlayer.ships[_chosenShip] = goodType;
+            [pool putAToken:goodOnChosenShip];
             
             [self nextPlayer];
             _phaseTurns--;
@@ -347,6 +350,7 @@
 -(void) didChooseAShip: (NSNumber*) num {
     int ship = [num intValue];
 	DLog(@"ship %d", ship);    
+    _chosenShip = ship;
     [activePlayer chooseAGoodTypeFromPool:pool];
 }
 

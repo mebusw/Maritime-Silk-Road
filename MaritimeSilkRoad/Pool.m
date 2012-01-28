@@ -85,16 +85,19 @@
     return false;
 }
 
-- (bool) fetchAToken: (GoodTypeEnum) type {
-    if (type < GOOD_TYPE_COUNT && token[type] > 0) {
-        token[type]--;
-        return true;
+- (void) fetchAToken: (GoodTypeEnum) type {
+    if (type <= kGoodNone || type > GOOD_TYPE_COUNT) {
+        [NSException raise:@"InvalidTokenType" format:@"type=%d", type];
     }
-    return false;
+    if (token[type] < 0) {
+        [NSException raise:@"NoEnoughToken" format:@"type=%d, num=%d", type, token[type]];
+    }
+
+    token[type] -= 1;
 }
 
 - (void) putAToken: (GoodTypeEnum) type {
-    if (type <= kGoodNone || type > kGoodTea) {
+    if (type <= kGoodNone || type > GOOD_TYPE_COUNT) {
         [NSException raise:@"InvalidTokenType" format:@"type=%d", type];
         
     }

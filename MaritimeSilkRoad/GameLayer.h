@@ -18,6 +18,7 @@
 @interface GameLayer : CCLayer {
 	int _loadGoodsTurns;
     int _phaseTurns;
+    int _chosenShip;
 	
 	int market[MARKET_SIZE];
 	CCLabelTTF *labelDeck;

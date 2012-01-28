@@ -27,7 +27,7 @@
 
 - (bool) fetchASpecial: (SpecialTypeEnum) type;
 
-- (bool) fetchAToken: (GoodTypeEnum) type;
+- (void) fetchAToken: (GoodTypeEnum) type;
 - (void) putAToken: (GoodTypeEnum) type;
 
 
