@@ -93,5 +93,15 @@
     return false;
 }
 
+- (void) putAToken: (GoodTypeEnum) type {
+    if (type <= kGoodNone || type > kGoodTea) {
+        [NSException raise:@"InvalidTokenType" format:@"type=%d", type];
+        
+    }
+    token[type] += 1;
+}
+
 
 @end
+
+

@@ -65,6 +65,7 @@ special cards (accumalive effects):
 >I can have customized dialog instead of UIActionSheet
 >I can choose 1 of 3 actions in phase1
 I can change 1 token from token pool to one of my ship (1.1)
+I can see animate when an action performed
 I can buy a special card with my coins (1.2)
 I can pass phase1 (1.3)
 I can choose 1 of 2 actions in phase2

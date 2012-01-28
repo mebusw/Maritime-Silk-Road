@@ -11,6 +11,12 @@
 #define TOKEN_WIDTH     20
 @implementation ShipsPanel
 
++(NSString*) imageNameMapping:(int)index {
+    NSString *images[] = {IMG_TOKEN_CHINA, IMG_TOKEN_GLAZE, IMG_TOKEN_ORE, IMG_TOKEN_PERFUME, IMG_TOKEN_SILK, IMG_TOKEN_TEA};
+    return images[index];
+}
+
+
 -(id) initWithHuman:(Human*) human {
     self = [super init];
     if (self) {
@@ -26,11 +32,10 @@
 -(void) refresh {
     [self removeAllChildrenWithCleanup:YES];
     
-    NSString *images[] = {IMG_TOKEN_CHINA, IMG_TOKEN_GLAZE, IMG_TOKEN_ORE, IMG_TOKEN_PERFUME, IMG_TOKEN_SILK, IMG_TOKEN_TEA};
     for (int i = 0; i < user.specials[kSpecialShip]; i++) {
         
         //TODO use sprite batch node or -[draw] to improve performance, definitely!!!
-        CCSprite *aShip = [CCSprite spriteWithFile:images[user.ships[i]]];
+        CCSprite *aShip = [CCSprite spriteWithFile: [ShipsPanel imageNameMapping:user.ships[i]]];
         aShip.position = ccp(i * TOKEN_WIDTH, -self.contentSize.height / 2 + TOKEN_WIDTH);
         [self addChild:aShip];
     }

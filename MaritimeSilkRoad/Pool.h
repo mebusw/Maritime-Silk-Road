@@ -24,11 +24,14 @@
 @property (readonly) int remainingCards;
 
 - (GoodTypeEnum) fetchAGood;
-- (bool) fetchASpecial: (SpecialTypeEnum) type;
-- (bool) fetchAToken: (GoodTypeEnum) type;
 
+- (bool) fetchASpecial: (SpecialTypeEnum) type;
+
+- (bool) fetchAToken: (GoodTypeEnum) type;
+- (void) putAToken: (GoodTypeEnum) type;
 
 
 
 
 @end
+
