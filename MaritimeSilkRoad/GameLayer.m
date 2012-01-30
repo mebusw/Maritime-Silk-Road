@@ -254,6 +254,11 @@
 
     [self setupMenus];
     
+    InfoBox *ibox = [InfoBox sharedInfoBox];
+    [self addChild:ibox z:Z_MOST_FRONT];
+    CGSize size = self.contentSize;
+    ibox.position = ccp(size.width / 2, size.height / 2);
+    
 	gameState = kLoadGoods;
 }
 
@@ -288,10 +293,8 @@
 - (void) phase2 {
     DLog(@"", nil);
     gameState = kGameOver;
-    InfoBox *ibox = [InfoBox sharedInfoBox];
-    [self addChild:ibox z:Z_MOST_FRONT];
-    CGSize size = self.contentSize;
-    ibox.position = ccp(size.width / 2, size.height / 2);
+    [[InfoBox sharedInfoBox] setNewMsg:@"Now is Phase2"];
+    
 }
 
 -(void) gameOver {

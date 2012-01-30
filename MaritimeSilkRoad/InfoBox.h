@@ -15,8 +15,6 @@
 +(InfoBox*) sharedInfoBox;
 
 
-- (void)onTick:(id)obj;
-
 -(void)setNewMsg:(NSString *)msg;
 
 @end

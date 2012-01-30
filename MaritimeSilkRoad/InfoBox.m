@@ -32,6 +32,8 @@ static InfoBox* instance;
         [instance setNewMsg:@"Action Performed"];
         CGSize size = instance.contentSize;
         title.position = ccp(size.width / 2, size.height - 15);
+        
+        instance.visible = NO;
     }
     return instance;
 }
@@ -44,20 +46,6 @@ static InfoBox* instance;
 	return [super alloc];
 }
 
--(void) resetTimer {
-    [t invalidate];
-    t = [NSTimer scheduledTimerWithTimeInterval:ELASPE_TICK target:self selector:@selector(onTick:) userInfo:nil repeats:NO];
-}
-/**
- *  @override
- */
--(void)setNewMsg:(NSString *)msg {
-    DLog(@"%@", msg);
-    CCLabelTTF *title = (CCLabelTTF*)[self getChildByTag:TAG_TITLE];
-    title.string = msg;
-    [self resetTimer];
-}
-
 +(void)purgeSharedInfoBox
 {
 	[instance release];
@@ -65,9 +53,25 @@ static InfoBox* instance;
 }
 
 
+-(void) show {
+    self.visible = YES;
+    //[t invalidate];
+    t = [NSTimer scheduledTimerWithTimeInterval:ELASPE_TICK target:self selector:@selector(onHide:) userInfo:nil repeats:NO];
+}
 
-- (void)onTick:(id)obj {
-    [self removeFromParentAndCleanup:YES];
+/**
+ *  @override
+ */
+-(void)setNewMsg:(NSString *)msg {
+    DLog(@"%@", msg);
+    CCLabelTTF *title = (CCLabelTTF*)[self getChildByTag:TAG_TITLE];
+    title.string = msg;
+    [self show];
+
+}
+- (void)onHide:(NSTimer*)theTimer {
+    self.visible = NO;
+    //[self removeFromParentAndCleanup:YES];
     
 }
 
