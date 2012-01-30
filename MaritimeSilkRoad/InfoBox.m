@@ -55,7 +55,9 @@ static InfoBox* instance;
 
 -(void) show {
     self.visible = YES;
-    //[t invalidate];
+//    if (t && [t isValid]) {
+//        [t invalidate];
+//    }
     t = [NSTimer scheduledTimerWithTimeInterval:ELASPE_TICK target:self selector:@selector(onHide:) userInfo:nil repeats:NO];
 }
 
@@ -72,6 +74,7 @@ static InfoBox* instance;
 - (void)onHide:(NSTimer*)theTimer {
     self.visible = NO;
     //[self removeFromParentAndCleanup:YES];
+    DLog(@"is valid=%d", [t isValid]);
     
 }
 
