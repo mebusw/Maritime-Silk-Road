@@ -14,7 +14,7 @@
 
 @property (nonatomic, retain) CCTimer *timer;
 
-+(InfoBox*) infoBoxWith;
++(InfoBox*) infoBoxWithMsg:(NSString*)msg;
 -(id) initWithMsg:(NSString*) msg;
 - (void)onTick:(id)obj;
 @end

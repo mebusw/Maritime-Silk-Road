@@ -15,11 +15,9 @@
 @synthesize timer;
 
 
-+(InfoBox*) infoBoxWith {
++(InfoBox*) infoBoxWithMsg:(NSString*)msg {
+    return [[[InfoBox alloc] initWithMsg:msg] autorelease];
 
-
-     
-    return nil;
     
 }
 
@@ -28,7 +26,7 @@
     if (self) {
         self.opacity = 100;
         
-        CCLabelTTF *title = [CCLabelTTF labelWithString:@"Action Performed" fontName:FONT_NAME fontSize:16];
+        CCLabelTTF *title = [CCLabelTTF labelWithString:msg fontName:FONT_NAME fontSize:16];
         title.color = ccGREEN;
         [self addChild:title];
         CGSize size = self.contentSize;
