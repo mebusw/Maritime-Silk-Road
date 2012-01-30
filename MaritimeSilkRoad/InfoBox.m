@@ -10,21 +10,39 @@
 #import "rects.h"
 #import "states.h"
 
+#define ELASPE_TICK 1.5
 @implementation InfoBox
-
+@synthesize timer;
 
 
 +(InfoBox*) infoBoxWith {
-    InfoBox *infoBox = [CCSprite spriteWithFile:IMG_DIALOG];
 
+
+     
+    return nil;
     
-    CCLabelTTF *title = [CCLabelTTF labelWithString:@"Action Performed" fontName:FONT_NAME fontSize:16];
-    title.color = ccGREEN;
-    [infoBox addChild:title];
-    CGSize size = infoBox.contentSize;
-    title.position = ccp(size.width / 2, size.height - 15);
+}
 
-    return infoBox;
+-(id) initWithMsg:(NSString*) msg {
+    self = [super initWithFile:IMG_DIALOG];
+    if (self) {
+        self.opacity = 100;
+        
+        CCLabelTTF *title = [CCLabelTTF labelWithString:@"Action Performed" fontName:FONT_NAME fontSize:16];
+        title.color = ccGREEN;
+        [self addChild:title];
+        CGSize size = self.contentSize;
+        title.position = ccp(size.width / 2, size.height - 15);
+        [self performSelector:@selector(onTick:) withObject:nil afterDelay:ELASPE_TICK];
+    }
+    
+    return self;
+}
+
+- (void)onTick:(id)obj {
+    DLog(@"");
+    
+    [self removeFromParentAndCleanup:YES];
     
 }
 

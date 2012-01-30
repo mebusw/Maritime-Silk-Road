@@ -12,6 +12,9 @@
     
 }
 
-+(InfoBox*) infoBoxWith;
+@property (nonatomic, retain) CCTimer *timer;
 
++(InfoBox*) infoBoxWith;
+-(id) initWithMsg:(NSString*) msg;
+- (void)onTick:(id)obj;
 @end
