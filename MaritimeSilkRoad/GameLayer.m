@@ -288,7 +288,7 @@
 - (void) phase2 {
     DLog(@"", nil);
     gameState = kGameOver;
-    InfoBox *ibox = [InfoBox infoBoxWithMsg:@"Actioned"];
+    InfoBox *ibox = [InfoBox sharedInfoBox];
     [self addChild:ibox z:Z_MOST_FRONT];
     CGSize size = self.contentSize;
     ibox.position = ccp(size.width / 2, size.height / 2);

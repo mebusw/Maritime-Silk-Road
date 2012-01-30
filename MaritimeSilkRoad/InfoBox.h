@@ -9,12 +9,14 @@
 #import "cocos2d.h"
 
 @interface InfoBox : CCSprite {
-    
+    NSTimer *t;
 }
 
-@property (nonatomic, retain) CCTimer *timer;
++(InfoBox*) sharedInfoBox;
 
-+(InfoBox*) infoBoxWithMsg:(NSString*)msg;
--(id) initWithMsg:(NSString*) msg;
+
 - (void)onTick:(id)obj;
+
+-(void)setNewMsg:(NSString *)msg;
+
 @end

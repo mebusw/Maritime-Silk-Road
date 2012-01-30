@@ -11,37 +11,65 @@
 #import "states.h"
 
 #define ELASPE_TICK 1.5
+#define TAG_TITLE   100
+
 @implementation InfoBox
-@synthesize timer;
 
 
-+(InfoBox*) infoBoxWithMsg:(NSString*)msg {
-    return [[[InfoBox alloc] initWithMsg:msg] autorelease];
+static InfoBox* instance;
 
-    
-}
-
--(id) initWithMsg:(NSString*) msg {
-    self = [super initWithFile:IMG_DIALOG];
-    if (self) {
-        self.opacity = 100;
++(InfoBox*) sharedInfoBox {
+    //return [[[InfoBox alloc] initWithMsg:msg] autorelease];
+    if (!instance) {
+        instance = [[InfoBox alloc] initWithFile:IMG_DIALOG];
+        instance.opacity = 100;
         
-        CCLabelTTF *title = [CCLabelTTF labelWithString:msg fontName:FONT_NAME fontSize:16];
+
+        CCLabelTTF *title = [CCLabelTTF labelWithString:@"(Info)" fontName:FONT_NAME fontSize:16];
         title.color = ccGREEN;
-        [self addChild:title];
-        CGSize size = self.contentSize;
+        [instance addChild:title z:0 tag:TAG_TITLE];
+        
+        [instance setNewMsg:@"Action Performed"];
+        CGSize size = instance.contentSize;
         title.position = ccp(size.width / 2, size.height - 15);
-        [self performSelector:@selector(onTick:) withObject:nil afterDelay:ELASPE_TICK];
     }
-    
-    return self;
+    return instance;
 }
+
+
+
++(id)alloc
+{
+	NSAssert(instance == nil, @"Attempted to allocate a second instance of a singleton.");
+	return [super alloc];
+}
+
+-(void) resetTimer {
+    [t invalidate];
+    t = [NSTimer scheduledTimerWithTimeInterval:ELASPE_TICK target:self selector:@selector(onTick:) userInfo:nil repeats:NO];
+}
+/**
+ *  @override
+ */
+-(void)setNewMsg:(NSString *)msg {
+    DLog(@"%@", msg);
+    CCLabelTTF *title = (CCLabelTTF*)[self getChildByTag:TAG_TITLE];
+    title.string = msg;
+    [self resetTimer];
+}
+
++(void)purgeSharedInfoBox
+{
+	[instance release];
+    instance = nil;
+}
+
+
 
 - (void)onTick:(id)obj {
-    DLog(@"");
-    
     [self removeFromParentAndCleanup:YES];
     
 }
+
 
 @end
