@@ -16,6 +16,7 @@
 #define DIALOG_ACTIONS 	101
 #define DIALOG_YESNO	102
 #define DIALOG_SHIPS 	103
+#define DIALOG_SPECIALS 	104
 
 @implementation Player
 
@@ -103,6 +104,8 @@
 
 - (void) chooseAShipForAction11 {}
 
+- (void) chooseASpecialForAction12FromPool:(Pool*)pool {}
+
 - (void) chooseActionForPhase2 {}
 
 @end
@@ -136,13 +139,25 @@
 
 - (void) chooseAShipForAction11 {
 	//stupid AI start >>>>
-	ActionEnum rnd;
+	int rnd;
     rnd = (NSInteger) (CCRANDOM_0_1() * specials[kSpecialShip]);
     //stupid AI end <<<<
     
     NSNumber *num = [NSNumber numberWithInt:rnd];
     [_delegate performSelectorOnMainThread:@selector(didChooseAShip:) withObject:num waitUntilDone:NO];
     
+}
+
+- (void) chooseASpecialForAction12FromPool:(Pool*)pool {
+    //stupid AI start >>>>
+	int rnd;
+    do {
+        rnd = (NSInteger) (CCRANDOM_0_1() * SPECIAL_TYPE_COUNT);
+    } while (pool.specialCards[rnd] <= 0);
+    //stupid AI end <<<<
+    
+    NSNumber *num = [NSNumber numberWithInt:rnd];
+    [_delegate performSelectorOnMainThread:@selector(didChooseASpecial:) withObject:num waitUntilDone:NO];
 }
 
 - (void) chooseToUseAbility {}
@@ -194,6 +209,10 @@
 
 }
 
+- (void) chooseASpecialForAction12FromPool:(Pool*)pool {
+    Dialog *dialog = [Dialog dialogWithSpecials:pool.specialCards target:_delegate selector:@selector(didChooseASpecial:)];
+    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_SPECIALS];
+}
 
 - (void) chooseActionForPhase2: (id)delegate {
     Dialog *dialog = [Dialog dialogWithPhase:PHASE2 target:_delegate selector:@selector(didChooseActionForPhase2:)];

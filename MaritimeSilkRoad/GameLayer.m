@@ -148,6 +148,10 @@
                 [self p11ChangeGood]; 
                 break;
             case kP12BuySpecial:
+                [self p12BuySpecial];
+                break;
+            case kP13Pass:
+                [self p13Pass];
                 break;
             case kPhase2:
                 [self phase2]; 
@@ -257,7 +261,7 @@
     InfoBox *ibox = [InfoBox sharedInfoBox];
     [self addChild:ibox z:Z_MOST_FRONT];
     CGSize size = self.contentSize;
-    ibox.position = ccp(size.width / 2, size.height / 2);
+    ibox.position = ccp(size.width / 2, size.height / 2 + 50);
     
 	gameState = kLoadGoods;
 }
@@ -290,10 +294,20 @@
     [activePlayer chooseAShipForAction11];
 }
 
+- (void) p12BuySpecial {
+    [activePlayer chooseASpecialForAction12FromPool:pool];
+}
+
+-(void) p13Pass {
+    [self nextPlayer];
+    _phaseTurns--;
+    gameState = kPhase1;    
+}
+
 - (void) phase2 {
     DLog(@"", nil);
     gameState = kGameOver;
-    [[InfoBox sharedInfoBox] setNewMsg:@"Now is Phase2"];
+    //[[InfoBox sharedInfoBox] setNewMsg:@"Now is Phase2"];
     
 }
 
@@ -316,7 +330,9 @@
     switch (gameState) {
         case kLoadGoods:
             [pool fetchAToken: goodType];
-            [activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / playerNbr)];	
+            [activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / playerNbr)];
+
+            [[InfoBox sharedInfoBox] setNewMsg:STR(@"%@ chooses good type %d", activePlayer.name, goodType)];
             [self nextPlayer];
             _loadGoodsTurns--; 
         
@@ -327,6 +343,7 @@
             activePlayer.ships[_chosenShip] = goodType;
             [pool putAToken:goodOnChosenShip];
             
+            [[InfoBox sharedInfoBox] setNewMsg:STR(@"%@ chooses good type %d", activePlayer.name, goodType)];
             [self nextPlayer];
             _phaseTurns--;
             gameState = kPhase1;
@@ -335,7 +352,6 @@
             DLog(@"state %d can't be handled by this func", gameState);
             break;
     }
-
 }
 
 - (void) didChooseActionForPhase1: (NSNumber *)num {
@@ -343,19 +359,33 @@
     DLog(@"action %d", action);
     switch (action) {
         case kActionChangeGood:
-            //
+            
             gameState = kP11ChangeGood;
 
             break;
         case kActionBuySpecials:
+            gameState = kP12BuySpecial;
+            
             break;
         case kActionPass:
         default:
             break;
     }
+    [[InfoBox sharedInfoBox] setNewMsg:STR(@"%@ chooses action for phase1 %d", activePlayer.name, action)];
+
 
 }
 
+-(void) didChooseASpecial: (NSNumber *)num {
+    SpecialTypeEnum special = [num intValue];
+    DLog(@"special %d", special);
+    //TODO
+    
+    [[InfoBox sharedInfoBox] setNewMsg:STR(@"%@ chooses special %d", activePlayer.name, special)];
+    [self nextPlayer];
+    _phaseTurns--;
+    gameState = kPhase1;
+}
 
 - (void) didChooseYesNo: (NSNumber *)num  {
     BOOL isYes = [num intValue];

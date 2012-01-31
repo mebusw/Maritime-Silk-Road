@@ -51,6 +51,8 @@
 
 - (void) chooseAShipForAction11;
 
+- (void) chooseASpecialForAction12FromPool:(Pool*)pool;
+
 - (void) chooseActionForPhase2;
 @end
 

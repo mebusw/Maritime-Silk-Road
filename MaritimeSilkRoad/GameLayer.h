@@ -49,9 +49,11 @@
 - (void) prepareGame;
 - (void) phase1;
 - (void) p11ChangeGood;
+- (void) p12BuySpecial;
+- (void) p13Pass;
 - (void) phase2;
 - (void) gameOver;
 
 -(void) didChooseAShip: (NSNumber*) num;
-
+-(void) didChooseASpecial: (NSNumber *)num;
 @end

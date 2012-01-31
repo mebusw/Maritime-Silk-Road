@@ -56,9 +56,14 @@
     [self removeFromParentAndCleanup:YES];
 }
 
-+ (NSString*) goodNameMapping: (int)type {
++ (NSString*) goodNameMapping: (GoodTypeEnum)type {
     static NSString *goodNames[GOOD_TYPE_COUNT] = {@"China", @"Glaze", @"Ore", @"Perfume", @"Silk", @"Tea"};
     return goodNames[type];
+}
+
++ (NSString*) specialNameMapping: (SpecialTypeEnum)type {
+    static NSString *specialNames[SPECIAL_TYPE_COUNT] = {@"Ship", @"Trade", @"Concession", @"Worker"};
+    return specialNames[type];
 }
 
 #pragma mark - Good Dialog
@@ -102,7 +107,49 @@
 	return dialog;
 }
 
-#pragma mark - Ship Dialog
+
+#pragma mark - Specials Dialog
+/**
+ * the specials dialog looks like:
+ ===================
+ =   Ship(3)
+ =   Worker(1)
+ =   ...
+ ===================
+ */
++ (Dialog*) dialogWithSpecials:(int*)specials target:(id)target selector:(SEL)sel {
+    CCMenuItem *items[SPECIAL_TYPE_COUNT];
+    
+	Dialog *dialog = [[[Dialog alloc] initWithTarget:target sel:sel] autorelease];
+    CGSize size = dialog.contentSize;
+    
+    CCLabelTTF *title = [CCLabelTTF labelWithString:@"Choose A special card from unused cards" fontName:FONT_NAME fontSize:16];
+    title.color = ccRED;
+    [dialog addChild:title];
+    title.position = ccp(size.width / 2, size.height - 15);
+    
+	CCMenu *menu = [CCMenu menuWithItems:nil];
+    
+    for (int i = 0; i < SPECIAL_TYPE_COUNT; i++) {
+		NSString *str = [NSString stringWithFormat:@"%@(%d)", [Dialog specialNameMapping:i], specials[i]];
+		CCLabelTTF *label = [CCLabelTTF labelWithString:str fontName:FONT_NAME fontSize:16];
+		CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
+		items[i] = itm;
+		itm.tag = i;
+        [menu addChild:itm];
+	}
+    
+    
+	[menu alignItemsHorizontally];
+	menu.position = ccp(size.width / 2, size.height / 2);
+    
+	[dialog addChild:menu z:1];
+	
+    [dialog animateShowing];
+	
+	return dialog;
+}
+
 /**
  * the ship dialog looks like:
  ===================

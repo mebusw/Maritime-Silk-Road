@@ -49,6 +49,7 @@ typedef enum {
 	kGameOver,
 	kP11ChangeGood = 11,
 	kP12BuySpecial,
+    kP13Pass,
 	kP21PlayCard = 21,
 	kP22GetCard,
 } 	GameStateEnum;

@@ -65,7 +65,7 @@ static InfoBox* instance;
  *  @override
  */
 -(void)setNewMsg:(NSString *)msg {
-    DLog(@"%@", msg);
+    //DLog(@"%@", msg);
     CCLabelTTF *title = (CCLabelTTF*)[self getChildByTag:TAG_TITLE];
     title.string = msg;
     [self show];
@@ -74,7 +74,7 @@ static InfoBox* instance;
 - (void)onHide:(NSTimer*)theTimer {
     self.visible = NO;
     //[self removeFromParentAndCleanup:YES];
-    DLog(@"is valid=%d", [t isValid]);
+    //DLog(@"is valid=%d", [t isValid]);
     
 }
 
