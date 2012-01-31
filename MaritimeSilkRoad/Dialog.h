@@ -19,4 +19,6 @@
 + (Dialog*) dialogWithPhase:(int)phase target:(id)target selector:(SEL)sel;
 + (Dialog*) dialogWithNo:(BOOL)hasNo target:(id)target selector:(SEL)sel;
 + (Dialog*) dialogWithShips:(int*)ships count:(int)count target:(id)target selector:(SEL)sel;
++ (Dialog*) dialogWithSpecials:(int*)specials target:(id)target selector:(SEL)sel;
+
 @end

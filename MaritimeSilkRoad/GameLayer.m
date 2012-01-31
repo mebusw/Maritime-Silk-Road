@@ -373,6 +373,8 @@
             
             break;
         case kActionPass:
+            gameState = kP13Pass;
+            break;
         default:
             break;
     }
