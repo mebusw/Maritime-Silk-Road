@@ -183,8 +183,13 @@
         Human *user = [players objectAtIndex:0];
         [labelYourCoin setString:STR(@"Coin %d", user.coin)];
         [labelYourSpecials setString:STR(@"w%d c%d t%d", user.specials[kSpecialWorker], user.specials[kSpecialConcession], user.specials[kSpecialTrade])];
+        [labelYourCoin setString:STR(@"Coin %d", user.coin)];
+        [labelSpecials setString:STR(@"w%d c%d t%d s%d", pool.specialCards[kSpecialWorker], pool.specialCards[kSpecialConcession], pool.specialCards[kSpecialTrade], pool.specialCards[kSpecialShip])];
+        [labelDeck setString:STR(@"Deck %d", pool.remainingCards)];  
+        
         [shipsPanel refresh];
         [handMarketPanel refresh];
+                
     }
     else {
         handMarketPanel.isTouchEnabled = NO;
@@ -379,7 +384,11 @@
 -(void) didChooseASpecial: (NSNumber *)num {
     SpecialTypeEnum special = [num intValue];
     DLog(@"special %d", special);
-    //TODO
+    
+    [pool fetchASpecial:special];
+    [activePlayer addSpecial:special];
+    int pricesOfSpecials[] = {10, 8, 11, 12};
+    activePlayer.coin -= pricesOfSpecials[special];
     
     [[InfoBox sharedInfoBox] setNewMsg:STR(@"%@ chooses special %d", activePlayer.name, special)];
     [self nextPlayer];
