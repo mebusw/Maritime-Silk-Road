@@ -48,6 +48,8 @@ static InfoBox* instance;
 
 +(void)purgeSharedInfoBox
 {
+	[t release];
+	t = nil;
 	[instance release];
     instance = nil;
 }
@@ -55,10 +57,9 @@ static InfoBox* instance;
 
 -(void) show {
     self.visible = YES;
-//    if (t && [t isValid]) {
-//        [t invalidate];
-//    }
-    t = [NSTimer scheduledTimerWithTimeInterval:ELASPE_TICK target:self selector:@selector(onHide:) userInfo:nil repeats:NO];
+	
+	[t release];
+    t = [[NSTimer scheduledTimerWithTimeInterval:ELASPE_TICK target:self selector:@selector(onHide:) userInfo:nil repeats:NO] retain];
 }
 
 /**

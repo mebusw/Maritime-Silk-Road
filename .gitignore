@@ -1,2 +1,4 @@
 .svn
 *.bak
+doc/html
+Thumbs.db
