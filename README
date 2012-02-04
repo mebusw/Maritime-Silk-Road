@@ -1,6 +1,4 @@
-README
+MariTime Silk Road is a board game desined by R.K.
+In China, it's delegated by GameHarbor.
 
-git config --global user.name "Your Name"
-git config --global user.email mebusw@163.com
-git remote add origin git@github.com:mebusw/Maritime-Silk-Road.git
-git push -u origin master
+This iOS version is target to play it on iPhone/iPad 5.0+
