@@ -48,11 +48,10 @@ static InfoBox* instance;
 
 +(void)purgeSharedInfoBox
 {
-	[t release];
-	t = nil;
 	[instance release];
     instance = nil;
 }
+
 
 
 -(void) show {

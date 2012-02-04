@@ -21,12 +21,6 @@
 		4A76CD71149A40CF0016E4F6 /* special-ship.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A76CD65149A40CF0016E4F6 /* special-ship.jpg */; };
 		4A76CD72149A40CF0016E4F6 /* special-trade.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A76CD66149A40CF0016E4F6 /* special-trade.jpg */; };
 		4A76CD73149A40CF0016E4F6 /* special-worker.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A76CD67149A40CF0016E4F6 /* special-worker.jpg */; };
-		4A76CD74149A40CF0016E4F6 /* token-china.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A76CD68149A40CF0016E4F6 /* token-china.jpg */; };
-		4A76CD75149A40CF0016E4F6 /* token-glaze.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A76CD69149A40CF0016E4F6 /* token-glaze.jpg */; };
-		4A76CD76149A40CF0016E4F6 /* token-ore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A76CD6A149A40CF0016E4F6 /* token-ore.jpg */; };
-		4A76CD77149A40CF0016E4F6 /* token-perfume.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A76CD6B149A40CF0016E4F6 /* token-perfume.jpg */; };
-		4A76CD78149A40CF0016E4F6 /* token-silk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A76CD6C149A40CF0016E4F6 /* token-silk.jpg */; };
-		4A76CD79149A40CF0016E4F6 /* token-tea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A76CD6D149A40CF0016E4F6 /* token-tea.jpg */; };
 		4A76DADE149C9B030029B908 /* ShipsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A76DADD149C9B020029B908 /* ShipsPanel.m */; };
 		4A76DAE2149CA46C0029B908 /* HandMarketPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A76DAE1149CA46C0029B908 /* HandMarketPanel.m */; };
 		4A76DAEF149CD06A0029B908 /* good-china-small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A76DAE8149CD06A0029B908 /* good-china-small.jpg */; };
@@ -164,6 +158,18 @@
 		8F5D58C414D0FC6C004DE70E /* PoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D58C214D0FC47004DE70E /* PoolTest.m */; };
 		8F5D58C814D1009E004DE70E /* Pool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A799751146C0CEE001550C8 /* Pool.m */; };
 		8FBDA24214D44AF3002EC68B /* InfoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA24114D44AF3002EC68B /* InfoBox.m */; };
+		8FC0D95114DD3F0A00E44914 /* cardBack-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94514DD3F0A00E44914 /* cardBack-small.png */; };
+		8FC0D95214DD3F0A00E44914 /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94614DD3F0A00E44914 /* cardBack.png */; };
+		8FC0D95314DD3F0A00E44914 /* special-concession-small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94714DD3F0A00E44914 /* special-concession-small.jpg */; };
+		8FC0D95414DD3F0A00E44914 /* special-ship-small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94814DD3F0A00E44914 /* special-ship-small.jpg */; };
+		8FC0D95514DD3F0A00E44914 /* special-trade-small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94914DD3F0A00E44914 /* special-trade-small.jpg */; };
+		8FC0D95614DD3F0A00E44914 /* special-worker-small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94A14DD3F0A00E44914 /* special-worker-small.jpg */; };
+		8FC0D95714DD3F0A00E44914 /* token-china.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94B14DD3F0A00E44914 /* token-china.png */; };
+		8FC0D95814DD3F0A00E44914 /* token-glaze.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94C14DD3F0A00E44914 /* token-glaze.png */; };
+		8FC0D95914DD3F0A00E44914 /* token-ore.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94D14DD3F0A00E44914 /* token-ore.png */; };
+		8FC0D95A14DD3F0A00E44914 /* token-perfume.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94E14DD3F0A00E44914 /* token-perfume.png */; };
+		8FC0D95B14DD3F0A00E44914 /* token-silk.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94F14DD3F0A00E44914 /* token-silk.png */; };
+		8FC0D95C14DD3F0A00E44914 /* token-tea.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D95014DD3F0A00E44914 /* token-tea.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,12 +187,6 @@
 		4A76CD65149A40CF0016E4F6 /* special-ship.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "special-ship.jpg"; path = "Resources/special-ship.jpg"; sourceTree = "<group>"; };
 		4A76CD66149A40CF0016E4F6 /* special-trade.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "special-trade.jpg"; path = "Resources/special-trade.jpg"; sourceTree = "<group>"; };
 		4A76CD67149A40CF0016E4F6 /* special-worker.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "special-worker.jpg"; path = "Resources/special-worker.jpg"; sourceTree = "<group>"; };
-		4A76CD68149A40CF0016E4F6 /* token-china.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "token-china.jpg"; path = "Resources/token-china.jpg"; sourceTree = "<group>"; };
-		4A76CD69149A40CF0016E4F6 /* token-glaze.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "token-glaze.jpg"; path = "Resources/token-glaze.jpg"; sourceTree = "<group>"; };
-		4A76CD6A149A40CF0016E4F6 /* token-ore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "token-ore.jpg"; path = "Resources/token-ore.jpg"; sourceTree = "<group>"; };
-		4A76CD6B149A40CF0016E4F6 /* token-perfume.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "token-perfume.jpg"; path = "Resources/token-perfume.jpg"; sourceTree = "<group>"; };
-		4A76CD6C149A40CF0016E4F6 /* token-silk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "token-silk.jpg"; path = "Resources/token-silk.jpg"; sourceTree = "<group>"; };
-		4A76CD6D149A40CF0016E4F6 /* token-tea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "token-tea.jpg"; path = "Resources/token-tea.jpg"; sourceTree = "<group>"; };
 		4A76DADC149C9B020029B908 /* ShipsPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShipsPanel.h; sourceTree = "<group>"; };
 		4A76DADD149C9B020029B908 /* ShipsPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShipsPanel.m; sourceTree = "<group>"; };
 		4A76DAE0149CA46C0029B908 /* HandMarketPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandMarketPanel.h; sourceTree = "<group>"; };
@@ -456,6 +456,18 @@
 		8F5D58C214D0FC47004DE70E /* PoolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolTest.m; sourceTree = "<group>"; };
 		8FBDA24014D44AF3002EC68B /* InfoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBox.h; sourceTree = "<group>"; };
 		8FBDA24114D44AF3002EC68B /* InfoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBox.m; sourceTree = "<group>"; };
+		8FC0D94514DD3F0A00E44914 /* cardBack-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cardBack-small.png"; path = "Resources/cardBack-small.png"; sourceTree = "<group>"; };
+		8FC0D94614DD3F0A00E44914 /* cardBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cardBack.png; path = Resources/cardBack.png; sourceTree = "<group>"; };
+		8FC0D94714DD3F0A00E44914 /* special-concession-small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "special-concession-small.jpg"; path = "Resources/special-concession-small.jpg"; sourceTree = "<group>"; };
+		8FC0D94814DD3F0A00E44914 /* special-ship-small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "special-ship-small.jpg"; path = "Resources/special-ship-small.jpg"; sourceTree = "<group>"; };
+		8FC0D94914DD3F0A00E44914 /* special-trade-small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "special-trade-small.jpg"; path = "Resources/special-trade-small.jpg"; sourceTree = "<group>"; };
+		8FC0D94A14DD3F0A00E44914 /* special-worker-small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "special-worker-small.jpg"; path = "Resources/special-worker-small.jpg"; sourceTree = "<group>"; };
+		8FC0D94B14DD3F0A00E44914 /* token-china.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token-china.png"; path = "Resources/token-china.png"; sourceTree = "<group>"; };
+		8FC0D94C14DD3F0A00E44914 /* token-glaze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token-glaze.png"; path = "Resources/token-glaze.png"; sourceTree = "<group>"; };
+		8FC0D94D14DD3F0A00E44914 /* token-ore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token-ore.png"; path = "Resources/token-ore.png"; sourceTree = "<group>"; };
+		8FC0D94E14DD3F0A00E44914 /* token-perfume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token-perfume.png"; path = "Resources/token-perfume.png"; sourceTree = "<group>"; };
+		8FC0D94F14DD3F0A00E44914 /* token-silk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token-silk.png"; path = "Resources/token-silk.png"; sourceTree = "<group>"; };
+		8FC0D95014DD3F0A00E44914 /* token-tea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token-tea.png"; path = "Resources/token-tea.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -559,6 +571,18 @@
 		4A7E8B6714663EA9003BEC0B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8FC0D94514DD3F0A00E44914 /* cardBack-small.png */,
+				8FC0D94614DD3F0A00E44914 /* cardBack.png */,
+				8FC0D94714DD3F0A00E44914 /* special-concession-small.jpg */,
+				8FC0D94814DD3F0A00E44914 /* special-ship-small.jpg */,
+				8FC0D94914DD3F0A00E44914 /* special-trade-small.jpg */,
+				8FC0D94A14DD3F0A00E44914 /* special-worker-small.jpg */,
+				8FC0D94B14DD3F0A00E44914 /* token-china.png */,
+				8FC0D94C14DD3F0A00E44914 /* token-glaze.png */,
+				8FC0D94D14DD3F0A00E44914 /* token-ore.png */,
+				8FC0D94E14DD3F0A00E44914 /* token-perfume.png */,
+				8FC0D94F14DD3F0A00E44914 /* token-silk.png */,
+				8FC0D95014DD3F0A00E44914 /* token-tea.png */,
 				4A76DAE8149CD06A0029B908 /* good-china-small.jpg */,
 				4A76DAE9149CD06A0029B908 /* good-glaze-small.jpg */,
 				4A76DAEA149CD06A0029B908 /* good-ore-small.jpg */,
@@ -571,12 +595,6 @@
 				4A76CD65149A40CF0016E4F6 /* special-ship.jpg */,
 				4A76CD66149A40CF0016E4F6 /* special-trade.jpg */,
 				4A76CD67149A40CF0016E4F6 /* special-worker.jpg */,
-				4A76CD68149A40CF0016E4F6 /* token-china.jpg */,
-				4A76CD69149A40CF0016E4F6 /* token-glaze.jpg */,
-				4A76CD6A149A40CF0016E4F6 /* token-ore.jpg */,
-				4A76CD6B149A40CF0016E4F6 /* token-perfume.jpg */,
-				4A76CD6C149A40CF0016E4F6 /* token-silk.jpg */,
-				4A76CD6D149A40CF0016E4F6 /* token-tea.jpg */,
 				4A76CD55149A40A50016E4F6 /* good-china.jpg */,
 				4A76CD56149A40A50016E4F6 /* good-glaze.jpg */,
 				4A76DAEB149CD06A0029B908 /* good-ore.jpg */,
@@ -1027,12 +1045,6 @@
 				4A76CD71149A40CF0016E4F6 /* special-ship.jpg in Resources */,
 				4A76CD72149A40CF0016E4F6 /* special-trade.jpg in Resources */,
 				4A76CD73149A40CF0016E4F6 /* special-worker.jpg in Resources */,
-				4A76CD74149A40CF0016E4F6 /* token-china.jpg in Resources */,
-				4A76CD75149A40CF0016E4F6 /* token-glaze.jpg in Resources */,
-				4A76CD76149A40CF0016E4F6 /* token-ore.jpg in Resources */,
-				4A76CD77149A40CF0016E4F6 /* token-perfume.jpg in Resources */,
-				4A76CD78149A40CF0016E4F6 /* token-silk.jpg in Resources */,
-				4A76CD79149A40CF0016E4F6 /* token-tea.jpg in Resources */,
 				4A76DAEF149CD06A0029B908 /* good-china-small.jpg in Resources */,
 				4A76DAF0149CD06A0029B908 /* good-glaze-small.jpg in Resources */,
 				4A76DAF1149CD06A0029B908 /* good-ore-small.jpg in Resources */,
@@ -1040,6 +1052,18 @@
 				4A76DAF3149CD06A0029B908 /* good-perfume-small.jpg in Resources */,
 				4A76DAF4149CD06A0029B908 /* good-silk-small.jpg in Resources */,
 				4A76DAF5149CD06A0029B908 /* good-tea-small.jpg in Resources */,
+				8FC0D95114DD3F0A00E44914 /* cardBack-small.png in Resources */,
+				8FC0D95214DD3F0A00E44914 /* cardBack.png in Resources */,
+				8FC0D95314DD3F0A00E44914 /* special-concession-small.jpg in Resources */,
+				8FC0D95414DD3F0A00E44914 /* special-ship-small.jpg in Resources */,
+				8FC0D95514DD3F0A00E44914 /* special-trade-small.jpg in Resources */,
+				8FC0D95614DD3F0A00E44914 /* special-worker-small.jpg in Resources */,
+				8FC0D95714DD3F0A00E44914 /* token-china.png in Resources */,
+				8FC0D95814DD3F0A00E44914 /* token-glaze.png in Resources */,
+				8FC0D95914DD3F0A00E44914 /* token-ore.png in Resources */,
+				8FC0D95A14DD3F0A00E44914 /* token-perfume.png in Resources */,
+				8FC0D95B14DD3F0A00E44914 /* token-silk.png in Resources */,
+				8FC0D95C14DD3F0A00E44914 /* token-tea.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
