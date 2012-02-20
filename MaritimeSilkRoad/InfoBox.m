@@ -15,65 +15,46 @@
 
 @implementation InfoBox
 
+CCNode* _parent;
 
-static InfoBox* instance;
++(InfoBox*) infoBox:(NSString*) msg {
+    InfoBox *ib = [[InfoBox alloc] initWithFile:IMG_DIALOG];
+    ib.opacity = 150;
+    
+    
+    CCLabelTTF *title = [CCLabelTTF labelWithString:msg fontName:FONT_NAME fontSize:16];
+    title.color = ccGREEN;
+    [ib addChild:title z:0 tag:TAG_TITLE];
 
-+(InfoBox*) sharedInfoBox {
-    //return [[[InfoBox alloc] initWithMsg:msg] autorelease];
-    if (!instance) {
-        instance = [[InfoBox alloc] initWithFile:IMG_DIALOG];
-        instance.opacity = 100;
-        
+    
+    CGSize size = ib.contentSize;
+    title.position = ccp(size.width / 2, size.height - 15);
+    
+    ib.visible = NO;
+    return ib;
 
-        CCLabelTTF *title = [CCLabelTTF labelWithString:@"(Info)" fontName:FONT_NAME fontSize:16];
-        title.color = ccGREEN;
-        [instance addChild:title z:0 tag:TAG_TITLE];
-        
-        [instance setNewMsg:@"Action Performed"];
-        CGSize size = instance.contentSize;
-        title.position = ccp(size.width / 2, size.height - 15);
-        
-        instance.visible = NO;
-    }
-    return instance;
 }
 
 
 
-+(id)alloc
-{
-	NSAssert(instance == nil, @"Attempted to allocate a second instance of a singleton.");
-	return [super alloc];
-}
-
-+(void)purgeSharedInfoBox
-{
-	[instance release];
-    instance = nil;
-}
-
-
-
--(void) show {
+-(void) show:(CCNode*)parent {
+    _parent = parent;
+    [_parent addChild:self z:1000];
+    CGSize size = _parent.contentSize;
+    self.position = ccp(size.width / 2, size.height / 2 + 50);
+    
     self.visible = YES;
 	
 	[t release];
     t = [[NSTimer scheduledTimerWithTimeInterval:ELASPE_TICK target:self selector:@selector(onHide:) userInfo:nil repeats:NO] retain];
+    
 }
 
-/**
- *  @override
- */
--(void)setNewMsg:(NSString *)msg {
-    //DLog(@"%@", msg);
-    CCLabelTTF *title = (CCLabelTTF*)[self getChildByTag:TAG_TITLE];
-    title.string = msg;
-    [self show];
 
-}
 - (void)onHide:(NSTimer*)theTimer {
     self.visible = NO;
-    //[self removeFromParentAndCleanup:YES];
+    [self removeFromParentAndCleanup:YES];
+    _parent = nil;
     //DLog(@"is valid=%d", [t isValid]);
     
 }

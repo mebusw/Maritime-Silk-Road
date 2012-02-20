@@ -263,10 +263,6 @@
 
     [self setupMenus];
     
-    InfoBox *ibox = [InfoBox sharedInfoBox];
-    [self addChild:ibox z:Z_MOST_FRONT];
-    CGSize size = self.contentSize;
-    ibox.position = ccp(size.width / 2, size.height / 2 + 50);
     
 	gameState = kLoadGoods;
 }
@@ -333,26 +329,32 @@
     DLog(@"goodType=%d gameState=%d", goodType, gameState);
 
     switch (gameState) {
-        case kLoadGoods:
+        case kLoadGoods: {
             [pool fetchAToken: goodType];
             [activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / playerNbr)];
 
-            [[InfoBox sharedInfoBox] setNewMsg:STR(@"%@ chooses good type %d", activePlayer.name, goodType)];
+            InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", activePlayer.name, goodType)];
+            [ib show:self];
+            
             [self nextPlayer];
             _loadGoodsTurns--; 
         
             break;
-        case kP11ChangeGood: 
+        }
+        case kP11ChangeGood: {
             [pool fetchAToken: goodType];
             GoodTypeEnum goodOnChosenShip = activePlayer.ships[_chosenShip];
             activePlayer.ships[_chosenShip] = goodType;
             [pool putAToken:goodOnChosenShip];
             
-            [[InfoBox sharedInfoBox] setNewMsg:STR(@"%@ chooses good type %d", activePlayer.name, goodType)];
+            InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", activePlayer.name, goodType)];
+            [ib show:self];
+            
             [self nextPlayer];
             _phaseTurns--;
             gameState = kPhase1;
             break;
+        }
         default:
             DLog(@"state %d can't be handled by this func", gameState);
             break;
@@ -378,9 +380,10 @@
         default:
             break;
     }
-    [[InfoBox sharedInfoBox] setNewMsg:STR(@"%@ chooses action for phase1 %d", activePlayer.name, action)];
 
-
+    InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses action for phase1 %d", activePlayer.name, action)];
+    [ib show:self];
+     
 }
 
 -(void) didChooseASpecial: (NSNumber *)num {
@@ -392,7 +395,9 @@
     int pricesOfSpecials[] = {10, 8, 11, 12};
     activePlayer.coin -= pricesOfSpecials[special];
     
-    [[InfoBox sharedInfoBox] setNewMsg:STR(@"%@ chooses special %d", activePlayer.name, special)];
+    InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses special %d", activePlayer.name, special)];
+    [ib show:self];
+    
     [self nextPlayer];
     _phaseTurns--;
     gameState = kPhase1;

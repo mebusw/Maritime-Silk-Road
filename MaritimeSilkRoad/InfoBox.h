@@ -12,9 +12,8 @@
     NSTimer *t;
 }
 
-+(InfoBox*) sharedInfoBox;
++(InfoBox*) infoBox:(NSString*) msg;
 
-
--(void)setNewMsg:(NSString *)msg;
+-(void) show:(CCNode*)parent;
 
 @end
