@@ -30,6 +30,16 @@
 #define DIALOG_ACTIONS 	101
 #define DIALOG_YESNO		102
 
+-(void) handleRequest {
+    if (_stateHandler) {
+        [_stateHandler handle:self];
+    }
+}
+
+-(void) changeState:(GameState*) newState {
+    _stateHandler = newState;
+}
+
 - (int*) market {
     return market;
 }

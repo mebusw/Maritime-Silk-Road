@@ -157,6 +157,11 @@
 		8F5D58B414D0FADA004DE70E /* UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D58B314D0FADA004DE70E /* UnitTest.m */; };
 		8F5D58C414D0FC6C004DE70E /* PoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D58C214D0FC47004DE70E /* PoolTest.m */; };
 		8F5D58C814D1009E004DE70E /* Pool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A799751146C0CEE001550C8 /* Pool.m */; };
+		8F79C639153AFAAE0018873A /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C638153AFAAE0018873A /* GameBoard.m */; };
+		8F79C63E153AFB070018873A /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C63D153AFB070018873A /* GameState.m */; };
+		8F79C641153AFE3E0018873A /* Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C640153AFE3E0018873A /* Setup.m */; };
+		8F79C644153AFE7C0018873A /* ChangeGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C643153AFE7C0018873A /* ChangeGood.m */; };
+		8F79C649153B058F0018873A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F79C647153B053E0018873A /* libOCMock.a */; };
 		8FBDA24214D44AF3002EC68B /* InfoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA24114D44AF3002EC68B /* InfoBox.m */; };
 		8FC0D95114DD3F0A00E44914 /* cardBack-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94514DD3F0A00E44914 /* cardBack-small.png */; };
 		8FC0D95214DD3F0A00E44914 /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94614DD3F0A00E44914 /* cardBack.png */; };
@@ -454,6 +459,15 @@
 		8F5D58B514D0FADA004DE70E /* UnitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTest-Prefix.pch"; sourceTree = "<group>"; };
 		8F5D58C114D0FC47004DE70E /* PoolTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolTest.h; sourceTree = "<group>"; };
 		8F5D58C214D0FC47004DE70E /* PoolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolTest.m; sourceTree = "<group>"; };
+		8F79C637153AFAAE0018873A /* GameBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoard.h; sourceTree = "<group>"; };
+		8F79C638153AFAAE0018873A /* GameBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoard.m; sourceTree = "<group>"; };
+		8F79C63C153AFB070018873A /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
+		8F79C63D153AFB070018873A /* GameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
+		8F79C63F153AFE3E0018873A /* Setup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setup.h; sourceTree = "<group>"; };
+		8F79C640153AFE3E0018873A /* Setup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setup.m; sourceTree = "<group>"; };
+		8F79C642153AFE7C0018873A /* ChangeGood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeGood.h; sourceTree = "<group>"; };
+		8F79C643153AFE7C0018873A /* ChangeGood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeGood.m; sourceTree = "<group>"; };
+		8F79C647153B053E0018873A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
 		8FBDA24014D44AF3002EC68B /* InfoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBox.h; sourceTree = "<group>"; };
 		8FBDA24114D44AF3002EC68B /* InfoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBox.m; sourceTree = "<group>"; };
 		8FC0D94514DD3F0A00E44914 /* cardBack-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cardBack-small.png"; path = "Resources/cardBack-small.png"; sourceTree = "<group>"; };
@@ -490,6 +504,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F79C649153B058F0018873A /* libOCMock.a in Frameworks */,
 				8F5D58A914D0FADA004DE70E /* SenTestingKit.framework in Frameworks */,
 				8F5D58AA14D0FADA004DE70E /* UIKit.framework in Frameworks */,
 				8F5D58AB14D0FADA004DE70E /* Foundation.framework in Frameworks */,
@@ -502,6 +517,7 @@
 		4A7E8B4714663EA9003BEC0B = {
 			isa = PBXGroup;
 			children = (
+				8F79C647153B053E0018873A /* libOCMock.a */,
 				4A7E8B6614663EA9003BEC0B /* MaritimeSilkRoad */,
 				8F5D58AC14D0FADA004DE70E /* UnitTest */,
 				4A7E8B5514663EA9003BEC0B /* Frameworks */,
@@ -537,6 +553,7 @@
 		4A7E8B6614663EA9003BEC0B /* MaritimeSilkRoad */ = {
 			isa = PBXGroup;
 			children = (
+				8F79C63B153AFAB40018873A /* GameStates */,
 				8FBDA24014D44AF3002EC68B /* InfoBox.h */,
 				8FBDA24114D44AF3002EC68B /* InfoBox.m */,
 				4A790DAD1497A3B200524C5A /* CollectionUtils.h */,
@@ -564,6 +581,8 @@
 				4A7E8B6714663EA9003BEC0B /* Resources */,
 				4A7E8B7B14663EAA003BEC0B /* libs */,
 				4A7E8CB414663EB6003BEC0B /* Supporting Files */,
+				8F79C637153AFAAE0018873A /* GameBoard.h */,
+				8F79C638153AFAAE0018873A /* GameBoard.m */,
 			);
 			path = MaritimeSilkRoad;
 			sourceTree = "<group>";
@@ -952,6 +971,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8F79C63B153AFAB40018873A /* GameStates */ = {
+			isa = PBXGroup;
+			children = (
+				8F79C63C153AFB070018873A /* GameState.h */,
+				8F79C63D153AFB070018873A /* GameState.m */,
+				8F79C63F153AFE3E0018873A /* Setup.h */,
+				8F79C640153AFE3E0018873A /* Setup.m */,
+				8F79C642153AFE7C0018873A /* ChangeGood.h */,
+				8F79C643153AFE7C0018873A /* ChangeGood.m */,
+			);
+			name = GameStates;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1203,6 +1235,10 @@
 				4A76DADE149C9B030029B908 /* ShipsPanel.m in Sources */,
 				4A76DAE2149CA46C0029B908 /* HandMarketPanel.m in Sources */,
 				8FBDA24214D44AF3002EC68B /* InfoBox.m in Sources */,
+				8F79C639153AFAAE0018873A /* GameBoard.m in Sources */,
+				8F79C63E153AFB070018873A /* GameState.m in Sources */,
+				8F79C641153AFE3E0018873A /* Setup.m in Sources */,
+				8F79C644153AFE7C0018873A /* ChangeGood.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1234,7 +1270,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Shen (45X47L28FR)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1247,6 +1283,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "01A45A12-F787-439B-8CC7-7518123C0074";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1279,6 +1316,10 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = MaritimeSilkRoad/Resources/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/usr/lib\"",
+				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1295,6 +1336,10 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = MaritimeSilkRoad/Resources/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/usr/lib\"",
+				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
@@ -1319,7 +1364,18 @@
 					"$(inherited)",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "${SRCROOT}/usr/include";
 				INFOPLIST_FILE = "UnitTest/UnitTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/usr/lib\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"${SRCROOT}/usr/lib/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1337,7 +1393,18 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTest/UnitTest-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "${SRCROOT}/usr/include";
 				INFOPLIST_FILE = "UnitTest/UnitTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/usr/lib\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"${SRCROOT}/usr/lib/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = octest;
