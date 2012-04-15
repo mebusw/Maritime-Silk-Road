@@ -207,7 +207,6 @@
 		4A77BB3C14680FCD0095AAE9 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = Resources/bg.png; sourceTree = "<group>"; };
 		4A77BB46146813480095AAE9 /* appIcon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appIcon-hd.png"; path = "Resources/appIcon-hd.png"; sourceTree = "<group>"; };
 		4A77BB47146813480095AAE9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
-		4A790DAD1497A3B200524C5A /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtils.h; sourceTree = "<group>"; };
 		4A790DAE1497A3B200524C5A /* Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dialog.h; sourceTree = "<group>"; };
 		4A790DAF1497A3B200524C5A /* Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dialog.m; sourceTree = "<group>"; };
 		4A79974E146C0AC9001550C8 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
@@ -553,15 +552,10 @@
 		4A7E8B6614663EA9003BEC0B /* MaritimeSilkRoad */ = {
 			isa = PBXGroup;
 			children = (
-				8F79C63B153AFAB40018873A /* GameStates */,
-				8FBDA24014D44AF3002EC68B /* InfoBox.h */,
-				8FBDA24114D44AF3002EC68B /* InfoBox.m */,
-				4A790DAD1497A3B200524C5A /* CollectionUtils.h */,
-				4A790DAE1497A3B200524C5A /* Dialog.h */,
-				4A790DAF1497A3B200524C5A /* Dialog.m */,
+				8F79C64B153B08010018873A /* Elements */,
+				8F79C64A153B07BC0018873A /* Views */,
+				8F79C63B153AFAB40018873A /* States */,
 				4A7E8CCF14664FDC003BEC0B /* rects.h */,
-				4A79974E146C0AC9001550C8 /* Player.h */,
-				4A3502A8146FEC59003C6DF9 /* Player.m */,
 				4A7E8CD014664FDD003BEC0B /* states.h */,
 				4A7E8CB814663EB6003BEC0B /* AppDelegate.h */,
 				4A7E8CB914663EB6003BEC0B /* AppDelegate.m */,
@@ -572,17 +566,9 @@
 				4A7E8CBE14663EB6003BEC0B /* HelloWorldLayer.h */,
 				4A7E8CBF14663EB6003BEC0B /* HelloWorldLayer.m */,
 				4A7E8CC114663EB6003BEC0B /* GameConfig.h */,
-				4A799753146C0E45001550C8 /* Pool.h */,
-				4A799751146C0CEE001550C8 /* Pool.m */,
-				4A76DADC149C9B020029B908 /* ShipsPanel.h */,
-				4A76DADD149C9B020029B908 /* ShipsPanel.m */,
-				4A76DAE0149CA46C0029B908 /* HandMarketPanel.h */,
-				4A76DAE1149CA46C0029B908 /* HandMarketPanel.m */,
 				4A7E8B6714663EA9003BEC0B /* Resources */,
 				4A7E8B7B14663EAA003BEC0B /* libs */,
 				4A7E8CB414663EB6003BEC0B /* Supporting Files */,
-				8F79C637153AFAAE0018873A /* GameBoard.h */,
-				8F79C638153AFAAE0018873A /* GameBoard.m */,
 			);
 			path = MaritimeSilkRoad;
 			sourceTree = "<group>";
@@ -971,7 +957,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8F79C63B153AFAB40018873A /* GameStates */ = {
+		8F79C63B153AFAB40018873A /* States */ = {
 			isa = PBXGroup;
 			children = (
 				8F79C63C153AFB070018873A /* GameState.h */,
@@ -981,7 +967,35 @@
 				8F79C642153AFE7C0018873A /* ChangeGood.h */,
 				8F79C643153AFE7C0018873A /* ChangeGood.m */,
 			);
-			name = GameStates;
+			name = States;
+			sourceTree = "<group>";
+		};
+		8F79C64A153B07BC0018873A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A790DAE1497A3B200524C5A /* Dialog.h */,
+				4A790DAF1497A3B200524C5A /* Dialog.m */,
+				8FBDA24014D44AF3002EC68B /* InfoBox.h */,
+				4A76DADC149C9B020029B908 /* ShipsPanel.h */,
+				4A76DADD149C9B020029B908 /* ShipsPanel.m */,
+				4A76DAE0149CA46C0029B908 /* HandMarketPanel.h */,
+				4A76DAE1149CA46C0029B908 /* HandMarketPanel.m */,
+				8FBDA24114D44AF3002EC68B /* InfoBox.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		8F79C64B153B08010018873A /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				8F79C637153AFAAE0018873A /* GameBoard.h */,
+				8F79C638153AFAAE0018873A /* GameBoard.m */,
+				4A799753146C0E45001550C8 /* Pool.h */,
+				4A799751146C0CEE001550C8 /* Pool.m */,
+				4A79974E146C0AC9001550C8 /* Player.h */,
+				4A3502A8146FEC59003C6DF9 /* Player.m */,
+			);
+			name = Elements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
