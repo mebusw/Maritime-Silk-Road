@@ -162,6 +162,9 @@
 		8F79C641153AFE3E0018873A /* Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C640153AFE3E0018873A /* Setup.m */; };
 		8F79C644153AFE7C0018873A /* ChangeGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C643153AFE7C0018873A /* ChangeGood.m */; };
 		8F79C649153B058F0018873A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F79C647153B053E0018873A /* libOCMock.a */; };
+		8F79C64E153B0A320018873A /* Market.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C64D153B0A320018873A /* Market.m */; };
+		8F79C651153B0B920018873A /* GameBoardTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C650153B0B920018873A /* GameBoardTest.m */; };
+		8F79C652153B0D3A0018873A /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C638153AFAAE0018873A /* GameBoard.m */; };
 		8FBDA24214D44AF3002EC68B /* InfoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA24114D44AF3002EC68B /* InfoBox.m */; };
 		8FC0D95114DD3F0A00E44914 /* cardBack-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94514DD3F0A00E44914 /* cardBack-small.png */; };
 		8FC0D95214DD3F0A00E44914 /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94614DD3F0A00E44914 /* cardBack.png */; };
@@ -467,6 +470,10 @@
 		8F79C642153AFE7C0018873A /* ChangeGood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeGood.h; sourceTree = "<group>"; };
 		8F79C643153AFE7C0018873A /* ChangeGood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeGood.m; sourceTree = "<group>"; };
 		8F79C647153B053E0018873A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
+		8F79C64C153B0A320018873A /* Market.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Market.h; sourceTree = "<group>"; };
+		8F79C64D153B0A320018873A /* Market.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Market.m; sourceTree = "<group>"; };
+		8F79C64F153B0B920018873A /* GameBoardTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoardTest.h; sourceTree = "<group>"; };
+		8F79C650153B0B920018873A /* GameBoardTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoardTest.m; sourceTree = "<group>"; };
 		8FBDA24014D44AF3002EC68B /* InfoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBox.h; sourceTree = "<group>"; };
 		8FBDA24114D44AF3002EC68B /* InfoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBox.m; sourceTree = "<group>"; };
 		8FC0D94514DD3F0A00E44914 /* cardBack-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cardBack-small.png"; path = "Resources/cardBack-small.png"; sourceTree = "<group>"; };
@@ -943,6 +950,8 @@
 				8F5D58AD14D0FADA004DE70E /* Supporting Files */,
 				8F5D58C114D0FC47004DE70E /* PoolTest.h */,
 				8F5D58C214D0FC47004DE70E /* PoolTest.m */,
+				8F79C64F153B0B920018873A /* GameBoardTest.h */,
+				8F79C650153B0B920018873A /* GameBoardTest.m */,
 			);
 			path = UnitTest;
 			sourceTree = "<group>";
@@ -994,6 +1003,8 @@
 				4A799751146C0CEE001550C8 /* Pool.m */,
 				4A79974E146C0AC9001550C8 /* Player.h */,
 				4A3502A8146FEC59003C6DF9 /* Player.m */,
+				8F79C64C153B0A320018873A /* Market.h */,
+				8F79C64D153B0A320018873A /* Market.m */,
 			);
 			name = Elements;
 			sourceTree = "<group>";
@@ -1253,6 +1264,7 @@
 				8F79C63E153AFB070018873A /* GameState.m in Sources */,
 				8F79C641153AFE3E0018873A /* Setup.m in Sources */,
 				8F79C644153AFE7C0018873A /* ChangeGood.m in Sources */,
+				8F79C64E153B0A320018873A /* Market.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1260,9 +1272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F79C652153B0D3A0018873A /* GameBoard.m in Sources */,
 				8F5D58B414D0FADA004DE70E /* UnitTest.m in Sources */,
 				8F5D58C414D0FC6C004DE70E /* PoolTest.m in Sources */,
 				8F5D58C814D1009E004DE70E /* Pool.m in Sources */,
+				8F79C651153B0B920018873A /* GameBoardTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

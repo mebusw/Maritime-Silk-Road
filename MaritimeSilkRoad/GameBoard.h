@@ -11,12 +11,18 @@
 
 #import "Pool.h"
 #import "Player.h"
+#import "Market.h"
 
+@interface GameBoard : NSObject {
 
-@interface GameBoard : NSObject
+}
 
 @property (nonatomic, retain) Pool* pool;
-@property (nonatomic, retain) NSArray* players;
+@property (nonatomic, retain) NSMutableArray* players;
+@property (nonatomic, retain) Market* market;
 
+@property (nonatomic) int activePlayerIndex;
+
+-(int) nextPlayer;
 
 @end

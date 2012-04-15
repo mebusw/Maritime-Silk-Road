@@ -8,8 +8,15 @@
 
 #import "GameBoard.h"
 
+
 @implementation GameBoard
 
-@synthesize pool, players;
+@synthesize pool, players, market, activePlayerIndex;
+
+
+-(int) nextPlayer {
+    activePlayerIndex = (activePlayerIndex + 1) % [players count];
+    return activePlayerIndex;
+}
 
 @end
