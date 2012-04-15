@@ -2,3 +2,13 @@
 *.bak
 doc/html
 Thumbs.db
+.DS_Store
+*.*~
+*.xcuserdatad
+
+
+
+
+
+
+
