@@ -157,6 +157,8 @@
 		8F5D58B414D0FADA004DE70E /* UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D58B314D0FADA004DE70E /* UnitTest.m */; };
 		8F5D58C414D0FC6C004DE70E /* PoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D58C214D0FC47004DE70E /* PoolTest.m */; };
 		8F5D58C814D1009E004DE70E /* Pool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A799751146C0CEE001550C8 /* Pool.m */; };
+		8F792119153C5B23007188F6 /* MarketTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F792118153C5B23007188F6 /* MarketTest.m */; };
+		8F79211A153C5DF5007188F6 /* Market.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C64D153B0A320018873A /* Market.m */; };
 		8F79C639153AFAAE0018873A /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C638153AFAAE0018873A /* GameBoard.m */; };
 		8F79C63E153AFB070018873A /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C63D153AFB070018873A /* GameState.m */; };
 		8F79C641153AFE3E0018873A /* Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C640153AFE3E0018873A /* Setup.m */; };
@@ -461,6 +463,8 @@
 		8F5D58B514D0FADA004DE70E /* UnitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTest-Prefix.pch"; sourceTree = "<group>"; };
 		8F5D58C114D0FC47004DE70E /* PoolTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolTest.h; sourceTree = "<group>"; };
 		8F5D58C214D0FC47004DE70E /* PoolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolTest.m; sourceTree = "<group>"; };
+		8F792117153C5B23007188F6 /* MarketTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketTest.h; sourceTree = "<group>"; };
+		8F792118153C5B23007188F6 /* MarketTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketTest.m; sourceTree = "<group>"; };
 		8F79C637153AFAAE0018873A /* GameBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoard.h; sourceTree = "<group>"; };
 		8F79C638153AFAAE0018873A /* GameBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoard.m; sourceTree = "<group>"; };
 		8F79C63C153AFB070018873A /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
@@ -952,6 +956,8 @@
 				8F5D58C214D0FC47004DE70E /* PoolTest.m */,
 				8F79C64F153B0B920018873A /* GameBoardTest.h */,
 				8F79C650153B0B920018873A /* GameBoardTest.m */,
+				8F792117153C5B23007188F6 /* MarketTest.h */,
+				8F792118153C5B23007188F6 /* MarketTest.m */,
 			);
 			path = UnitTest;
 			sourceTree = "<group>";
@@ -1277,6 +1283,8 @@
 				8F5D58C414D0FC6C004DE70E /* PoolTest.m in Sources */,
 				8F5D58C814D1009E004DE70E /* Pool.m in Sources */,
 				8F79C651153B0B920018873A /* GameBoardTest.m in Sources */,
+				8F792119153C5B23007188F6 /* MarketTest.m in Sources */,
+				8F79211A153C5DF5007188F6 /* Market.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

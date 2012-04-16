@@ -11,7 +11,7 @@
 
 #define FONT_NAME		    @"Marker Felt"
 #define IMG_DIALOG          @"dialog.png"
-#define IMG_CARDBACK          @"cardback-small.png"
+#define IMG_CARDBACK        @"cardback-small.png"
 #define IMG_MARKET          @"market-placeholder.png"
 #define IMG_SP_SHIP         @"special-ship-small.jpg"
 #define IMG_SP_WORKER       @"special-worker-small.jpg"

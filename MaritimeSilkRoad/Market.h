@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "states.h"
+@interface Market : NSObject {
+    NSMutableArray *_array;
+}
 
-@interface Market : NSArray
+-(GoodTypeEnum) goodAtIndex:(int) index;
+-(void) changeGood:(GoodTypeEnum)good atIndex:(int) index;
 
 @end
