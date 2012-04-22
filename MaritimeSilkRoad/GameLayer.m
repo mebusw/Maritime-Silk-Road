@@ -18,13 +18,8 @@
 @implementation GameLayer
 
 @synthesize isDialoging;
-@synthesize _playerCount;
 @synthesize gameState;
-@synthesize activePlayerIndex;
-@synthesize activePlayer;
-@synthesize startPlayerIndex;
-@synthesize pool;
-@synthesize players;
+
 #define Z_MOST_FRONT    1000
 #define Z_MOST_BACK     -1000
 #define Z_BOARD         2
@@ -32,11 +27,6 @@
 #define DIALOG_ACTIONS 	101
 #define DIALOG_YESNO		102
 
-
-
-- (int*) market {
-    return market;
-}
 
 + (CCScene *) sceneWithPlayerNumber: (NSUInteger) _playerNbr {
     
@@ -92,8 +82,8 @@
     menu.position = ccp(size.width / 2, size.height / 2);
     [self addChild:menu z:Z_MOST_FRONT tag:1]; 
     
-    for (int i = 0; i < players.count; i++) {
-        Player *p = [players objectAtIndex:i];
+    for (int i = 0; i < _gameBoard.playerCount; i++) {
+        Player *p = [_gameBoard.players objectAtIndex:i];
         labelPlayers[i] = [CCLabelTTF labelWithString:p.name fontName:FONT_NAME fontSize:16];
         labelPlayers[i].position = ccp(40, 260 - i * 30);
         [self addChild:labelPlayers[i] z:Z_BOARD tag:(10 + i)];
@@ -102,20 +92,21 @@
 
                              
     for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
-        labelTokens[i] = [CCLabelTTF labelWithString:STR(@"=%d", pool.token[i]) fontName:FONT_NAME fontSize:16];
+        labelTokens[i] = [CCLabelTTF labelWithString:STR(@"=%d", _gameBoard.pool.token[i]) fontName:FONT_NAME fontSize:16];
         labelTokens[i].position = ccp(440, 145 - i * 20);
         [self addChild:labelTokens[i] z:Z_BOARD tag:(20 + i)];
     }
     
     
-    labelSpecials = [CCLabelTTF labelWithString:STR(@"w%d c%d t%d s%d", pool.specialCards[kSpecialWorker], pool.specialCards[kSpecialConcession], pool.specialCards[kSpecialTrade], pool.specialCards[kSpecialShip]) fontName:FONT_NAME fontSize:16];
+    labelSpecials = [CCLabelTTF labelWithString:STR(@"w%d c%d t%d s%d", _gameBoard.pool.specialCards[kSpecialWorker], _gameBoard.pool.specialCards[kSpecialConcession], _gameBoard.pool.specialCards[kSpecialTrade], _gameBoard.pool.specialCards[kSpecialShip]) fontName:FONT_NAME fontSize:16];
     labelSpecials.position = ccp(400, 220);
     [self addChild:labelSpecials z:Z_BOARD];
 
-    labelDeck = [CCLabelTTF labelWithString:STR(@"Deck %d", pool.remainingCards) fontName:FONT_NAME fontSize:16];
+    labelDeck = [CCLabelTTF labelWithString:STR(@"Deck %d", _gameBoard.pool.remainingCards) fontName:FONT_NAME fontSize:16];
     labelDeck.position = ccp(400, 240);
     [self addChild:labelDeck z:Z_BOARD];  
     
+    Human *human = [_gameBoard.players objectAtIndex:0];
     labelYourCoin = [CCLabelTTF labelWithString:STR(@"Coin %d", human.coin) fontName:FONT_NAME fontSize:16];
     labelYourCoin.position = ccp(30, 50);
     [self addChild:labelYourCoin z:Z_BOARD];
@@ -175,8 +166,8 @@
         }
 	
         //update players' labels
-        for (int i = 0; i < players.count; i++) {
-            Player *p = [players objectAtIndex:i];
+        for (int i = 0; i < _gameBoard.playerCount; i++) {
+            Player *p = [_gameBoard.players objectAtIndex:i];
 
             NSMutableString *str = [NSMutableString stringWithFormat:@"%@ %d=", p.name, [p cardHandCount]];
             for (int j = 0; j < p.specials[kSpecialShip]; j++) {	
@@ -186,15 +177,15 @@
         }
         //update lables of tokens in pool
         for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
-            [labelTokens[i] setString:[NSString stringWithFormat:@"%d", pool.token[i]]];
+            [labelTokens[i] setString:[NSString stringWithFormat:@"%d", _gameBoard.pool.token[i]]];
         }
         
-        Human *user = [players objectAtIndex:0];
+        Human *user = [_gameBoard.players objectAtIndex:0];
         [labelYourCoin setString:STR(@"Coin %d", user.coin)];
         [labelYourSpecials setString:STR(@"w%d c%d t%d", user.specials[kSpecialWorker], user.specials[kSpecialConcession], user.specials[kSpecialTrade])];
         [labelYourCoin setString:STR(@"Coin %d", user.coin)];
-        [labelSpecials setString:STR(@"w%d c%d t%d s%d", pool.specialCards[kSpecialWorker], pool.specialCards[kSpecialConcession], pool.specialCards[kSpecialTrade], pool.specialCards[kSpecialShip])];
-        [labelDeck setString:STR(@"Deck %d", pool.remainingCards)];  
+        [labelSpecials setString:STR(@"w%d c%d t%d s%d", _gameBoard.pool.specialCards[kSpecialWorker], _gameBoard.pool.specialCards[kSpecialConcession], _gameBoard.pool.specialCards[kSpecialTrade], _gameBoard.pool.specialCards[kSpecialShip])];
+        [labelDeck setString:STR(@"Deck %d", _gameBoard.pool.remainingCards)];  
         
         [shipsPanel refresh];
         [handMarketPanel refresh];
@@ -206,19 +197,11 @@
     }
 }
 
-/**
- * switch to next player, both activePlayerIndex and activePlayer are changed.
- */
-- (void) nextPlayer {
-    activePlayerIndex = (activePlayerIndex + 1)  % _playerCount;
-    activePlayer = [players objectAtIndex:activePlayerIndex];
-}
+
 
 - (void) dealloc {
     [_stateHandler release];
     [_gameBoard release];
-    [players release];
-    [pool release];
 	[super dealloc];
 }
 
@@ -242,18 +225,18 @@
 
     NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
     
-    shipsPanel = [[[ShipsPanel alloc] initWithHuman:human] autorelease];
-    handMarketPanel = [[[HandMarketPanel alloc] initWithHuman:human market:market] autorelease];
+    //shipsPanel = [[[ShipsPanel alloc] initWithHuman:human] autorelease];
+    //handMarketPanel = [[[HandMarketPanel alloc] initWithHuman:_gameBoard.human market:_gameBoard.market] autorelease];
     
 	// distribute 6 good cards to market
 	for (int i = 0; i < MARKET_SIZE; i++) {
-		GoodTypeEnum good = [pool fetchAGood];
+		GoodTypeEnum good = [_gameBoard.pool fetchAGood];
 		DLog(@"market got good card %d",  good);
         [handMarketPanel setMarketAtIndex:i good:good];
 	}
 
-	activePlayerIndex = startPlayerIndex;
-    activePlayer = [players objectAtIndex:activePlayerIndex];
+
+    _activePlayer = [_gameBoard.players objectAtIndex:_gameBoard.activePlayerIndex];
 	_loadGoodsTurns = 2 * _playerCount; // two round of loading goods
 
     [self setupMenus];
@@ -264,7 +247,7 @@
 
 - (void) loadGoods {
 	if (_loadGoodsTurns > 0) {
-        [activePlayer chooseAGoodTypeFromPool:pool];
+        [_activePlayer chooseAGoodTypeFromPool:_gameBoard.pool];
 
 	} else {
         _phaseTurns = _playerCount;
@@ -273,9 +256,9 @@
 }
 
 - (void) phase1 {
-	DLog(@"tun=%d %@", _phaseTurns, activePlayer);
+	DLog(@"tun=%d %@", _phaseTurns, _activePlayer);
     if (_phaseTurns > 0) {
-        [activePlayer chooseActionForPhase1];
+        [_activePlayer chooseActionForPhase1];
     } else {
         _phaseTurns = _playerCount;
         gameState = kPhase2;
@@ -285,17 +268,17 @@
 }
 
 - (void) p11ChangeGood {
-	DLog(@"turn=%d %@", _phaseTurns, activePlayer);
+	DLog(@"turn=%d %@", _phaseTurns, _activePlayer);
     //TODO isDialoging
-    [activePlayer chooseAShipForAction11];
+    [_activePlayer chooseAShipForAction11];
 }
 
 - (void) p12BuySpecial {
-    [activePlayer chooseASpecialForAction12FromPool:pool];
+    [_activePlayer chooseASpecialForAction12FromPool:_gameBoard.pool];
 }
 
 -(void) p13Pass {
-    [self nextPlayer];
+    [_gameBoard nextPlayer];
     _phaseTurns--;
     gameState = kPhase1;    
 }
@@ -325,27 +308,27 @@
 
     switch (gameState) {
         case kLoadGoods: {
-            [pool fetchAToken: goodType];
-            [activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / _playerCount)];
+            [_gameBoard.pool fetchAToken: goodType];
+            [_activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / _playerCount)];
 
-            InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", activePlayer.name, goodType)];
+            InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", _activePlayer.name, goodType)];
             [ib show:self];
             
-            [self nextPlayer];
+            [_gameBoard nextPlayer];
             _loadGoodsTurns--; 
         
             break;
         }
         case kP11ChangeGood: {
-            [pool fetchAToken: goodType];
-            GoodTypeEnum goodOnChosenShip = activePlayer.ships[_chosenShip];
-            activePlayer.ships[_chosenShip] = goodType;
-            [pool putAToken:goodOnChosenShip];
+            [_gameBoard.pool fetchAToken: goodType];
+            GoodTypeEnum goodOnChosenShip = _activePlayer.ships[_chosenShip];
+            _activePlayer.ships[_chosenShip] = goodType;
+            [_gameBoard.pool putAToken:goodOnChosenShip];
             
-            InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", activePlayer.name, goodType)];
+            InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", _activePlayer.name, goodType)];
             [ib show:self];
             
-            [self nextPlayer];
+            [_gameBoard nextPlayer];
             _phaseTurns--;
             gameState = kPhase1;
             break;
@@ -376,7 +359,7 @@
             break;
     }
 
-    InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses action for phase1 %d", activePlayer.name, action)];
+    InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses action for phase1 %d", _activePlayer.name, action)];
     [ib show:self];
      
 }
@@ -385,15 +368,15 @@
     SpecialTypeEnum special = [num intValue];
     DLog(@"special %d", special);
     
-    [pool fetchASpecial:special];
-    [activePlayer addSpecial:special];
+    [_gameBoard.pool fetchASpecial:special];
+    [_activePlayer addSpecial:special];
     int pricesOfSpecials[] = {10, 8, 11, 12};
-    activePlayer.coin -= pricesOfSpecials[special];
+    _activePlayer.coin -= pricesOfSpecials[special];
     
-    InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses special %d", activePlayer.name, special)];
+    InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses special %d", _activePlayer.name, special)];
     [ib show:self];
     
-    [self nextPlayer];
+    [_gameBoard nextPlayer];
     _phaseTurns--;
     gameState = kPhase1;
 }
@@ -407,7 +390,7 @@
     int ship = [num intValue];
 	DLog(@"ship %d", ship);    
     _chosenShip = ship;
-    [activePlayer chooseAGoodTypeFromPool:pool];
+    [_activePlayer chooseAGoodTypeFromPool:_gameBoard.pool];
 }
 
 @end

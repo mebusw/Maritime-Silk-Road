@@ -24,7 +24,6 @@
     int _phaseTurns;
     int _chosenShip;
 	
-	int market[MARKET_SIZE];
 	CCLabelTTF *labelDeck;
 	CCLabelTTF *labelSpecials;
 	CCLabelTTF *labelYourCoin;
@@ -34,20 +33,17 @@
     CCLabelTTF *labelPlayers[MAX_PLAYER];
     ShipsPanel *shipsPanel;
     HandMarketPanel *handMarketPanel;
-    Human *human;
+
     
     GameBoard *_gameBoard;
     GameState *_stateHandler;
+    int _playerCount;
+    Player *_activePlayer;
 }
 @property BOOL isDialoging; //if dialog is open, then no need to schedule for next state
 @property GameStateEnum gameState;
-@property (nonatomic, retain) Pool *pool;
-@property (nonatomic, retain) Player *activePlayer;
-@property (nonatomic, retain) NSMutableArray *players;
-@property (readonly) int *market;
-@property (readonly) int _playerCount;
-@property (readonly) int activePlayerIndex;
-@property (readonly) int startPlayerIndex;
+
+
 
 +(CCScene *) sceneWithPlayerNumber: (NSUInteger) playerNbr;
 - (void) setupMenus;
