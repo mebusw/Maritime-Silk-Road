@@ -57,6 +57,7 @@
 - (void) phase2;
 - (void) gameOver;
 
+
 -(void) didChooseAShip: (NSNumber*) num;
 -(void) didChooseASpecial: (NSNumber *)num;
 

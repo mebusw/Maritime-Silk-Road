@@ -11,6 +11,7 @@
 @implementation ChangeGood
 
 -(void) handle:(id)observer gameBoard:(GameBoard*)gameBoard {
+    DLog(@"");
     
     [observer changeState:[[[ChangeGood alloc] init] autorelease]];
 }

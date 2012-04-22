@@ -49,12 +49,10 @@
 		DLog(@"player nbr=%d", playerNbr);
         
         _gameBoard = [[GameBoard alloc] initWithPlayerNumber:playerNbr];
-        _stateHandler = [[Preparing alloc] init];
 		_playerCount = playerNbr;        
         
-
-
-		
+        _stateHandler = [[Preparing alloc] init];
+        [_stateHandler handle:self gameBoard:_gameBoard];
 		
         CGSize size = [[CCDirector sharedDirector] winSize];
         DLog(@"screen w=%f, h=%f, factor%f", size.width, size.height, CC_CONTENT_SCALE_FACTOR());
@@ -63,9 +61,12 @@
         background.position = ccp( size.width /2 , size.height /2 );
         [self addChild:background z:Z_MOST_BACK];
         
-		gameState = kPreparing;
-
+		gameState = kWaitForStart;
+        [self setupMenus];
+        
 		[self scheduleUpdate];
+        [_stateHandler handle:self gameBoard:_gameBoard];
+        
                 
     }
     return self;
@@ -84,7 +85,7 @@
     
     for (int i = 0; i < _gameBoard.playerCount; i++) {
         Player *p = [_gameBoard.players objectAtIndex:i];
-        labelPlayers[i] = [CCLabelTTF labelWithString:p.name fontName:FONT_NAME fontSize:16];
+        labelPlayers[i] = [CCLabelTTF labelWithString:@"nomame" fontName:FONT_NAME fontSize:16];
         labelPlayers[i].position = ccp(40, 260 - i * 30);
         [self addChild:labelPlayers[i] z:Z_BOARD tag:(10 + i)];
     }
@@ -116,11 +117,11 @@
     [self addChild:labelYourSpecials z:Z_BOARD];
     
         
-    shipsPanel.position = ccp(size.width / 2, size.height / 2);
-    [self addChild:shipsPanel z:Z_BOARD + 1];
-    
-    handMarketPanel.position = ccp(size.width / 2, size.height / 2);
-    [self addChild:handMarketPanel z:Z_BOARD];
+//    shipsPanel.position = ccp(size.width / 2, size.height / 2);
+//    [self addChild:shipsPanel z:Z_BOARD + 1];
+//    
+//    handMarketPanel.position = ccp(size.width / 2, size.height / 2);
+//    [self addChild:handMarketPanel z:Z_BOARD];
 
 }
 
@@ -227,23 +228,17 @@
     
     //shipsPanel = [[[ShipsPanel alloc] initWithHuman:human] autorelease];
     //handMarketPanel = [[[HandMarketPanel alloc] initWithHuman:_gameBoard.human market:_gameBoard.market] autorelease];
-    
-	// distribute 6 good cards to market
-	for (int i = 0; i < MARKET_SIZE; i++) {
-		GoodTypeEnum good = [_gameBoard.pool fetchAGood];
-		DLog(@"market got good card %d",  good);
-        [handMarketPanel setMarketAtIndex:i good:good];
-	}
+    //[handMarketPanel setMarketAtIndex:i good:good];
+    //_activePlayer = [_gameBoard.players objectAtIndex:_gameBoard.activePlayerIndex];
 
 
-    _activePlayer = [_gameBoard.players objectAtIndex:_gameBoard.activePlayerIndex];
-	_loadGoodsTurns = 2 * _playerCount; // two round of loading goods
-
-    [self setupMenus];
     
     
 	gameState = kLoadGoods;
 }
+
+
+
 
 - (void) loadGoods {
 	if (_loadGoodsTurns > 0) {

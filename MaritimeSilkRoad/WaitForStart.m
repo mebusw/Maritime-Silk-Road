@@ -13,6 +13,7 @@
 
 
 -(void) handle:(id)observer gameBoard:(GameBoard*)gameBoard {
+    DLog(@"");
     [observer changeState:[[[Preparing alloc] init] autorelease]];
 }
 

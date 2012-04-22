@@ -7,7 +7,7 @@
 //
 
 #import "Preparing.h"
-#import "ChangeGood.h"
+#import "LoadGoods.h"
 #import "Player.h"
 
 @implementation Preparing
@@ -16,11 +16,11 @@
 
 -(void) handle:(id)observer gameBoard:(GameBoard*)gameBoard {
     DLog(@"");
+    
     // shuffle decks
 	gameBoard.pool = [[Pool alloc] init];
     
 	// create Human player
-
 	gameBoard.players = [[NSMutableArray alloc] initWithCapacity:gameBoard.playerCount];
 	Human *human = [[Human alloc] initWithDelegate:self];
 	[gameBoard.players addObject:human];
@@ -44,10 +44,16 @@
 		}
 	}
     
+	// distribute 6 good cards to market
+	for (int i = 0; i < MARKET_SIZE; i++) {
+		GoodTypeEnum good = [gameBoard.pool fetchAGood];
+		DLog(@"market got good card %d",  good);
         
+	}
     
     
-    [observer changeState:[[[ChangeGood alloc] init] autorelease]];
+
+    [observer changeState:[[[LoadGoods alloc] init] autorelease]];
 }
 
 @end
