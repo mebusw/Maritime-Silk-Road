@@ -9,7 +9,8 @@
 #import "GameStateTest.h"
 #import "OCMock/OCMock.h"
 
-#import "Setup.h"
+#import "WaitForStart.h"
+#import "Preparing.h"
 
 @implementation GameStateTest
 
@@ -29,12 +30,13 @@
 }
 
 -(void) test_Setup_ChangeGood {
-    GameState *newState = [[Setup alloc] init];
+    GameState *oldState = [[[WaitForStart alloc] init] autorelease];
+    //GameState *newState = [[[Preparing alloc] init] autorelease];
     id observerMock = [OCMockObject mockForProtocol:@protocol(StateObserverProtocol)];
     [[observerMock expect] changeState:[OCMArg any]];
     
     
-    [newState handle:observerMock];
+    [oldState handle:observerMock gameBoard:nil];
     
     
     [observerMock verify];

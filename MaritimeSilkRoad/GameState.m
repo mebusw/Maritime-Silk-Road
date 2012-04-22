@@ -11,6 +11,7 @@
 
 @implementation GameState
 
+
 -(id) init {
     if (self = [super init]) {
         ;
@@ -18,7 +19,7 @@
     return self;
 }
 
--(void) handle:(id) observer {
+-(void) handle:(id)observer gameBoard:(GameBoard*)gameBoard {
     @throw [NSException exceptionWithName:@"Can't execute abstract ethod" reason:@"This method must be overrived by subclass" userInfo:nil];
 }
 

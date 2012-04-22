@@ -10,9 +10,7 @@
 
 @implementation ChangeGood
 
--(void) handle:(id) observer {
-    //TODO
-    //[observer someMethod];
+-(void) handle:(id)observer gameBoard:(GameBoard*)gameBoard {
     
     [observer changeState:[[[ChangeGood alloc] init] autorelease]];
 }

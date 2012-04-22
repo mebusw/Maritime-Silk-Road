@@ -7,7 +7,7 @@
 //
 
 #import "Player.h"
-#import "Dialog.h"
+//#import "Dialog.h"
 #import "Pool.h"
 
 #define Z_MOST_FRONT    1000
@@ -179,9 +179,9 @@
 @implementation Human
 
 - (void) chooseAGoodTypeFromPool:(Pool *)pool {
-    Dialog *dialog = [Dialog dialogWithGoodCounts:pool.token target:_delegate selector:@selector(didChooseAGoodType:)];
-    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_GOODS];
-    
+//    Dialog *dialog = [Dialog dialogWithGoodCounts:pool.token target:_delegate selector:@selector(didChooseAGoodType:)];
+//    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_GOODS];
+//    
 }
 
 - (void) chooseToUseAbility {
@@ -199,24 +199,24 @@
 }
 
 - (void) chooseActionForPhase1 {
-    Dialog *dialog = [Dialog dialogWithPhase:PHASE1 target:_delegate selector:@selector(didChooseActionForPhase1:)];
-    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];
+//    Dialog *dialog = [Dialog dialogWithPhase:PHASE1 target:_delegate selector:@selector(didChooseActionForPhase1:)];
+//    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];
 }
 
 - (void) chooseAShipForAction11 {
-    Dialog *dialog = [Dialog dialogWithShips:ships count:specials[kSpecialShip] target:_delegate selector:@selector(didChooseAShip:)];
-    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_SHIPS];
+//    Dialog *dialog = [Dialog dialogWithShips:ships count:specials[kSpecialShip] target:_delegate selector:@selector(didChooseAShip:)];
+//    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_SHIPS];
 
 }
 
 - (void) chooseASpecialForAction12FromPool:(Pool*)pool {
-    Dialog *dialog = [Dialog dialogWithSpecials:pool.specialCards target:_delegate selector:@selector(didChooseASpecial:)];
-    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_SPECIALS];
+//    Dialog *dialog = [Dialog dialogWithSpecials:pool.specialCards target:_delegate selector:@selector(didChooseASpecial:)];
+//    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_SPECIALS];
 }
 
 - (void) chooseActionForPhase2: (id)delegate {
-    Dialog *dialog = [Dialog dialogWithPhase:PHASE2 target:_delegate selector:@selector(didChooseActionForPhase2:)];
-    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];    
+//    Dialog *dialog = [Dialog dialogWithPhase:PHASE2 target:_delegate selector:@selector(didChooseActionForPhase2:)];
+//    [_delegate addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];    
 }
 
 @end

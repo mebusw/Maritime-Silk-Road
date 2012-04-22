@@ -11,12 +11,27 @@
 
 @implementation GameBoard
 
-@synthesize pool, players, market, activePlayerIndex;
+@synthesize pool, players, market;
+@synthesize playerCount, startPlayerIndex, activePlayerIndex;
 
+
+- (id) initWithPlayerNumber: (NSUInteger) playerNbr {
+    if (self = [super init]) {
+        playerCount = playerNbr;
+        pool = [[Pool alloc] init];
+        market = [[Market alloc] init];
+        startPlayerIndex = (int) (CCRANDOM_0_1() * playerCount);
+        activePlayerIndex = startPlayerIndex;
+    }
+    
+    return self;
+}
 
 -(int) nextPlayer {
     activePlayerIndex = (activePlayerIndex + 1) % [players count];
     return activePlayerIndex;
 }
+
+
 
 @end

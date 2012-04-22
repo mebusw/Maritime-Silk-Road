@@ -26,15 +26,16 @@
 }
 
 -(void) testNextPlayer {
-    GameBoard *gb = [[[GameBoard alloc] init] autorelease];
+    GameBoard *gb = [[[GameBoard alloc] initWithPlayerNumber:3] autorelease];
     gb.players = [NSArray arrayWithObjects:@"a", @"b", @"c", nil];
-    gb.activePlayerIndex = 1;
+    int currentPlayer = gb.activePlayerIndex;
+
     
     
-    STAssertEquals(2, [gb nextPlayer], nil);
-    STAssertEquals(2, gb.activePlayerIndex, nil);
-    STAssertEquals(0, [gb nextPlayer], nil);
-    STAssertEquals(0, gb.activePlayerIndex, nil);
+    STAssertEquals((currentPlayer + 1) % gb.playerCount, [gb nextPlayer], nil);
+    STAssertEquals((currentPlayer + 1) % gb.playerCount, gb.activePlayerIndex, nil);
+    STAssertEquals((currentPlayer + 2) % gb.playerCount, [gb nextPlayer], nil);
+    STAssertEquals((currentPlayer + 2) % gb.playerCount, gb.activePlayerIndex, nil);
 
 }
 

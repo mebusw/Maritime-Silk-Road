@@ -12,11 +12,13 @@
 #import "ShipsPanel.h"
 #import "HandMarketPanel.h"
 #import "InfoBox.h"
+#import "Preparing.h"
+
 
 @implementation GameLayer
 
 @synthesize isDialoging;
-@synthesize playerNbr;
+@synthesize _playerCount;
 @synthesize gameState;
 @synthesize activePlayerIndex;
 @synthesize activePlayer;
@@ -30,15 +32,7 @@
 #define DIALOG_ACTIONS 	101
 #define DIALOG_YESNO		102
 
--(void) handleRequest {
-    if (_stateHandler) {
-        [_stateHandler handle:self];
-    }
-}
 
--(void) changeState:(GameState*) newState {
-    _stateHandler = newState;
-}
 
 - (int*) market {
     return market;
@@ -60,12 +54,17 @@
 }
 
 
-- (id) initWithPlayerNumber: (NSUInteger) _playerNbr {	
+- (id) initWithPlayerNumber: (NSUInteger) playerNbr {	
     if (self = [super init]) {
-		DLog(@"player nbr=%d", _playerNbr);
-		gameState = kWaitForStart;
-		playerNbr = _playerNbr;
-		startPlayerIndex = (int) (CCRANDOM_0_1() * playerNbr);
+		DLog(@"player nbr=%d", playerNbr);
+        
+        _gameBoard = [[GameBoard alloc] initWithPlayerNumber:playerNbr];
+        _stateHandler = [[Preparing alloc] init];
+		_playerCount = playerNbr;        
+        
+
+
+		
 		
         CGSize size = [[CCDirector sharedDirector] winSize];
         DLog(@"screen w=%f, h=%f, factor%f", size.width, size.height, CC_CONTENT_SCALE_FACTOR());
@@ -211,11 +210,13 @@
  * switch to next player, both activePlayerIndex and activePlayer are changed.
  */
 - (void) nextPlayer {
-    activePlayerIndex = (activePlayerIndex + 1)  % playerNbr;
+    activePlayerIndex = (activePlayerIndex + 1)  % _playerCount;
     activePlayer = [players objectAtIndex:activePlayerIndex];
 }
 
 - (void) dealloc {
+    [_stateHandler release];
+    [_gameBoard release];
     [players release];
     [pool release];
 	[super dealloc];
@@ -223,39 +224,23 @@
 
 
 #pragma mark - state handlers
+
+-(void) handleRequest {
+    if (_stateHandler) {
+        [_stateHandler handle:self gameBoard:_gameBoard];
+    }
+}
+
+
+-(void) changeState:(GameState*) newState {
+    [_stateHandler release];
+    _stateHandler = newState;
+    [_stateHandler retain];
+}
+
 - (void) prepareGame {	
-	// shuffle decks
-	pool = [[Pool alloc] init];
 
     NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
-
-	// create Human player
-    DLog(@"");
-	players = [[NSMutableArray alloc] initWithCapacity:playerNbr];
-	human = [[Human alloc] initWithDelegate:self];
-    human.name = names[0];
-	[players addObject:human];
-	
-	// create AI players
-	for (int i = 1; i < playerNbr; i++) {
-		NPC *npc = [[NPC alloc] initWithDelegate:self];
-        npc.name = names[i];
-		[players addObject:npc];
-	}
-	
-	// distribute 3 good cards and 2 ships to every player
-	for (Player *player in players) {
-		for (int i = 0; i < 3; i++) {
-			GoodTypeEnum good = [pool fetchAGood];
-			//DLog(@"player %@ got good card %d", player, good);
-			[player addCardToHand:good];
-		}
-		for (int i = 0; i < 2; i++) {
-            [pool fetchASpecial:kSpecialShip];
-			[player addSpecial:kSpecialShip];			
-		}
-	}
-	
     
     shipsPanel = [[[ShipsPanel alloc] initWithHuman:human] autorelease];
     handMarketPanel = [[[HandMarketPanel alloc] initWithHuman:human market:market] autorelease];
@@ -269,7 +254,7 @@
 
 	activePlayerIndex = startPlayerIndex;
     activePlayer = [players objectAtIndex:activePlayerIndex];
-	_loadGoodsTurns = 2 * playerNbr; // two round of loading goods
+	_loadGoodsTurns = 2 * _playerCount; // two round of loading goods
 
     [self setupMenus];
     
@@ -282,7 +267,7 @@
         [activePlayer chooseAGoodTypeFromPool:pool];
 
 	} else {
-        _phaseTurns = playerNbr;
+        _phaseTurns = _playerCount;
 		gameState = kPhase1;
 	}
 }
@@ -292,7 +277,7 @@
     if (_phaseTurns > 0) {
         [activePlayer chooseActionForPhase1];
     } else {
-        _phaseTurns = playerNbr;
+        _phaseTurns = _playerCount;
         gameState = kPhase2;
     }
     
@@ -341,7 +326,7 @@
     switch (gameState) {
         case kLoadGoods: {
             [pool fetchAToken: goodType];
-            [activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / playerNbr)];
+            [activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / _playerCount)];
 
             InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", activePlayer.name, goodType)];
             [ib show:self];

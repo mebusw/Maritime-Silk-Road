@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GameLayer.h"
+#import "GameBoard.h"
 
 
 
 @interface GameState : NSObject
 
 
--(void) handle:(id) observer;
+-(void) handle:(id)observer gameBoard:(GameBoard*)gameBoard;
 
 
 @end

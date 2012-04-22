@@ -13,6 +13,8 @@
 #import "ShipsPanel.h"
 #import "HandMarketPanel.h"
 #import "GameState.h"
+#import "GameBoard.h"
+
 
 @class ShipsPanel;
 @class GameState;
@@ -34,7 +36,8 @@
     HandMarketPanel *handMarketPanel;
     Human *human;
     
-    GameState* _stateHandler;
+    GameBoard *_gameBoard;
+    GameState *_stateHandler;
 }
 @property BOOL isDialoging; //if dialog is open, then no need to schedule for next state
 @property GameStateEnum gameState;
@@ -42,11 +45,11 @@
 @property (nonatomic, retain) Player *activePlayer;
 @property (nonatomic, retain) NSMutableArray *players;
 @property (readonly) int *market;
-@property (readonly) int playerNbr;
+@property (readonly) int _playerCount;
 @property (readonly) int activePlayerIndex;
 @property (readonly) int startPlayerIndex;
 
-+(CCScene *) sceneWithPlayerNumber: (NSUInteger) _playerNbr;
++(CCScene *) sceneWithPlayerNumber: (NSUInteger) playerNbr;
 - (void) setupMenus;
 - (id) initWithPlayerNumber: (NSUInteger) playerNbr;
 - (void) loadGoods;
