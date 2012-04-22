@@ -11,9 +11,15 @@
 
 @implementation GameState
 
+-(id) init {
+    if (self = [super init]) {
+        ;
+    }
+    return self;
+}
 
--(void) handle:(GameLayer*) observer {
-    @throw [[NSException alloc] initWithName:@"Can't execute abstract ethod" reason:@"This method must be overrived by subclass" userInfo:nil];
+-(void) handle:(id) observer {
+    @throw [NSException exceptionWithName:@"Can't execute abstract ethod" reason:@"This method must be overrived by subclass" userInfo:nil];
 }
 
 

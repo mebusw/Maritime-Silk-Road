@@ -23,8 +23,8 @@ Market *market;
 
 - (void)tearDown
 {
-    // Tear-down code here.
-    
+    [market release];
+
     [super tearDown];
 }
 

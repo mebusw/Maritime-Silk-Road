@@ -167,6 +167,10 @@
 		8F79C64E153B0A320018873A /* Market.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C64D153B0A320018873A /* Market.m */; };
 		8F79C651153B0B920018873A /* GameBoardTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C650153B0B920018873A /* GameBoardTest.m */; };
 		8F79C652153B0D3A0018873A /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C638153AFAAE0018873A /* GameBoard.m */; };
+		8F7B1A9015439912005972FD /* GameStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B1A8F15439912005972FD /* GameStateTest.m */; };
+		8F7B1A961543A01A005972FD /* Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C640153AFE3E0018873A /* Setup.m */; };
+		8F7B1A971543A01D005972FD /* ChangeGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C643153AFE7C0018873A /* ChangeGood.m */; };
+		8F7B1A981543A02D005972FD /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C63D153AFB070018873A /* GameState.m */; };
 		8FBDA24214D44AF3002EC68B /* InfoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA24114D44AF3002EC68B /* InfoBox.m */; };
 		8FC0D95114DD3F0A00E44914 /* cardBack-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94514DD3F0A00E44914 /* cardBack-small.png */; };
 		8FC0D95214DD3F0A00E44914 /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94614DD3F0A00E44914 /* cardBack.png */; };
@@ -478,6 +482,8 @@
 		8F79C64D153B0A320018873A /* Market.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Market.m; sourceTree = "<group>"; };
 		8F79C64F153B0B920018873A /* GameBoardTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoardTest.h; sourceTree = "<group>"; };
 		8F79C650153B0B920018873A /* GameBoardTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoardTest.m; sourceTree = "<group>"; };
+		8F7B1A8E15439912005972FD /* GameStateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateTest.h; sourceTree = "<group>"; };
+		8F7B1A8F15439912005972FD /* GameStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStateTest.m; sourceTree = "<group>"; };
 		8FBDA24014D44AF3002EC68B /* InfoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBox.h; sourceTree = "<group>"; };
 		8FBDA24114D44AF3002EC68B /* InfoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBox.m; sourceTree = "<group>"; };
 		8FC0D94514DD3F0A00E44914 /* cardBack-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cardBack-small.png"; path = "Resources/cardBack-small.png"; sourceTree = "<group>"; };
@@ -527,7 +533,6 @@
 		4A7E8B4714663EA9003BEC0B = {
 			isa = PBXGroup;
 			children = (
-				8F79C647153B053E0018873A /* libOCMock.a */,
 				4A7E8B6614663EA9003BEC0B /* MaritimeSilkRoad */,
 				8F5D58AC14D0FADA004DE70E /* UnitTest */,
 				4A7E8B5514663EA9003BEC0B /* Frameworks */,
@@ -547,6 +552,7 @@
 		4A7E8B5514663EA9003BEC0B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F79C647153B053E0018873A /* libOCMock.a */,
 				4A7E8B5614663EA9003BEC0B /* QuartzCore.framework */,
 				4A7E8B5814663EA9003BEC0B /* OpenGLES.framework */,
 				4A7E8B5A14663EA9003BEC0B /* OpenAL.framework */,
@@ -958,6 +964,8 @@
 				8F79C650153B0B920018873A /* GameBoardTest.m */,
 				8F792117153C5B23007188F6 /* MarketTest.h */,
 				8F792118153C5B23007188F6 /* MarketTest.m */,
+				8F7B1A8E15439912005972FD /* GameStateTest.h */,
+				8F7B1A8F15439912005972FD /* GameStateTest.m */,
 			);
 			path = UnitTest;
 			sourceTree = "<group>";
@@ -991,11 +999,11 @@
 				4A790DAE1497A3B200524C5A /* Dialog.h */,
 				4A790DAF1497A3B200524C5A /* Dialog.m */,
 				8FBDA24014D44AF3002EC68B /* InfoBox.h */,
+				8FBDA24114D44AF3002EC68B /* InfoBox.m */,
 				4A76DADC149C9B020029B908 /* ShipsPanel.h */,
 				4A76DADD149C9B020029B908 /* ShipsPanel.m */,
 				4A76DAE0149CA46C0029B908 /* HandMarketPanel.h */,
 				4A76DAE1149CA46C0029B908 /* HandMarketPanel.m */,
-				8FBDA24114D44AF3002EC68B /* InfoBox.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1285,6 +1293,10 @@
 				8F79C651153B0B920018873A /* GameBoardTest.m in Sources */,
 				8F792119153C5B23007188F6 /* MarketTest.m in Sources */,
 				8F79211A153C5DF5007188F6 /* Market.m in Sources */,
+				8F7B1A9015439912005972FD /* GameStateTest.m in Sources */,
+				8F7B1A961543A01A005972FD /* Setup.m in Sources */,
+				8F7B1A971543A01D005972FD /* ChangeGood.m in Sources */,
+				8F7B1A981543A02D005972FD /* GameState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

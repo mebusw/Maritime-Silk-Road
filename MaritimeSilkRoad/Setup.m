@@ -7,17 +7,16 @@
 //
 
 #import "Setup.h"
-
 #import "ChangeGood.h"
 
 
 @implementation Setup
 
--(void) handle:(GameLayer*) observer {
-    //TODO
-    //[observer someMethod];
+
+
+-(void) handle:(id) observer {
     
-    [observer changeState:[[ChangeGood alloc] init]];
+    [observer changeState:[[[ChangeGood alloc] init] autorelease]];
 }
 
 @end

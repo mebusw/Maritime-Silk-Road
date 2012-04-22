@@ -10,10 +10,18 @@
 #import "GameLayer.h"
 
 
+
 @interface GameState : NSObject
 
--(void) handle:(GameLayer*) observer;
+
+-(void) handle:(id) observer;
 
 
+@end
+
+
+@protocol StateObserverProtocol <NSObject> 
+
+-(void) changeState:(GameState*) newState;
 
 @end

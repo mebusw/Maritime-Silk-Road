@@ -10,11 +10,11 @@
 
 @implementation ChangeGood
 
--(void) handle:(GameLayer*) observer {
+-(void) handle:(id) observer {
     //TODO
     //[observer someMethod];
     
-    [observer changeState:[[ChangeGood alloc] init]];
+    [observer changeState:[[[ChangeGood alloc] init] autorelease]];
 }
 
 @end
