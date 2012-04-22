@@ -11,30 +11,42 @@
 
 @implementation Market
 
+- (int*) goodCards {
+    return _goodCards;
+}
+
 -(id) init {
     if (self = [super init]) {
-        _array =  [[NSMutableArray alloc] initWithCapacity:MARKET_SIZE];
         for (int i = 0; i < MARKET_SIZE; i++) {
-            NSNumber *num = [[NSNumber alloc] initWithInt:kGoodNone];
-            [_array addObject:num];
+            _goodCards[i] = kGoodNone;
         }
     }
     return self;
 }
 
 -(GoodTypeEnum) goodAtIndex:(int) index {
-    NSNumber *num = [_array objectAtIndex:index];
-    return (GoodTypeEnum)[num intValue];
+    return _goodCards[index];
 }
 
 -(void) changeGood:(GoodTypeEnum)good atIndex:(int) index {
-    NSNumber *num = [NSNumber numberWithInt:good];
-    [_array insertObject:num atIndex:index];    
+    _goodCards[index] = good;
+  
 }
+
+
+-(int) countOfGood:(GoodTypeEnum)good {
+    int sum = 0;
+    for (int i = 0; i < MARKET_SIZE; i++) {
+        if (_goodCards[i] == good) {
+            sum ++;
+        }
+    }
+    return sum;
+}
+
 
 - (void)dealloc {
     [super dealloc];
-    [_array release];
 }
 
 @end

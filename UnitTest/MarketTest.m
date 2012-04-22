@@ -28,15 +28,28 @@ Market *market;
     [super tearDown];
 }
 
-- (void)testGoodAtIndex {
-    STAssertEquals(kGoodNone, [market goodAtIndex:0], nil);
-    STAssertEquals(kGoodNone, [market goodAtIndex:MARKET_SIZE - 1], nil);
+- (void)testGoodAtIndexInit {
+    STAssertEquals(kGoodNone, market.goodCards[0], nil);
+    STAssertEquals(kGoodNone, market.goodCards[MARKET_SIZE - 1], nil);
 }
 
 
 - (void)testChangeGoodAtIndex {
     [market changeGood:kGoodOre atIndex:3];
-    STAssertEquals(kGoodOre, [market goodAtIndex:3], nil);
+    STAssertEquals(kGoodOre, market.goodCards[3], nil);
+}
+
+
+- (void)testCountOfGood {
+    STAssertEquals(0, [market countOfGood:kGoodOre], nil);
+    
+    [market changeGood:kGoodOre atIndex:3];
+    [market changeGood:kGoodOre atIndex:1];
+    STAssertEquals(2, [market countOfGood:kGoodOre], nil);
+
+    [market changeGood:kGoodPerfume atIndex:1];
+    STAssertEquals(1, [market countOfGood:kGoodOre], nil);
+
 }
 
 @end

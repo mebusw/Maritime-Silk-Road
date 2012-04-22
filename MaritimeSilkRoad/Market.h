@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "states.h"
 @interface Market : NSObject {
-    NSMutableArray *_array;
+    int _goodCards[MARKET_SIZE];
 }
 
--(GoodTypeEnum) goodAtIndex:(int) index;
+@property (readonly) int *goodCards;
+
+
 -(void) changeGood:(GoodTypeEnum)good atIndex:(int) index;
+-(int) countOfGood:(GoodTypeEnum)good;
 
 @end
