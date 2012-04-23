@@ -36,6 +36,8 @@
 - (void) p11ChangeGood;
 - (void) p12BuySpecial;
 
+- (void) chooseAGoodType;
+
 
 -(void) didChooseAShip:(int)shipIndex;
 -(void) didChooseASpecial: (NSNumber *)num;

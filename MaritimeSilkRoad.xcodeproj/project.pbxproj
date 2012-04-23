@@ -172,6 +172,7 @@
 		8F79C64E153B0A320018873A /* Market.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C64D153B0A320018873A /* Market.m */; };
 		8F79C651153B0B920018873A /* GameBoardTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C650153B0B920018873A /* GameBoardTest.m */; };
 		8F79C652153B0D3A0018873A /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C638153AFAAE0018873A /* GameBoard.m */; };
+		8F7A145B1545A4630095BB34 /* PlayerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7A145A1545A4630095BB34 /* PlayerTest.m */; };
 		8F7B1A9015439912005972FD /* GameStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B1A8F15439912005972FD /* GameStateTest.m */; };
 		8F7B1A961543A01A005972FD /* Preparing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C640153AFE3E0018873A /* Preparing.m */; };
 		8F7B1A971543A01D005972FD /* ChangeGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C643153AFE7C0018873A /* ChangeGood.m */; };
@@ -491,6 +492,8 @@
 		8F79C64D153B0A320018873A /* Market.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Market.m; sourceTree = "<group>"; };
 		8F79C64F153B0B920018873A /* GameBoardTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoardTest.h; sourceTree = "<group>"; };
 		8F79C650153B0B920018873A /* GameBoardTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoardTest.m; sourceTree = "<group>"; };
+		8F7A14591545A4630095BB34 /* PlayerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerTest.h; sourceTree = "<group>"; };
+		8F7A145A1545A4630095BB34 /* PlayerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTest.m; sourceTree = "<group>"; };
 		8F7B1A8E15439912005972FD /* GameStateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateTest.h; sourceTree = "<group>"; };
 		8F7B1A8F15439912005972FD /* GameStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStateTest.m; sourceTree = "<group>"; };
 		8FBDA24014D44AF3002EC68B /* InfoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBox.h; sourceTree = "<group>"; };
@@ -975,6 +978,8 @@
 				8F792118153C5B23007188F6 /* MarketTest.m */,
 				8F7B1A8E15439912005972FD /* GameStateTest.h */,
 				8F7B1A8F15439912005972FD /* GameStateTest.m */,
+				8F7A14591545A4630095BB34 /* PlayerTest.h */,
+				8F7A145A1545A4630095BB34 /* PlayerTest.m */,
 			);
 			path = UnitTest;
 			sourceTree = "<group>";
@@ -1315,6 +1320,7 @@
 				8F5940BB1543A50C001C0570 /* WaitForStart.m in Sources */,
 				8F2435DB1543AD120090DC68 /* Player.m in Sources */,
 				8F2435E01543B4C20090DC68 /* LoadGoods.m in Sources */,
+				8F7A145B1545A4630095BB34 /* PlayerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

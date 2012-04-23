@@ -211,6 +211,12 @@ Player *_activePlayer;
     [_stateHandler retain];
 }
 
+#pragma mark - dialog and input
+
+- (void) chooseAGoodType {
+    //display dialogs
+}
+
 #pragma mark -
 
 - (void) loadGoods {

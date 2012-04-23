@@ -34,8 +34,19 @@
 }
 
 - (id)init {
-    NSAssert(NO, @"not support");
-    return nil;
+    if (self = [super init]) {
+        coin = 0;
+        for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
+            cardHand[i] = 0;
+        }
+        for (int i = 0; i < SPECIAL_TYPE_COUNT; i++) {
+            specials[i] = 0;
+        }
+        for (int i = 0; i < SHIP_COUNT; i++) {
+            ships[i] = kGoodNone;
+        }
+	}
+    return self;
 }
 
 - (id)initWithDelegate:(id) delegate {
@@ -62,7 +73,7 @@
 	return true;
 }
 
-- (bool) playCardofType: (GoodTypeEnum)goodType {
+- (bool) playCardOfType: (GoodTypeEnum)goodType {
 	if (cardHand[goodType] > 0) {
         cardHand[goodType]--;
         return true;
