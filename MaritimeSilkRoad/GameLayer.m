@@ -27,6 +27,25 @@
 #define DIALOG_ACTIONS 	101
 #define DIALOG_YESNO		102
 
+int _loadGoodsTurns;
+int _phaseTurns;
+int _chosenShip;
+
+CCLabelTTF *labelDeck;
+CCLabelTTF *labelSpecials;
+CCLabelTTF *labelYourCoin;
+CCLabelTTF *labelYourSpecials;
+CCLabelTTF *lableYourShips[SHIP_COUNT];
+CCLabelTTF *labelTokens[GOOD_TYPE_COUNT];
+CCLabelTTF *labelPlayers[MAX_PLAYER];
+ShipsPanel *shipsPanel;
+HandMarketPanel *handMarketPanel;
+
+
+GameBoard *_gameBoard;
+GameState *_stateHandler;
+int _playerCount;
+Player *_activePlayer;
 
 + (CCScene *) sceneWithPlayerNumber: (NSUInteger) _playerNbr {
     
@@ -54,16 +73,10 @@
         _stateHandler = [[Preparing alloc] init];
         [_stateHandler handle:self gameBoard:_gameBoard];
 		
-        CGSize size = [[CCDirector sharedDirector] winSize];
-        DLog(@"screen w=%f, h=%f, factor%f", size.width, size.height, CC_CONTENT_SCALE_FACTOR());
+
+        [self createViews];
         
-        CCSprite *background = [CCSprite spriteWithFile:@"bg.png"];
-        background.position = ccp( size.width /2 , size.height /2 );
-        [self addChild:background z:Z_MOST_BACK];
-        
-		gameState = kWaitForStart;
-        [self setupMenus];
-        
+        //start game logic
 		[self scheduleUpdate];
         [_stateHandler handle:self gameBoard:_gameBoard];
         
@@ -73,8 +86,13 @@
     
 }
 
-- (void) setupMenus {
+- (void) createViews {
+    
     CGSize size = [[CCDirector sharedDirector] winSize];
+    DLog(@"screen w=%f, h=%f, factor%f", size.width, size.height, CC_CONTENT_SCALE_FACTOR());
+    CCSprite *background = [CCSprite spriteWithFile:@"bg.png"];
+    background.position = ccp( size.width /2 , size.height /2 );
+    [self addChild:background z:Z_MOST_BACK];
     
     CCLabelTTF *labelPause = [CCLabelTTF labelWithString:@"||" fontName:FONT_NAME fontSize:32];
     CCMenuItemLabel *itmPause = [CCMenuItemLabel itemWithLabel:labelPause target:self selector:@selector(pauseTapped:)];
@@ -83,13 +101,12 @@
     menu.position = ccp(size.width / 2, size.height / 2);
     [self addChild:menu z:Z_MOST_FRONT tag:1]; 
     
+    NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
     for (int i = 0; i < _gameBoard.playerCount; i++) {
-        Player *p = [_gameBoard.players objectAtIndex:i];
-        labelPlayers[i] = [CCLabelTTF labelWithString:@"nomame" fontName:FONT_NAME fontSize:16];
+        labelPlayers[i] = [CCLabelTTF labelWithString:names[i] fontName:FONT_NAME fontSize:16];
         labelPlayers[i].position = ccp(40, 260 - i * 30);
         [self addChild:labelPlayers[i] z:Z_BOARD tag:(10 + i)];
     }
-
 
                              
     for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
@@ -107,90 +124,34 @@
     labelDeck.position = ccp(400, 240);
     [self addChild:labelDeck z:Z_BOARD];  
     
-    Human *human = [_gameBoard.players objectAtIndex:0];
-    labelYourCoin = [CCLabelTTF labelWithString:STR(@"Coin %d", human.coin) fontName:FONT_NAME fontSize:16];
+
+    labelYourCoin = [CCLabelTTF labelWithString:@"Coin 000" fontName:FONT_NAME fontSize:16];
     labelYourCoin.position = ccp(30, 50);
     [self addChild:labelYourCoin z:Z_BOARD];
     
-    labelYourSpecials = [CCLabelTTF labelWithString:STR(@"w%d c%d t%d", human.specials[kSpecialWorker], human.specials[kSpecialConcession], human.specials[kSpecialTrade]) fontName:FONT_NAME fontSize:16];
+    labelYourSpecials = [CCLabelTTF labelWithString:@"w0 c0 t0" fontName:FONT_NAME fontSize:16];
     labelYourSpecials.position = ccp(30, 70);
     [self addChild:labelYourSpecials z:Z_BOARD];
     
         
-//    shipsPanel.position = ccp(size.width / 2, size.height / 2);
-//    [self addChild:shipsPanel z:Z_BOARD + 1];
-//    
-//    handMarketPanel.position = ccp(size.width / 2, size.height / 2);
-//    [self addChild:handMarketPanel z:Z_BOARD];
+    handMarketPanel = [[[HandMarketPanel alloc] initWithHuman:[_gameBoard.players objectAtIndex:0] market:_gameBoard.market] autorelease];
+    handMarketPanel.position = ccp(size.width / 2, size.height / 2);
+    [self addChild:handMarketPanel z:Z_BOARD];
 
+    shipsPanel = [[[ShipsPanel alloc] initWithHuman:[_gameBoard.players objectAtIndex:0]] autorelease];
+    shipsPanel.position = ccp(size.width / 2, size.height / 2);
+    [self addChild:shipsPanel z:Z_BOARD + 1];
+
+    
 }
 
 - (void) update: (ccTime)dt {
-    //DLog(@"pos %f %f", itm.position.x, itm.position.y);
-    //DLog(@"gameState=%d", gameState);
 
 	if (NO == isDialoging) {
         handMarketPanel.isTouchEnabled = YES;
         shipsPanel.isTouchEnabled = YES;
-
-		switch(gameState) {
-            case kWaitForStart:
-                break;
-            case kPreparing:
-                [self prepareGame]; 
-                break;
-            case kLoadGoods:
-                [self loadGoods]; 
-                break;
-            case kPhase1:
-                [self phase1]; 
-                break;
-            case kP11ChangeGood:
-                [self p11ChangeGood]; 
-                break;
-            case kP12BuySpecial:
-                [self p12BuySpecial];
-                break;
-            case kP13Pass:
-                [self p13Pass];
-                break;
-            case kPhase2:
-                [self phase2]; 
-                break;
-            case kP21PlayCard:
-                break;
-            case kP22GetCard:
-                break;
-            case kGameOver:
-                [self gameOver];
-                break;
-        }
-	
-        //update players' labels
-        for (int i = 0; i < _gameBoard.playerCount; i++) {
-            Player *p = [_gameBoard.players objectAtIndex:i];
-
-            NSMutableString *str = [NSMutableString stringWithFormat:@"%@ %d=", p.name, [p cardHandCount]];
-            for (int j = 0; j < p.specials[kSpecialShip]; j++) {	
-                [str appendFormat:@"%d ", p.ships[j]];
-            }
-            [labelPlayers[i] setString:str]; 
-        }
-        //update lables of tokens in pool
-        for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
-            [labelTokens[i] setString:[NSString stringWithFormat:@"%d", _gameBoard.pool.token[i]]];
-        }
         
-        Human *user = [_gameBoard.players objectAtIndex:0];
-        [labelYourCoin setString:STR(@"Coin %d", user.coin)];
-        [labelYourSpecials setString:STR(@"w%d c%d t%d", user.specials[kSpecialWorker], user.specials[kSpecialConcession], user.specials[kSpecialTrade])];
-        [labelYourCoin setString:STR(@"Coin %d", user.coin)];
-        [labelSpecials setString:STR(@"w%d c%d t%d s%d", _gameBoard.pool.specialCards[kSpecialWorker], _gameBoard.pool.specialCards[kSpecialConcession], _gameBoard.pool.specialCards[kSpecialTrade], _gameBoard.pool.specialCards[kSpecialShip])];
-        [labelDeck setString:STR(@"Deck %d", _gameBoard.pool.remainingCards)];  
-        
-        [shipsPanel refresh];
-        [handMarketPanel refresh];
-                
+        [self updateViews];
     }
     else {
         handMarketPanel.isTouchEnabled = NO;
@@ -198,6 +159,34 @@
     }
 }
 
+- (void) updateViews {
+    Human *human = [_gameBoard.players objectAtIndex:0];
+    
+    //update players' labels
+    for (int i = 0; i < _gameBoard.playerCount; i++) {
+        Player *p = [_gameBoard.players objectAtIndex:i];
+        
+        NSMutableString *str = [NSMutableString stringWithFormat:@"%@ %d=", p.name, [p cardHandCount]];
+        for (int j = 0; j < p.specials[kSpecialShip]; j++) {	
+            [str appendFormat:@"%d ", p.ships[j]];
+        }
+        [labelPlayers[i] setString:str]; 
+    }
+    //update lables of tokens in pool
+    for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
+        [labelTokens[i] setString:[NSString stringWithFormat:@"%d", _gameBoard.pool.token[i]]];
+    }
+    
+
+    [labelYourCoin setString:STR(@"Coin %d", human.coin)];
+    [labelYourSpecials setString:STR(@"w%d c%d t%d", human.specials[kSpecialWorker], human.specials[kSpecialConcession], human.specials[kSpecialTrade])];
+    [labelYourCoin setString:STR(@"Coin %d", human.coin)];
+    [labelSpecials setString:STR(@"w%d c%d t%d s%d", _gameBoard.pool.specialCards[kSpecialWorker], _gameBoard.pool.specialCards[kSpecialConcession], _gameBoard.pool.specialCards[kSpecialTrade], _gameBoard.pool.specialCards[kSpecialShip])];
+    [labelDeck setString:STR(@"Deck %d", _gameBoard.pool.remainingCards)];  
+    
+    [shipsPanel refresh];
+    [handMarketPanel refresh];
+}
 
 
 - (void) dealloc {
@@ -222,23 +211,7 @@
     [_stateHandler retain];
 }
 
-- (void) prepareGame {	
-
-    NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
-    
-    //shipsPanel = [[[ShipsPanel alloc] initWithHuman:human] autorelease];
-    //handMarketPanel = [[[HandMarketPanel alloc] initWithHuman:_gameBoard.human market:_gameBoard.market] autorelease];
-    //[handMarketPanel setMarketAtIndex:i good:good];
-    //_activePlayer = [_gameBoard.players objectAtIndex:_gameBoard.activePlayerIndex];
-
-
-    
-    
-	gameState = kLoadGoods;
-}
-
-
-
+#pragma mark -
 
 - (void) loadGoods {
 	if (_loadGoodsTurns > 0) {
@@ -272,21 +245,9 @@
     [_activePlayer chooseASpecialForAction12FromPool:_gameBoard.pool];
 }
 
--(void) p13Pass {
-    [_gameBoard nextPlayer];
-    _phaseTurns--;
-    gameState = kPhase1;    
-}
 
-- (void) phase2 {
-    DLog(@"", nil);
-    gameState = kGameOver;
-    //[[InfoBox sharedInfoBox] setNewMsg:@"Now is Phase2"];
-    
-}
-
--(void) gameOver {
-    
+-(void) displayFinalScore {
+    //when game over
     
 }
 
@@ -381,10 +342,9 @@
 	DLog(@"isYes %d", isYes);
 }
 
--(void) didChooseAShip: (NSNumber*) num {
-    int ship = [num intValue];
-	DLog(@"ship %d", ship);    
-    _chosenShip = ship;
+-(void) didChooseAShip: (int)shipIndex {
+	DLog(@"ship %d", shipIndex);    
+    _chosenShip = shipIndex;
     [_activePlayer chooseAGoodTypeFromPool:_gameBoard.pool];
 }
 

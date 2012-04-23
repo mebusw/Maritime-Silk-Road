@@ -11,9 +11,6 @@
 
 @implementation Market
 
-- (int*) goodCards {
-    return _goodCards;
-}
 
 -(id) init {
     if (self = [super init]) {

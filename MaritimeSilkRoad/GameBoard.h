@@ -24,6 +24,10 @@
 @property (nonatomic, readonly) int activePlayerIndex;
 @property (nonatomic, readonly) int playerCount;
 @property (nonatomic, readonly) int startPlayerIndex;
+@property (nonatomic, readonly) int chosenMarket;
+@property (nonatomic, readonly) int chosenAction;
+@property (nonatomic, readonly) int chosenGoodType;
+@property (nonatomic, readonly) int chosenSpecialType;
 
 - (id) initWithPlayerNumber: (NSUInteger) playerNbr;
 -(int) nextPlayer;

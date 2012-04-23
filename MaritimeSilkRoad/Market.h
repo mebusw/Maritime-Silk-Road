@@ -12,10 +12,9 @@
     int _goodCards[MARKET_SIZE];
 }
 
-@property (readonly) int *goodCards;
-
 
 -(void) changeGood:(GoodTypeEnum)good atIndex:(int) index;
+-(GoodTypeEnum) goodAtIndex:(int) index;
 -(int) countOfGood:(GoodTypeEnum)good;
 
 @end

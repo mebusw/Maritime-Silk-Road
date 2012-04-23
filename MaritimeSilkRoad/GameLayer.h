@@ -20,25 +20,7 @@
 @class GameState;
 
 @interface GameLayer : CCLayer {
-	int _loadGoodsTurns;
-    int _phaseTurns;
-    int _chosenShip;
-	
-	CCLabelTTF *labelDeck;
-	CCLabelTTF *labelSpecials;
-	CCLabelTTF *labelYourCoin;
-	CCLabelTTF *labelYourSpecials;
-	CCLabelTTF *lableYourShips[SHIP_COUNT];
-	CCLabelTTF *labelTokens[GOOD_TYPE_COUNT];
-    CCLabelTTF *labelPlayers[MAX_PLAYER];
-    ShipsPanel *shipsPanel;
-    HandMarketPanel *handMarketPanel;
 
-    
-    GameBoard *_gameBoard;
-    GameState *_stateHandler;
-    int _playerCount;
-    Player *_activePlayer;
 }
 @property BOOL isDialoging; //if dialog is open, then no need to schedule for next state
 @property GameStateEnum gameState;
@@ -46,19 +28,16 @@
 
 
 +(CCScene *) sceneWithPlayerNumber: (NSUInteger) playerNbr;
-- (void) setupMenus;
+- (void) createViews;
+- (void) updateViews;
 - (id) initWithPlayerNumber: (NSUInteger) playerNbr;
 - (void) loadGoods;
-- (void) prepareGame;
 - (void) phase1;
 - (void) p11ChangeGood;
 - (void) p12BuySpecial;
-- (void) p13Pass;
-- (void) phase2;
-- (void) gameOver;
 
 
--(void) didChooseAShip: (NSNumber*) num;
+-(void) didChooseAShip:(int)shipIndex;
 -(void) didChooseASpecial: (NSNumber *)num;
 
 -(void) handleRequest; 

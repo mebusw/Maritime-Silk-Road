@@ -48,7 +48,7 @@
 	for (int i = 0; i < MARKET_SIZE; i++) {
 		GoodTypeEnum good = [gameBoard.pool fetchAGood];
 		DLog(@"market got good card %d",  good);
-        
+        [gameBoard.market changeGood:good atIndex:i];
 	}
     
     

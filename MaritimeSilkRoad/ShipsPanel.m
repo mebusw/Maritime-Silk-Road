@@ -21,8 +21,7 @@
     self = [super init];
     if (self) {
         self.isTouchEnabled = YES;
-        user = human;
-        [self refresh];
+        _human = human;
         state = kShipWaiting;
     }
     
@@ -32,10 +31,10 @@
 -(void) refresh {
     [self removeAllChildrenWithCleanup:YES];
     
-    for (int i = 0; i < user.specials[kSpecialShip]; i++) {
+    for (int i = 0; i < _human.specials[kSpecialShip]; i++) {
         
         //TODO use sprite batch node or -[draw] to improve performance, definitely!!!
-        CCSprite *aShip = [CCSprite spriteWithFile: [ShipsPanel imageNameMapping:user.ships[i]]];
+        CCSprite *aShip = [CCSprite spriteWithFile: [ShipsPanel imageNameMapping:_human.ships[i]]];
         aShip.position = ccp(i * TOKEN_WIDTH, -self.contentSize.height / 2 + TOKEN_WIDTH);
         [self addChild:aShip];
     }
@@ -54,7 +53,7 @@
 	touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
 	
 	//DLogPoint(@"touchLocation", touchLocation);
-    CGRect full = CGRectMake(self.contentSize.width / 2 - TOKEN_WIDTH / 2, TOKEN_WIDTH / 2, TOKEN_WIDTH * user.specials[kSpecialShip], TOKEN_WIDTH);
+    CGRect full = CGRectMake(self.contentSize.width / 2 - TOKEN_WIDTH / 2, TOKEN_WIDTH / 2, TOKEN_WIDTH * _human.specials[kSpecialShip], TOKEN_WIDTH);
     if (CGRectContainsPoint(full, touchLocation)) {
         //TODO
         return (touchLocation.x - (self.contentSize.width / 2 - TOKEN_WIDTH / 2)) / TOKEN_WIDTH;
@@ -80,7 +79,7 @@
     DLog(@"shipIndex %d", shipIndex);
 
     GameLayer *gameLayer = (GameLayer*)(self.parent);
-    [gameLayer didChooseAShip: [NSNumber numberWithInt:shipIndex]];
+    [gameLayer didChooseAShip:shipIndex];
     
     state = kShipWaiting;
 }

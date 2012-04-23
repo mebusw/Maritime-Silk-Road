@@ -13,7 +13,7 @@
 
 @synthesize pool, players, market;
 @synthesize playerCount, startPlayerIndex, activePlayerIndex;
-
+@synthesize chosenAction, chosenMarket, chosenGoodType, chosenSpecialType;
 
 - (id) initWithPlayerNumber: (NSUInteger) playerNbr {
     if (self = [super init]) {

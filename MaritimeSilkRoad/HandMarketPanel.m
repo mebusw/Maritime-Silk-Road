@@ -19,7 +19,7 @@
 @implementation HandMarketPanel
 @synthesize isBtnFinishVisible;
 
--(id) initWithHuman:(Human*) human market:(int*)market{
+-(id) initWithHuman:(Human*) human market:(Market*)market {
 	if( (self=[super init]) ) {
 		self.isTouchEnabled = YES;
 		state = kPanelWaiting;
@@ -58,8 +58,9 @@
         int marketIndex = 0;
         for (int row = 0; row < 2; row++) {
             for (int col = 0; col < 3; col++) {
-                DLog(@"market[%d]=%d", marketIndex, _market[marketIndex]);
-                markets[marketIndex] = [CCSprite spriteWithFile:images[_market[marketIndex]]];
+                
+                DLog(@"market[%d]=%d", marketIndex, [_market goodAtIndex:marketIndex]);
+                markets[marketIndex] = [CCSprite spriteWithFile:images[[_market goodAtIndex:marketIndex]]];
                 markets[marketIndex].position = ccp((col - 1) * CARD_WIDTH, (row + 0.5) * CARD_HEIGHT);
                 [self addChild:markets[marketIndex] z:0 tag:CHILD_MARKET];
                 marketIndex++;
@@ -72,7 +73,7 @@
 
 -(void) setMarketAtIndex:(int)index good:(GoodTypeEnum)good {
     DLog(@"index %d good %d", index, good);
-    _market[index] = good;
+    [_market changeGood:good atIndex:index];
     
     needRefresh = YES;
 }
