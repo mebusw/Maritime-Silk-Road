@@ -12,8 +12,9 @@
 @implementation LoadGoods
 
 
--(void) handle:(id)observer gameBoard:(GameBoard*)gameBoard {
+-(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {
     DLog(@"");
+    [observer chooseAGoodType];
     
     //_loadGoodsTurns = 2 * _playerCount; // two round of loading goods
 

@@ -163,10 +163,11 @@ Player *_activePlayer;
     Human *human = [_gameBoard.players objectAtIndex:0];
     
     //update players' labels
+    NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
     for (int i = 0; i < _gameBoard.playerCount; i++) {
         Player *p = [_gameBoard.players objectAtIndex:i];
         
-        NSMutableString *str = [NSMutableString stringWithFormat:@"%@ %d=", p.name, [p cardHandCount]];
+        NSMutableString *str = [NSMutableString stringWithFormat:@"%@ %d=", names[i], [p cardHandCount]];
         for (int j = 0; j < p.specials[kSpecialShip]; j++) {	
             [str appendFormat:@"%d ", p.ships[j]];
         }
@@ -214,7 +215,12 @@ Player *_activePlayer;
 #pragma mark - dialog and input
 
 - (void) chooseAGoodType {
-    //display dialogs
+    Dialog *dialog = [Dialog dialogWithGoodCounts:_gameBoard.pool.token target:self selector:@selector(didChooseFromDialog:)];
+    [self addChild:dialog z:Z_MOST_FRONT tag:DIALOG_GOODS];
+}
+
+-(void) didChooseFromDialog:(NSNumber*)number {
+    DLog(@"%@", number);
 }
 
 #pragma mark -

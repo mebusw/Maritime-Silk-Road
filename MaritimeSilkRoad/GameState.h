@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "GameBoard.h"
+#import "GameLayer.h"
 
 
 
 @interface GameState : NSObject
 
 
--(void) handle:(id)observer gameBoard:(GameBoard*)gameBoard;
+-(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard;
 
 
 @end

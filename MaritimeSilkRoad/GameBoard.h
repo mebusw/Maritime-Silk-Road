@@ -29,6 +29,9 @@
 @property (nonatomic, readonly) int chosenGoodType;
 @property (nonatomic, readonly) int chosenSpecialType;
 
+@property (nonatomic, readonly) GoodTypeEnum chosenGoodOfCurrentPlayer;
+
+
 - (id) initWithPlayerNumber: (NSUInteger) playerNbr;
 -(int) nextPlayer;
 

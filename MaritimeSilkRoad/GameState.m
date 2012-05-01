@@ -19,7 +19,7 @@
     return self;
 }
 
--(void) handle:(id)observer gameBoard:(GameBoard*)gameBoard {
+-(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {
     @throw [NSException exceptionWithName:@"Can't execute abstract ethod" reason:@"This method must be overrived by subclass" userInfo:nil];
 }
 

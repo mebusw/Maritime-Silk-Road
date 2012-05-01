@@ -14,7 +14,7 @@
 
 
 
--(void) handle:(id)observer gameBoard:(GameBoard*)gameBoard {
+-(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {
     DLog(@"");
     
     // shuffle decks
