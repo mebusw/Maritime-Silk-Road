@@ -17,8 +17,8 @@
 -(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {
     DLog(@"");
     
-    // shuffle decks
-	gameBoard.pool = [[Pool alloc] init];
+    gameBoard.pool = [[Pool alloc] init];
+    gameBoard.market = [[Market alloc] init];
     
 	// create Human player
 	gameBoard.players = [[NSMutableArray alloc] initWithCapacity:gameBoard.playerCount];
@@ -52,7 +52,9 @@
 	}
     
     
-
+    gameBoard.remainingTurns = 2 * gameBoard.playerCount;
+    gameBoard.isDialogging = NO;
+    gameBoard.isInfoboxing = NO;
     [observer changeState:[[[LoadGoods alloc] init] autorelease]];
 }
 

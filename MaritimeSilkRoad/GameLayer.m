@@ -221,6 +221,8 @@ Player *_activePlayer;
 
 -(void) didChooseFromDialog:(NSNumber*)number {
     DLog(@"%@", number);
+    _gameBoard.chosenGoodType = [number intValue];
+    [self handleRequest];
 }
 
 #pragma mark -

@@ -12,7 +12,10 @@
 
 
 
-@interface GameState : NSObject
+@interface GameState : NSObject {
+    GameLayer *_observer;
+    GameBoard *_gameBoard;
+}
 
 
 -(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard;

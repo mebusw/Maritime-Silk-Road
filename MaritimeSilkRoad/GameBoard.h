@@ -24,16 +24,17 @@
 @property (nonatomic, readonly) int activePlayerIndex;
 @property (nonatomic, readonly) int playerCount;
 @property (nonatomic, readonly) int startPlayerIndex;
-@property (nonatomic, readonly) int chosenMarket;
-@property (nonatomic, readonly) int chosenAction;
-@property (nonatomic, readonly) int chosenGoodType;
-@property (nonatomic, readonly) int chosenSpecialType;
+@property (nonatomic) int chosenMarket;
+@property (nonatomic) int chosenAction;
+@property (nonatomic) GoodTypeEnum chosenGoodType;
+@property (nonatomic) int chosenSpecialType;
+@property (nonatomic) int remainingTurns;
 
-@property (nonatomic, readonly) GoodTypeEnum chosenGoodOfCurrentPlayer;
-
+@property (nonatomic) BOOL isDialogging;
+@property (nonatomic) BOOL isInfoboxing;
 
 - (id) initWithPlayerNumber: (NSUInteger) playerNbr;
 -(int) nextPlayer;
-
+-(Player*) currentPlayer;
 
 @end

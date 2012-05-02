@@ -14,13 +14,11 @@
 @synthesize pool, players, market;
 @synthesize playerCount, startPlayerIndex, activePlayerIndex;
 @synthesize chosenAction, chosenMarket, chosenGoodType, chosenSpecialType;
-@synthesize chosenGoodOfCurrentPlayer;
+@synthesize remainingTurns, isDialogging, isInfoboxing;
 
 - (id) initWithPlayerNumber: (NSUInteger) playerNbr {
     if (self = [super init]) {
         playerCount = playerNbr;
-        pool = [[Pool alloc] init];
-        market = [[Market alloc] init];
         startPlayerIndex = (int) (CCRANDOM_0_1() * playerCount);
         activePlayerIndex = startPlayerIndex;
     }
@@ -33,6 +31,9 @@
     return activePlayerIndex;
 }
 
+-(Player*) currentPlayer {
+    return [players objectAtIndex:activePlayerIndex];
+}
 
 
 @end
