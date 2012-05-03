@@ -30,7 +30,7 @@
 
 
 +(CCScene *) sceneWithPlayerNumber: (NSUInteger) playerNbr;
-+ (GameLayer*) sharedGameLayer;
+
 
 - (void) createViews;
 - (void) updateViews;

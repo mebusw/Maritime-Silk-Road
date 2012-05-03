@@ -7,7 +7,9 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "GameLayer.h"
 
 @interface GameBoardTest : SenTestCase
 
 @end
+

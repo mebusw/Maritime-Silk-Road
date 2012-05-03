@@ -10,15 +10,16 @@
 #import "GameBoard.h"
 #import "GameLayer.h"
 
-
+@class GameLayer;
 
 @interface GameState : NSObject {
     GameLayer *_observer;
     GameBoard *_gameBoard;
 }
 
+-(id) initWithObserver:(GameLayer*)gameLayer gameBoard:(GameBoard*)gameBoard;
 
--(void) handle;
+-(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard;
 -(void) enter;
 -(void) exit;
 

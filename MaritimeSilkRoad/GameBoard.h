@@ -37,6 +37,5 @@
 -(Player*) currentPlayer;
 -(void) buildGameBoardWithPlayerNumber: (NSUInteger) playerNbr;
 
-+(GameBoard*) shareGameBoard;
 
 @end

@@ -45,8 +45,6 @@ HandMarketPanel *handMarketPanel;
 
 GameBoard *_gameBoard;
 
-static GameLayer *_instance;
-
 int _playerCount;
 Player *_activePlayer;
 
@@ -56,27 +54,22 @@ Player *_activePlayer;
 	CCScene *scene = [CCScene node];
 	
 	// 'lShipsPanelayer' is an autorelease object.
-	_instance = [[[GameLayer alloc] initWithPlayerNumber:_playerNbr] autorelease];
+	GameLayer *layer = [[[GameLayer alloc] initWithPlayerNumber:_playerNbr] autorelease];
 	
 	// add layer as a child to scene
-	[scene addChild:_instance];
+	[scene addChild:layer];
 
 	// return the scene
 	return scene;
 }
 
-+ (GameLayer*) sharedGameLayer {
-    if (!_instance) {
-        @throw [NSException exceptionWithName:@"No GameLayer" reason:@"singleton has not initiated" userInfo:nil];
-    }
-    return _instance;
-}
+
 
 - (id) initWithPlayerNumber: (NSUInteger) playerNbr {	
     if (self = [super init]) {
 		DLog(@"player nbr=%d", playerNbr);
         
-        _gameBoard = [GameBoard shareGameBoard];
+        _gameBoard = [[GameBoard alloc] init];
         [_gameBoard buildGameBoardWithPlayerNumber:playerNbr];
         
 		_playerCount = playerNbr;        
@@ -213,7 +206,7 @@ Player *_activePlayer;
 #pragma mark - state handlers
 
 -(void) handleRequest {
-    [[stateStack top] handle];
+    [[stateStack top] handle:self gameBoard:_gameBoard];
 }
 
 

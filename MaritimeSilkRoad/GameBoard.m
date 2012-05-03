@@ -16,20 +16,6 @@
 @synthesize chosenAction, chosenMarket, chosenGoodType, chosenSpecialType;
 @synthesize remainingTurns, isDialogging, isInfoboxing;
 
-static GameBoard *_instance;
-
-+(GameBoard*) shareGameBoard {
-    if (!_instance) {
-        _instance = [[GameBoard alloc] init];
-    }
-    return _instance;
-}
-
--(void) dealloc {
-    @throw [NSException exceptionWithName:@"Singleton" reason:@"should not dealloc a singleton" userInfo:nil];
-    [super dealloc];
-}
-
 -(void) buildGameBoardWithPlayerNumber: (NSUInteger) playerNbr {
     playerCount = playerNbr;
     startPlayerIndex = (int) (CCRANDOM_0_1() * playerCount);

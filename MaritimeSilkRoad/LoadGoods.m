@@ -12,10 +12,10 @@
 @implementation LoadGoods
 
 
--(void) enter:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {
-    gameBoard.remainingTurns = 2 * gameBoard.playerCount;
-    gameBoard.isDialogging = NO;
-    gameBoard.isInfoboxing = NO;
+-(void) enter {
+    _gameBoard.remainingTurns = 2 * _gameBoard.playerCount;
+    _gameBoard.isDialogging = NO;
+    _gameBoard.isInfoboxing = NO;
 }
 
 
@@ -23,7 +23,6 @@
     DLog(@"");
     _observer = observer;
     _gameBoard = gameBoard;
-
     
     if (gameBoard.isDialogging) {
         [self afterDialog];
@@ -55,7 +54,7 @@
     
 //    InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", _activePlayer.name, goodType)];
 //    [ib show:self];
-//    _gameBoard.isInfoboxing = NO;
+//    gameBoard.isInfoboxing = NO;
 //    
     [_gameBoard nextPlayer];
     _gameBoard.remainingTurns -= 1;

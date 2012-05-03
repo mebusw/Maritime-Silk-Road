@@ -9,13 +9,14 @@
 #import "GameBoardTest.h"
 #import "GameBoard.h"
 
+
+
 @implementation GameBoardTest
 
 - (void)setUp
 {
     [super setUp];
     
-    // Set-up code here.
 }
 
 - (void)tearDown
@@ -26,7 +27,7 @@
 }
 
 -(void) testNextPlayer {
-    GameBoard *gb = [GameBoard shareGameBoard];
+    GameBoard *gb = [[GameBoard alloc] init];
     [gb buildGameBoardWithPlayerNumber:3];
     gb.players = [NSArray arrayWithObjects:@"a", @"b", @"c", nil];
     int currentPlayer = gb.activePlayerIndex;
@@ -40,10 +41,6 @@
 
 }
 
--(void) testSingleton {
-    STAssertEquals([GameBoard shareGameBoard], [GameBoard shareGameBoard], nil);
-    STAssertNotNil([GameBoard shareGameBoard], nil);
-    
-}
+
 
 @end
