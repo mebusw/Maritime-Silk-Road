@@ -52,8 +52,8 @@
 	}
     
     
-
-    [observer.stateStack change:[[[LoadGoods alloc] init] autorelease]];
+    _gameBoard.remainingTurns = 2 * _gameBoard.playerCount;
+    [observer.stateStack change:[[[LoadGoods alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
 }
 
 @end

@@ -192,6 +192,8 @@
 		8FCF7C8A1552AD390015E630 /* StateStackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCF7C891552AD390015E630 /* StateStackTest.m */; };
 		8FCF7C8E1552AD8F0015E630 /* StateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCF7C8D1552AD8F0015E630 /* StateStack.m */; };
 		8FCF7C8F1552ADDB0015E630 /* StateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCF7C8D1552AD8F0015E630 /* StateStack.m */; };
+		8FCF7C9A1552E20B0015E630 /* AskingForLoadGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCF7C991552E20B0015E630 /* AskingForLoadGood.m */; };
+		8FCF7C9B1552E3B30015E630 /* AskingForLoadGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCF7C991552E20B0015E630 /* AskingForLoadGood.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -514,6 +516,8 @@
 		8FCF7C891552AD390015E630 /* StateStackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateStackTest.m; sourceTree = "<group>"; };
 		8FCF7C8C1552AD8F0015E630 /* StateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateStack.h; sourceTree = "<group>"; };
 		8FCF7C8D1552AD8F0015E630 /* StateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateStack.m; sourceTree = "<group>"; };
+		8FCF7C981552E20B0015E630 /* AskingForLoadGood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskingForLoadGood.h; sourceTree = "<group>"; };
+		8FCF7C991552E20B0015E630 /* AskingForLoadGood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskingForLoadGood.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1009,6 +1013,8 @@
 				8F79C640153AFE3E0018873A /* Preparing.m */,
 				8F2435DD1543B4C20090DC68 /* LoadGoods.h */,
 				8F2435DE1543B4C20090DC68 /* LoadGoods.m */,
+				8FCF7C981552E20B0015E630 /* AskingForLoadGood.h */,
+				8FCF7C991552E20B0015E630 /* AskingForLoadGood.m */,
 				8F79C642153AFE7C0018873A /* ChangeGood.h */,
 				8F79C643153AFE7C0018873A /* ChangeGood.m */,
 				8FCF7C8C1552AD8F0015E630 /* StateStack.h */,
@@ -1306,6 +1312,7 @@
 				8F5940BA1543A50C001C0570 /* WaitForStart.m in Sources */,
 				8F2435DF1543B4C20090DC68 /* LoadGoods.m in Sources */,
 				8FCF7C8E1552AD8F0015E630 /* StateStack.m in Sources */,
+				8FCF7C9A1552E20B0015E630 /* AskingForLoadGood.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1329,6 +1336,7 @@
 				8F7A145B1545A4630095BB34 /* PlayerTest.m in Sources */,
 				8FCF7C8A1552AD390015E630 /* StateStackTest.m in Sources */,
 				8FCF7C8F1552ADDB0015E630 /* StateStack.m in Sources */,
+				8FCF7C9B1552E3B30015E630 /* AskingForLoadGood.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

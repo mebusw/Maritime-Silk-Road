@@ -8,14 +8,19 @@
 
 #import "LoadGoods.h"
 #import "ChangeGood.h"
+#import "AskingForLoadGood.h"
+
 
 @implementation LoadGoods
 
 
 -(void) enter {
-    _gameBoard.remainingTurns = 2 * _gameBoard.playerCount;
+    DLog(@"%d", _gameBoard.remainingTurns);
+
     _gameBoard.isDialogging = NO;
     _gameBoard.isInfoboxing = NO;
+    
+    [self lookAtNewTurn];
 }
 
 
@@ -24,19 +29,14 @@
     _observer = observer;
     _gameBoard = gameBoard;
     
-    if (gameBoard.isDialogging) {
-        [self afterDialog];
-    } else if(gameBoard.isInfoboxing) {
-        [self afterInfobox];
-    } else {
-        [self lookAtNewTurn];
-    }
-    
 }
 
 -(void) lookAtNewTurn {
     if (_gameBoard.remainingTurns > 0) {
         _gameBoard.isDialogging = YES;
+        
+        [_observer.stateStack push:[[AskingForLoadGood alloc] initWithObserver:_observer gameBoard:_gameBoard]];
+        
         [_observer chooseAGoodType];
     } else {
         [_observer.stateStack change:[[[ChangeGood alloc] init] autorelease]];
@@ -44,28 +44,9 @@
     
 }
 
--(void) afterDialog {
-    _gameBoard.isDialogging = NO;
-    DLog(@"%d", _gameBoard.chosenGoodType);
-    [_gameBoard.pool fetchAToken:_gameBoard.chosenGoodType];
-    [[_gameBoard currentPlayer] loadGoodToShip:_gameBoard.chosenGoodType atIndex:((_gameBoard.remainingTurns - 1) / _gameBoard.playerCount)];    
-    
 
-    
-//    InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", _activePlayer.name, goodType)];
-//    [ib show:self];
-//    gameBoard.isInfoboxing = NO;
-//    
-    [_gameBoard nextPlayer];
-    _gameBoard.remainingTurns -= 1;
-    
-    [self lookAtNewTurn];
-    
-}
-
--(void) afterInfobox {
-    _gameBoard.isInfoboxing = YES;
-    
+-(void) exit {
+    DLog(@"");
 }
 
 

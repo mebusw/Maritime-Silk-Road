@@ -75,7 +75,7 @@ Player *_activePlayer;
 		_playerCount = playerNbr;        
         
         stateStack = [[StateStack alloc] init];
-        [stateStack push:[[Preparing alloc] init]];
+        [stateStack push:[[Preparing alloc] initWithObserver:self gameBoard:_gameBoard]];
         //TODO should move Preparing to a builder of GameBoard
         
         [self handleRequest];
@@ -220,6 +220,7 @@ Player *_activePlayer;
 -(void) didChooseFromDialog:(NSNumber*)number {
     DLog(@"%@", number);
     _gameBoard.chosenGoodType = [number intValue];
+    [self removeChildByTag:DIALOG_GOODS cleanup:YES];
     [self handleRequest];
 }
 
