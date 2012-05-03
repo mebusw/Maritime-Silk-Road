@@ -281,8 +281,7 @@ Player *_activePlayer;
             [_gameBoard.pool fetchAToken: goodType];
             [_activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / _playerCount)];
 
-            InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", _activePlayer.name, goodType)];
-            [ib show:self];
+            [InfoBox infoBoxWithMsg:STR(@"%@ chooses good type %d", _activePlayer.name, goodType) above:self];
             
             [_gameBoard nextPlayer];
             _loadGoodsTurns--; 
@@ -295,8 +294,8 @@ Player *_activePlayer;
             _activePlayer.ships[_chosenShip] = goodType;
             [_gameBoard.pool putAToken:goodOnChosenShip];
             
-            InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses good type %d", _activePlayer.name, goodType)];
-            [ib show:self];
+            [InfoBox infoBoxWithMsg:STR(@"%@ chooses good type %d", _activePlayer.name, goodType) above:self];
+
             
             [_gameBoard nextPlayer];
             _phaseTurns--;
@@ -329,9 +328,9 @@ Player *_activePlayer;
             break;
     }
 
-    InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses action for phase1 %d", _activePlayer.name, action)];
-    [ib show:self];
-     
+
+    [InfoBox infoBoxWithMsg:STR(@"%@ chooses action for phase1 %d", _activePlayer.name, action) above:self];
+ 
 }
 
 -(void) didChooseASpecial: (NSNumber *)num {
@@ -343,8 +342,8 @@ Player *_activePlayer;
     int pricesOfSpecials[] = {10, 8, 11, 12};
     _activePlayer.coin -= pricesOfSpecials[special];
     
-    InfoBox *ib = [InfoBox infoBox:STR(@"%@ chooses special %d", _activePlayer.name, special)];
-    [ib show:self];
+
+    [InfoBox infoBoxWithMsg:STR(@"%@ chooses special %d", _activePlayer.name, special) above:self];
     
     [_gameBoard nextPlayer];
     _phaseTurns--;

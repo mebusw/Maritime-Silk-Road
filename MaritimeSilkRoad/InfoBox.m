@@ -15,46 +15,40 @@
 
 @implementation InfoBox
 
-CCNode* _parent;
+NSTimer *t;
 
-+(InfoBox*) infoBox:(NSString*) msg {
-    InfoBox *ib = [[InfoBox alloc] initWithFile:IMG_DIALOG];
-    ib.opacity = 150;
++(InfoBox*) infoBoxWithMsg:(NSString*)msg above:(CCNode*)parent {
+    InfoBox *ib = [[[InfoBox alloc] initWithFile:IMG_DIALOG] autorelease];
     
     
     CCLabelTTF *title = [CCLabelTTF labelWithString:msg fontName:FONT_NAME fontSize:16];
     title.color = ccGREEN;
     [ib addChild:title z:0 tag:TAG_TITLE];
 
+    ib.opacity = 150;
     
     CGSize size = ib.contentSize;
     title.position = ccp(size.width / 2, size.height - 15);
     
-    ib.visible = NO;
+    [parent addChild:ib z:1000];
+
+    CGSize parentSize = parent.contentSize;
+    ib.position = ccp(parentSize.width / 2, parentSize.height / 2 + 50);
+    ib.visible = YES;
+	
+    
+    //TODO
+    //timer should be handle by state handler, not a view itself
+    
+    t = [[NSTimer scheduledTimerWithTimeInterval:ELASPE_TICK target:self selector:@selector(onHide:) userInfo:nil repeats:NO] retain];
+
     return ib;
 
 }
 
-
-
--(void) show:(CCNode*)parent {
-    _parent = parent;
-    [_parent addChild:self z:1000];
-    CGSize size = _parent.contentSize;
-    self.position = ccp(size.width / 2, size.height / 2 + 50);
-    
-    self.visible = YES;
-	
-	[t release];
-    t = [[NSTimer scheduledTimerWithTimeInterval:ELASPE_TICK target:self selector:@selector(onHide:) userInfo:nil repeats:NO] retain];
-    
-}
-
-
 - (void)onHide:(NSTimer*)theTimer {
     self.visible = NO;
     [self removeFromParentAndCleanup:YES];
-    _parent = nil;
     //DLog(@"is valid=%d", [t isValid]);
     
 }

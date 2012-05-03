@@ -9,11 +9,10 @@
 #import "cocos2d.h"
 
 @interface InfoBox : CCSprite {
-    NSTimer *t;
+
 }
 
-+(InfoBox*) infoBox:(NSString*) msg;
++(InfoBox*) infoBoxWithMsg:(NSString*)msg above:(CCNode*)parent;
 
--(void) show:(CCNode*)parent;
 
 @end
