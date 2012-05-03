@@ -23,18 +23,25 @@ NSMutableArray *_stack;
 }
 
 -(void) push:(GameState*) state {
+    [(GameState*)[_stack lastObject] exit]; 
     [_stack addObject:state];
+    [(GameState*)[_stack lastObject] enter]; 
+
 }
 
 -(GameState*) pop {
     GameState *last = [_stack lastObject];
+    [last exit];
     [_stack removeLastObject];
+    [[_stack lastObject] enter];
     return last;
 }
 
 -(void) change:(GameState*) state {
-    [self pop];
-    [self push:state];
+    [(GameState*)[_stack lastObject] exit];
+    [_stack removeLastObject];
+    [_stack addObject:state];
+    [(GameState*)[_stack lastObject] enter];     
 }
 
 

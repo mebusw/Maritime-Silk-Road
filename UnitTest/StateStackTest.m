@@ -35,61 +35,82 @@ StateStack *stack;
 }
 
 - (void)testPushToStack {
-    GameState *state1 = [[GameState alloc] init];
-    GameState *state2 = [[GameState alloc] init];
+    id state1 = [OCMockObject mockForClass:[GameState class]];
+    [[state1 expect] enter];
+    id state2 = [OCMockObject mockForClass:[GameState class]];
+    [[state1 expect] exit];
+    [[state2 expect] enter];
+    
     [stack push:state1];
     [stack push:state2];
     
+    [state1 verify];
+    [state2 verify];
     STAssertEquals(state2, [stack top], nil);
 }
 
 
 - (void)testPopFromStack {
-    GameState *state1 = [[GameState alloc] init];
-    GameState *state2 = [[GameState alloc] init];
+    id state1 = [OCMockObject mockForClass:[GameState class]];
+    [[state1 expect] enter];
+    id state2 = [OCMockObject mockForClass:[GameState class]];
+    [[state1 expect] exit];
+    [[state2 expect] enter];
+    
     [stack push:state1];
     [stack push:state2];
     
+    [state1 verify];
+    [state2 verify];
+
+    /////////////////
+    
+    [[state2 expect] exit];
+    [[state1 expect] enter];
+    [[state1 expect] exit];
     STAssertEquals(state2, [stack top], nil);
     STAssertEquals(state2, [stack pop], nil);
     STAssertEquals(state1, [stack top], nil);
     STAssertEquals(state1, [stack pop], nil);
     STAssertNil([stack top], nil);
+    [state1 verify];
+    [state2 verify];
+
 }
+
+- (void)testPopFromEmptyStack {
+    STAssertNil([stack pop], nil);  
+}
+
+
 
 -(void) testChangeTopOfStack {
-    GameState *state1 = [[GameState alloc] init];
+    id state1 = [OCMockObject mockForClass:[GameState class]];
+    [[state1 expect] enter];
+    id state2 = [OCMockObject mockForClass:[GameState class]];
+    [[state1 expect] exit];
+    [[state2 expect] enter];
+    
     [stack push:state1];
-
-    STAssertEquals(state1, [stack top], nil);
-
-    GameState *state2 = [[GameState alloc] init];
-    [stack change:state2];
+    [stack push:state2];
     
+    [state1 verify];
+    [state2 verify];
     STAssertEquals(state2, [stack top], nil);
+
+    //////////////////
     
+    id state3 = [OCMockObject mockForClass:[GameState class]];
+    [[state2 expect] exit];
+    [[state3 expect] enter];
+
+    [stack change:state3];
+    
+    STAssertEquals(state3, [stack top], nil);
+    [state3 verify];
+    [state2 verify];
+        
 }
 
-/*
- -(void) testOCMockExample {
- MasterViewController *controller = [[MasterViewController alloc] init];
- NSIndexPath *dummyIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
- id tableViewMock = [OCMockObject mockForClass:[UITableView class]];
- [[tableViewMock expect] deleteRowsAtIndexPaths:[NSArray arrayWithObject:dummyIndexPath] withRowAnimation:UITableViewRowAnimationFade];
- 
- // Invoke functionality to be tested
- // If you want to see the test fail you can, for example, change the editing style to UITableViewCellEditingStyleNone. In
- // that case the method in the controller does not make a call to the table view and the mock will raise an exception when
- // verify is called further down.
- 
- [controller tableView:tableViewMock commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:dummyIndexPath];
- 
- // Verify that expectations were met
- 
- [tableViewMock verify];
- 
- 
- }
- */
 
 @end

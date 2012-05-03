@@ -19,9 +19,13 @@
 
 
 -(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard;
+-(void) enter;
+-(void) exit;
 
 
 @end
+
+
 
 
 @protocol StateObserverProtocol <NSObject> 
