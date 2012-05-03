@@ -190,6 +190,9 @@
 		8FC0D95A14DD3F0A00E44914 /* token-perfume.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94E14DD3F0A00E44914 /* token-perfume.png */; };
 		8FC0D95B14DD3F0A00E44914 /* token-silk.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94F14DD3F0A00E44914 /* token-silk.png */; };
 		8FC0D95C14DD3F0A00E44914 /* token-tea.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D95014DD3F0A00E44914 /* token-tea.png */; };
+		8FCF7C8A1552AD390015E630 /* StateStackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCF7C891552AD390015E630 /* StateStackTest.m */; };
+		8FCF7C8E1552AD8F0015E630 /* StateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCF7C8D1552AD8F0015E630 /* StateStack.m */; };
+		8FCF7C8F1552ADDB0015E630 /* StateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCF7C8D1552AD8F0015E630 /* StateStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -510,6 +513,10 @@
 		8FC0D94E14DD3F0A00E44914 /* token-perfume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token-perfume.png"; path = "Resources/token-perfume.png"; sourceTree = "<group>"; };
 		8FC0D94F14DD3F0A00E44914 /* token-silk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token-silk.png"; path = "Resources/token-silk.png"; sourceTree = "<group>"; };
 		8FC0D95014DD3F0A00E44914 /* token-tea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token-tea.png"; path = "Resources/token-tea.png"; sourceTree = "<group>"; };
+		8FCF7C881552AD390015E630 /* StateStackTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateStackTest.h; sourceTree = "<group>"; };
+		8FCF7C891552AD390015E630 /* StateStackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateStackTest.m; sourceTree = "<group>"; };
+		8FCF7C8C1552AD8F0015E630 /* StateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateStack.h; sourceTree = "<group>"; };
+		8FCF7C8D1552AD8F0015E630 /* StateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -980,6 +987,8 @@
 				8F7B1A8F15439912005972FD /* GameStateTest.m */,
 				8F7A14591545A4630095BB34 /* PlayerTest.h */,
 				8F7A145A1545A4630095BB34 /* PlayerTest.m */,
+				8FCF7C881552AD390015E630 /* StateStackTest.h */,
+				8FCF7C891552AD390015E630 /* StateStackTest.m */,
 			);
 			path = UnitTest;
 			sourceTree = "<group>";
@@ -1007,6 +1016,8 @@
 				8F2435DE1543B4C20090DC68 /* LoadGoods.m */,
 				8F79C642153AFE7C0018873A /* ChangeGood.h */,
 				8F79C643153AFE7C0018873A /* ChangeGood.m */,
+				8FCF7C8C1552AD8F0015E630 /* StateStack.h */,
+				8FCF7C8D1552AD8F0015E630 /* StateStack.m */,
 			);
 			name = States;
 			sourceTree = "<group>";
@@ -1299,6 +1310,7 @@
 				8F79C64E153B0A320018873A /* Market.m in Sources */,
 				8F5940BA1543A50C001C0570 /* WaitForStart.m in Sources */,
 				8F2435DF1543B4C20090DC68 /* LoadGoods.m in Sources */,
+				8FCF7C8E1552AD8F0015E630 /* StateStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1321,6 +1333,8 @@
 				8F2435DB1543AD120090DC68 /* Player.m in Sources */,
 				8F2435E01543B4C20090DC68 /* LoadGoods.m in Sources */,
 				8F7A145B1545A4630095BB34 /* PlayerTest.m in Sources */,
+				8FCF7C8A1552AD390015E630 /* StateStackTest.m in Sources */,
+				8FCF7C8F1552ADDB0015E630 /* StateStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
