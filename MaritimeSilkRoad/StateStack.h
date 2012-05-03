@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "GameState.h"
 
+@class GameState;
+
 @interface StateStack : NSObject {
     
 }

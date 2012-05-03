@@ -23,13 +23,5 @@
 -(void) exit;
 
 
-@end
-
-
-
-
-@protocol StateObserverProtocol <NSObject> 
-
--(void) changeState:(GameState*) newState;
 
 @end

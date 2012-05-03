@@ -173,7 +173,6 @@
 		8F79C651153B0B920018873A /* GameBoardTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C650153B0B920018873A /* GameBoardTest.m */; };
 		8F79C652153B0D3A0018873A /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C638153AFAAE0018873A /* GameBoard.m */; };
 		8F7A145B1545A4630095BB34 /* PlayerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7A145A1545A4630095BB34 /* PlayerTest.m */; };
-		8F7B1A9015439912005972FD /* GameStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B1A8F15439912005972FD /* GameStateTest.m */; };
 		8F7B1A961543A01A005972FD /* Preparing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C640153AFE3E0018873A /* Preparing.m */; };
 		8F7B1A971543A01D005972FD /* ChangeGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C643153AFE7C0018873A /* ChangeGood.m */; };
 		8F7B1A981543A02D005972FD /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C63D153AFB070018873A /* GameState.m */; };
@@ -497,8 +496,6 @@
 		8F79C650153B0B920018873A /* GameBoardTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoardTest.m; sourceTree = "<group>"; };
 		8F7A14591545A4630095BB34 /* PlayerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerTest.h; sourceTree = "<group>"; };
 		8F7A145A1545A4630095BB34 /* PlayerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTest.m; sourceTree = "<group>"; };
-		8F7B1A8E15439912005972FD /* GameStateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateTest.h; sourceTree = "<group>"; };
-		8F7B1A8F15439912005972FD /* GameStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStateTest.m; sourceTree = "<group>"; };
 		8FBDA24014D44AF3002EC68B /* InfoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBox.h; sourceTree = "<group>"; };
 		8FBDA24114D44AF3002EC68B /* InfoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBox.m; sourceTree = "<group>"; };
 		8FC0D94514DD3F0A00E44914 /* cardBack-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cardBack-small.png"; path = "Resources/cardBack-small.png"; sourceTree = "<group>"; };
@@ -983,8 +980,6 @@
 				8F79C650153B0B920018873A /* GameBoardTest.m */,
 				8F792117153C5B23007188F6 /* MarketTest.h */,
 				8F792118153C5B23007188F6 /* MarketTest.m */,
-				8F7B1A8E15439912005972FD /* GameStateTest.h */,
-				8F7B1A8F15439912005972FD /* GameStateTest.m */,
 				8F7A14591545A4630095BB34 /* PlayerTest.h */,
 				8F7A145A1545A4630095BB34 /* PlayerTest.m */,
 				8FCF7C881552AD390015E630 /* StateStackTest.h */,
@@ -1325,7 +1320,6 @@
 				8F79C651153B0B920018873A /* GameBoardTest.m in Sources */,
 				8F792119153C5B23007188F6 /* MarketTest.m in Sources */,
 				8F79211A153C5DF5007188F6 /* Market.m in Sources */,
-				8F7B1A9015439912005972FD /* GameStateTest.m in Sources */,
 				8F7B1A961543A01A005972FD /* Preparing.m in Sources */,
 				8F7B1A971543A01D005972FD /* ChangeGood.m in Sources */,
 				8F7B1A981543A02D005972FD /* GameState.m in Sources */,

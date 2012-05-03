@@ -36,7 +36,7 @@
         _gameBoard.isDialogging = YES;
         [_observer chooseAGoodType];
     } else {
-        [_observer changeState:[[[ChangeGood alloc] init] autorelease]];
+        [_observer.stateStack change:[[[ChangeGood alloc] init] autorelease]];
     }
     
 }

@@ -14,7 +14,7 @@
 
 -(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {
     DLog(@"");
-    [observer changeState:[[[Preparing alloc] init] autorelease]];
+    [observer.stateStack change:[[[Preparing alloc] init] autorelease]];
 }
 
 

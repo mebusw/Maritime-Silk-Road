@@ -12,19 +12,21 @@
 #import "Dialog.h"
 #import "ShipsPanel.h"
 #import "HandMarketPanel.h"
+#import "StateStack.h"
 #import "GameState.h"
 #import "GameBoard.h"
 
 
 @class ShipsPanel;
 @class GameState;
+@class StateStack;
 
 @interface GameLayer : CCLayer {
 
 }
 @property BOOL isDialoging; //if dialog is open, then no need to schedule for next state
 @property GameStateEnum gameState;
-
+@property (nonatomic, retain) StateStack *stateStack;
 
 
 +(CCScene *) sceneWithPlayerNumber: (NSUInteger) playerNbr;
@@ -43,6 +45,5 @@
 -(void) didChooseASpecial: (NSNumber *)num;
 
 -(void) handleRequest; 
--(void) changeState:(GameState*) newState;
 
 @end

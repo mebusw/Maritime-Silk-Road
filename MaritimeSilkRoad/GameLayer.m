@@ -13,12 +13,13 @@
 #import "HandMarketPanel.h"
 #import "InfoBox.h"
 #import "Preparing.h"
-
+#import "StateStack.h"
 
 @implementation GameLayer
 
 @synthesize isDialoging;
 @synthesize gameState;
+@synthesize stateStack;
 
 #define Z_MOST_FRONT    1000
 #define Z_MOST_BACK     -1000
@@ -43,7 +44,9 @@ HandMarketPanel *handMarketPanel;
 
 
 GameBoard *_gameBoard;
-GameState *_stateHandler;
+
+
+
 int _playerCount;
 Player *_activePlayer;
 
@@ -70,16 +73,18 @@ Player *_activePlayer;
         _gameBoard = [[GameBoard alloc] initWithPlayerNumber:playerNbr];
 		_playerCount = playerNbr;        
         
-        _stateHandler = [[Preparing alloc] init];
-        [_stateHandler handle:self gameBoard:_gameBoard];
+        stateStack = [[StateStack alloc] init];
+        [stateStack push:[[Preparing alloc] init]];
+        //TODO should move Preparing to a builder of GameBoard
+        
+        [self handleRequest];
 		
 
         [self createViews];
         
         //start game logic
 		[self scheduleUpdate];
-        [_stateHandler handle:self gameBoard:_gameBoard];
-        
+        [self handleRequest];        
                 
     }
     return self;
@@ -191,7 +196,7 @@ Player *_activePlayer;
 
 
 - (void) dealloc {
-    [_stateHandler release];
+    [stateStack release];
     [_gameBoard release];
 	[super dealloc];
 }
@@ -200,17 +205,9 @@ Player *_activePlayer;
 #pragma mark - state handlers
 
 -(void) handleRequest {
-    if (_stateHandler) {
-        [_stateHandler handle:self gameBoard:_gameBoard];
-    }
+    [[stateStack top] handle:self gameBoard:_gameBoard];
 }
 
-
--(void) changeState:(GameState*) newState {
-    [_stateHandler release];
-    _stateHandler = newState;
-    [_stateHandler retain];
-}
 
 #pragma mark - dialog and input
 
