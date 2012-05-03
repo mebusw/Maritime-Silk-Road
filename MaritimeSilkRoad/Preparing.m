@@ -52,9 +52,7 @@
 	}
     
     
-    gameBoard.remainingTurns = 2 * gameBoard.playerCount;
-    gameBoard.isDialogging = NO;
-    gameBoard.isInfoboxing = NO;
+
     [observer.stateStack change:[[[LoadGoods alloc] init] autorelease]];
 }
 

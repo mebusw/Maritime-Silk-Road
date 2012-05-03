@@ -33,8 +33,10 @@
 @property (nonatomic) BOOL isDialogging;
 @property (nonatomic) BOOL isInfoboxing;
 
-- (id) initWithPlayerNumber: (NSUInteger) playerNbr;
 -(int) nextPlayer;
 -(Player*) currentPlayer;
+-(void) buildGameBoardWithPlayerNumber: (NSUInteger) playerNbr;
+
++(GameBoard*) shareGameBoard;
 
 @end

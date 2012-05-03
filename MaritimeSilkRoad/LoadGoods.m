@@ -12,7 +12,11 @@
 @implementation LoadGoods
 
 
-
+-(void) enter:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {
+    gameBoard.remainingTurns = 2 * gameBoard.playerCount;
+    gameBoard.isDialogging = NO;
+    gameBoard.isInfoboxing = NO;
+}
 
 
 -(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {

@@ -18,7 +18,7 @@
 }
 
 
--(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard;
+-(void) handle;
 -(void) enter;
 -(void) exit;
 

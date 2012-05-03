@@ -26,7 +26,8 @@
 }
 
 -(void) testNextPlayer {
-    GameBoard *gb = [[[GameBoard alloc] initWithPlayerNumber:3] autorelease];
+    GameBoard *gb = [GameBoard shareGameBoard];
+    [gb buildGameBoardWithPlayerNumber:3];
     gb.players = [NSArray arrayWithObjects:@"a", @"b", @"c", nil];
     int currentPlayer = gb.activePlayerIndex;
 
@@ -37,6 +38,12 @@
     STAssertEquals((currentPlayer + 2) % gb.playerCount, [gb nextPlayer], nil);
     STAssertEquals((currentPlayer + 2) % gb.playerCount, gb.activePlayerIndex, nil);
 
+}
+
+-(void) testSingleton {
+    STAssertEquals([GameBoard shareGameBoard], [GameBoard shareGameBoard], nil);
+    STAssertNotNil([GameBoard shareGameBoard], nil);
+    
 }
 
 @end
