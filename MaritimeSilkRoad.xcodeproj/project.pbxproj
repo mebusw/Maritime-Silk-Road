@@ -153,8 +153,6 @@
 		8F2435DB1543AD120090DC68 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3502A8146FEC59003C6DF9 /* Player.m */; };
 		8F2435DF1543B4C20090DC68 /* LoadGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2435DE1543B4C20090DC68 /* LoadGoods.m */; };
 		8F2435E01543B4C20090DC68 /* LoadGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2435DE1543B4C20090DC68 /* LoadGoods.m */; };
-		8F5940BA1543A50C001C0570 /* WaitForStart.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5940B91543A50C001C0570 /* WaitForStart.m */; };
-		8F5940BB1543A50C001C0570 /* WaitForStart.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5940B91543A50C001C0570 /* WaitForStart.m */; };
 		8F5D58A914D0FADA004DE70E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A79975A146C18BB001550C8 /* SenTestingKit.framework */; };
 		8F5D58AA14D0FADA004DE70E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E8B6014663EA9003BEC0B /* UIKit.framework */; };
 		8F5D58AB14D0FADA004DE70E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E8B6214663EA9003BEC0B /* Foundation.framework */; };
@@ -163,6 +161,9 @@
 		8F5D58C414D0FC6C004DE70E /* PoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D58C214D0FC47004DE70E /* PoolTest.m */; };
 		8F5D58C814D1009E004DE70E /* Pool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A799751146C0CEE001550C8 /* Pool.m */; };
 		8F77154E15551EF000CDF740 /* AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F77154D15551EF000CDF740 /* AI.m */; };
+		8F7715501555268000CDF740 /* AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F77154D15551EF000CDF740 /* AI.m */; };
+		8F7715531555276400CDF740 /* Phase1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7715521555276400CDF740 /* Phase1.m */; };
+		8F771556155527FA00CDF740 /* Phase2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F771555155527F900CDF740 /* Phase2.m */; };
 		8F78B0AF1554C2C800CBB929 /* LoadGoodsStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F78B0AE1554C2C800CBB929 /* LoadGoodsStateTest.m */; };
 		8F792119153C5B23007188F6 /* MarketTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F792118153C5B23007188F6 /* MarketTest.m */; };
 		8F79211A153C5DF5007188F6 /* Market.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C64D153B0A320018873A /* Market.m */; };
@@ -471,8 +472,6 @@
 		4A7E8CD214665761003BEC0B /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		8F2435DD1543B4C20090DC68 /* LoadGoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadGoods.h; sourceTree = "<group>"; };
 		8F2435DE1543B4C20090DC68 /* LoadGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadGoods.m; sourceTree = "<group>"; };
-		8F5940B81543A50C001C0570 /* WaitForStart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitForStart.h; sourceTree = "<group>"; };
-		8F5940B91543A50C001C0570 /* WaitForStart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitForStart.m; sourceTree = "<group>"; };
 		8F5D58A814D0FADA004DE70E /* UnitTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F5D58AE14D0FADA004DE70E /* UnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTest-Info.plist"; sourceTree = "<group>"; };
 		8F5D58B014D0FADA004DE70E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -483,6 +482,10 @@
 		8F5D58C214D0FC47004DE70E /* PoolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolTest.m; sourceTree = "<group>"; };
 		8F77154C15551EF000CDF740 /* AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI.h; sourceTree = "<group>"; };
 		8F77154D15551EF000CDF740 /* AI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI.m; sourceTree = "<group>"; };
+		8F7715511555276400CDF740 /* Phase1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phase1.h; sourceTree = "<group>"; };
+		8F7715521555276400CDF740 /* Phase1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phase1.m; sourceTree = "<group>"; };
+		8F771554155527F900CDF740 /* Phase2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phase2.h; sourceTree = "<group>"; };
+		8F771555155527F900CDF740 /* Phase2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phase2.m; sourceTree = "<group>"; };
 		8F78B0AD1554C2C800CBB929 /* LoadGoodsStateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadGoodsStateTest.h; sourceTree = "<group>"; };
 		8F78B0AE1554C2C800CBB929 /* LoadGoodsStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadGoodsStateTest.m; sourceTree = "<group>"; };
 		8F792117153C5B23007188F6 /* MarketTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketTest.h; sourceTree = "<group>"; };
@@ -1009,18 +1012,20 @@
 		8F79C63B153AFAB40018873A /* States */ = {
 			isa = PBXGroup;
 			children = (
+				8FCF7C8C1552AD8F0015E630 /* StateStack.h */,
+				8FCF7C8D1552AD8F0015E630 /* StateStack.m */,
 				8F79C63C153AFB070018873A /* GameState.h */,
 				8F79C63D153AFB070018873A /* GameState.m */,
-				8F5940B81543A50C001C0570 /* WaitForStart.h */,
-				8F5940B91543A50C001C0570 /* WaitForStart.m */,
 				8F79C63F153AFE3E0018873A /* Preparing.h */,
 				8F79C640153AFE3E0018873A /* Preparing.m */,
 				8F2435DD1543B4C20090DC68 /* LoadGoods.h */,
 				8F2435DE1543B4C20090DC68 /* LoadGoods.m */,
+				8F7715511555276400CDF740 /* Phase1.h */,
+				8F7715521555276400CDF740 /* Phase1.m */,
 				8F79C642153AFE7C0018873A /* ChangeGood.h */,
 				8F79C643153AFE7C0018873A /* ChangeGood.m */,
-				8FCF7C8C1552AD8F0015E630 /* StateStack.h */,
-				8FCF7C8D1552AD8F0015E630 /* StateStack.m */,
+				8F771554155527F900CDF740 /* Phase2.h */,
+				8F771555155527F900CDF740 /* Phase2.m */,
 			);
 			name = States;
 			sourceTree = "<group>";
@@ -1313,10 +1318,11 @@
 				8F79C641153AFE3E0018873A /* Preparing.m in Sources */,
 				8F79C644153AFE7C0018873A /* ChangeGood.m in Sources */,
 				8F79C64E153B0A320018873A /* Market.m in Sources */,
-				8F5940BA1543A50C001C0570 /* WaitForStart.m in Sources */,
 				8F2435DF1543B4C20090DC68 /* LoadGoods.m in Sources */,
 				8FCF7C8E1552AD8F0015E630 /* StateStack.m in Sources */,
 				8F77154E15551EF000CDF740 /* AI.m in Sources */,
+				8F7715531555276400CDF740 /* Phase1.m in Sources */,
+				8F771556155527FA00CDF740 /* Phase2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1334,13 +1340,13 @@
 				8F7B1A961543A01A005972FD /* Preparing.m in Sources */,
 				8F7B1A971543A01D005972FD /* ChangeGood.m in Sources */,
 				8F7B1A981543A02D005972FD /* GameState.m in Sources */,
-				8F5940BB1543A50C001C0570 /* WaitForStart.m in Sources */,
 				8F2435DB1543AD120090DC68 /* Player.m in Sources */,
 				8F2435E01543B4C20090DC68 /* LoadGoods.m in Sources */,
 				8F7A145B1545A4630095BB34 /* PlayerTest.m in Sources */,
 				8FCF7C8A1552AD390015E630 /* StateStackTest.m in Sources */,
 				8FCF7C8F1552ADDB0015E630 /* StateStack.m in Sources */,
 				8F78B0AF1554C2C800CBB929 /* LoadGoodsStateTest.m in Sources */,
+				8F7715501555268000CDF740 /* AI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

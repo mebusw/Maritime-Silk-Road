@@ -14,6 +14,8 @@
 
 -(id) initWithGameBoard:(GameBoard*) gameBoard;
 - (void) chooseAGoodType;
-
+-(void) chooseForPhase1;
+-(void) chooseForChangeGood;
+-(void) chooseForPhase2;
 
 @end

@@ -212,7 +212,7 @@
 				CCLabelTTF *label = [CCLabelTTF labelWithString:phase1Actions[i] fontName:FONT_NAME fontSize:16];
 				CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
 				items[i] = itm;
-				itm.tag = PHASE1 + i + 1;
+				itm.tag = i;
 			}
 			menu = [CCMenu menuWithItems:items[0], items[1], items[2], nil];
 			break;
@@ -221,7 +221,7 @@
 				CCLabelTTF *label = [CCLabelTTF labelWithString:phase2Actions[i] fontName:FONT_NAME fontSize:16];
 				CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
 				items[i] = itm;
-				itm.tag = PHASE2 + i + 1;
+				itm.tag = i;
 			}
 			menu = [CCMenu menuWithItems:items[0], items[1], nil];
 			break;

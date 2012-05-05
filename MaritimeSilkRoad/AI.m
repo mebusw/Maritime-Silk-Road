@@ -28,7 +28,41 @@ GameBoard *_gameBoard;
     } while (_gameBoard.pool.token[rnd] <= 0);
     //stupid AI end <<<<
     
-    _gameBoard.chosenGoodType = rnd;
+    _gameBoard.chosenOption = rnd;
 }
+
+-(void) chooseForPhase1 {
+	//stupid AI start >>>>
+	ActionEnum rnd;
+    rnd = (NSInteger) (CCRANDOM_0_1() * 2);
+    //stupid AI end <<<<
+    
+    _gameBoard.chosenOption = rnd;    
+}
+
+-(void) chooseForChangeGood {
+    //stupid AI start >>>>
+	int rnd;
+    rnd = (NSInteger) (CCRANDOM_0_1() * _gameBoard.pool.specialCards[kSpecialShip]);
+    //stupid AI end <<<<
+
+    _gameBoard.chosenOption = rnd;    
+
+}
+
+
+-(void) chooseForPhase2 {
+    //stupid AI start >>>>
+	int rnd;
+    do {
+        rnd = (NSInteger) (CCRANDOM_0_1() * SPECIAL_TYPE_COUNT);
+    } while (_gameBoard.pool.specialCards[rnd] <= 0);
+    //stupid AI end <<<<
+    
+    _gameBoard.chosenOption = rnd;    
+
+}
+
+
 
 @end

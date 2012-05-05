@@ -35,12 +35,13 @@
 - (void) createViews;
 - (void) updateViews;
 - (id) initWithPlayerNumber: (NSUInteger) playerNbr;
-- (void) loadGoods;
-- (void) phase1;
-- (void) p11ChangeGood;
-- (void) p12BuySpecial;
+
+
 
 - (void) chooseAGoodType;
+-(void) chooseForPhase1;
+-(void) chooseForChangeGood;
+-(void) chooseForPhase2;
 
 
 -(void) didChooseAShip:(int)shipIndex;

@@ -1,36 +1,34 @@
 //
-//  LoadGoods.m
+//  Phase1.m
 //  MaritimeSilkRoad
 //
-//  Created by  on 12-4-22.
+//  Created by  on 12-5-5.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "LoadGoods.h"
-#import "ChangeGood.h"
-#import "Player.h"
-#import "AI.h"
 #import "Phase1.h"
+#import "Phase2.h"
+#import "AI.h"
 
-@implementation LoadGoods
+@implementation Phase1
 
 
 -(void) enter {
     DLog(@"%d", _gameBoard.remainingTurns);
-
+    
     if (_gameBoard.remainingTurns > 0) {
         if ([_gameBoard.currentPlayer isKindOfClass:[Human class]]) {
-            [_observer chooseAGoodType];
+            [_observer chooseForPhase1];
         } else {
             AI *ai = [[[AI alloc] initWithGameBoard:_gameBoard] autorelease];
-            [ai chooseAGoodType];
+            [ai chooseForPhase1];
             [self handle];
         }
     } else {
-        _gameBoard.remainingTurns = _gameBoard.playerCount;
-        [_observer.stateStack change:[[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+        
+        [_observer.stateStack change:[[[Phase2 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
     }
-
+    
 }
 
 
@@ -42,15 +40,13 @@
     [_gameBoard nextPlayer];
     _gameBoard.remainingTurns -= 1;
     
-    
-
-    [_observer.stateStack change:[[[LoadGoods alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+    [_observer.stateStack change:[[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
 }
 
 
 
 -(void) exit {
-    DLog(@"");
+
 }
 
 

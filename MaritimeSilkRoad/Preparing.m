@@ -13,7 +13,7 @@
 @implementation Preparing
 
 -(void) enter {
-    DLog(@">>>");
+
 }
 
 -(void) handle {

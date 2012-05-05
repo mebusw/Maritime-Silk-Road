@@ -217,36 +217,21 @@ Player *_activePlayer;
     [self addChild:dialog z:Z_MOST_FRONT tag:DIALOG_GOODS];
 }
 
+-(void) chooseForPhase1 {
+    Dialog *dialog = [Dialog dialogWithPhase:PHASE1 target:self selector:@selector(didChooseFromDialog:)];
+    [self addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];
+}
+
 -(void) didChooseFromDialog:(NSNumber*)number {
     DLog(@"%@", number);
-    _gameBoard.chosenGoodType = [number intValue];
-    [self removeChildByTag:DIALOG_GOODS cleanup:YES];
+    _gameBoard.chosenOption = [number intValue];
+    //[self removeChildByTag:DIALOG_GOODS cleanup:YES];
     [self handleRequest];
 }
 
 #pragma mark -
 
-- (void) loadGoods {
-	if (_loadGoodsTurns > 0) {
-        [_activePlayer chooseAGoodTypeFromPool:_gameBoard.pool];
 
-	} else {
-        _phaseTurns = _playerCount;
-		gameState = kPhase1;
-	}
-}
-
-- (void) phase1 {
-	DLog(@"tun=%d %@", _phaseTurns, _activePlayer);
-    if (_phaseTurns > 0) {
-        [_activePlayer chooseActionForPhase1];
-    } else {
-        _phaseTurns = _playerCount;
-        gameState = kPhase2;
-    }
-    
-    
-}
 
 - (void) p11ChangeGood {
 	DLog(@"turn=%d %@", _phaseTurns, _activePlayer);
@@ -275,7 +260,7 @@ Player *_activePlayer;
     GoodTypeEnum goodType = [num intValue];
     
     DLog(@"goodType=%d ", goodType);
-    _gameBoard.chosenGoodType = goodType;
+    _gameBoard.chosenOption = goodType;
     [[stateStack top] handle];
 
 //        case kP11ChangeGood: {

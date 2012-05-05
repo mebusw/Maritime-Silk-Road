@@ -26,7 +26,7 @@
 @property (nonatomic, readonly) int startPlayerIndex;
 @property (nonatomic) int chosenMarket;
 @property (nonatomic) int chosenAction;
-@property (nonatomic) GoodTypeEnum chosenGoodType;
+@property (nonatomic) GoodTypeEnum chosenOption;
 @property (nonatomic) int chosenSpecialType;
 @property (nonatomic) int remainingTurns;
 
