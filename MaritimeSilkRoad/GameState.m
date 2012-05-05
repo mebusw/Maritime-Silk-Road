@@ -13,24 +13,24 @@
 
 
 
--(id) initWithObserver:(GameLayer*)gameLayer gameBoard:(GameBoard*)gameBoard {
+-(id) initWithObserver:(GameLayer*)aGameLayer gameBoard:(GameBoard*)aGameBoard {
     if (self = [super init]) {
-        _gameBoard = gameBoard;
-        _observer = gameLayer;
+        _gameBoard = aGameBoard;
+        _observer = aGameLayer;
     }
     return self;
 }
 
 -(void) enter {
-    
+    DLog(@">>>");
 }
 
--(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {
+-(void) handle {
     @throw [NSException exceptionWithName:@"Can't execute abstract ethod" reason:@"This method must be overrived by subclass" userInfo:nil];
 }
 
 -(void) exit {
-    
+    DLog(@"<<<");    
 }
 
 

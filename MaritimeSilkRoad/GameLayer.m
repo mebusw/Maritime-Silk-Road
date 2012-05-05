@@ -85,7 +85,7 @@ Player *_activePlayer;
         
         //start game logic
 		[self scheduleUpdate];
-        [self handleRequest];        
+    
                 
     }
     return self;
@@ -206,7 +206,7 @@ Player *_activePlayer;
 #pragma mark - state handlers
 
 -(void) handleRequest {
-    [[stateStack top] handle:self gameBoard:_gameBoard];
+    [[stateStack top] handle];
 }
 
 
@@ -273,38 +273,25 @@ Player *_activePlayer;
 
 - (void) didChooseAGoodType: (NSNumber *)num {
     GoodTypeEnum goodType = [num intValue];
-    DLog(@"goodType=%d gameState=%d", goodType, gameState);
+    
+    DLog(@"goodType=%d ", goodType);
+    _gameBoard.chosenGoodType = goodType;
+    [[stateStack top] handle];
 
-    switch (gameState) {
-        case kLoadGoods: {
-            [_gameBoard.pool fetchAToken: goodType];
-            [_activePlayer loadGoodToShip:goodType atIndex:((_loadGoodsTurns - 1) / _playerCount)];
-
-            [InfoBox infoBoxWithMsg:STR(@"%@ chooses good type %d", _activePlayer.name, goodType) above:self];
-            
-            [_gameBoard nextPlayer];
-            _loadGoodsTurns--; 
-        
-            break;
-        }
-        case kP11ChangeGood: {
-            [_gameBoard.pool fetchAToken: goodType];
-            GoodTypeEnum goodOnChosenShip = _activePlayer.ships[_chosenShip];
-            _activePlayer.ships[_chosenShip] = goodType;
-            [_gameBoard.pool putAToken:goodOnChosenShip];
-            
-            [InfoBox infoBoxWithMsg:STR(@"%@ chooses good type %d", _activePlayer.name, goodType) above:self];
-
-            
-            [_gameBoard nextPlayer];
-            _phaseTurns--;
-            gameState = kPhase1;
-            break;
-        }
-        default:
-            DLog(@"state %d can't be handled by this func", gameState);
-            break;
-    }
+//        case kP11ChangeGood: {
+//            [_gameBoard.pool fetchAToken: goodType];
+//            GoodTypeEnum goodOnChosenShip = _activePlayer.ships[_chosenShip];
+//            _activePlayer.ships[_chosenShip] = goodType;
+//            [_gameBoard.pool putAToken:goodOnChosenShip];
+//            
+//            [InfoBox infoBoxWithMsg:STR(@"%@ chooses good type %d", _activePlayer.name, goodType) above:self];
+//
+//            
+//            [_gameBoard nextPlayer];
+//            _phaseTurns--;
+//            gameState = kPhase1;
+//            break;
+//        }
 }
 
 - (void) didChooseActionForPhase1: (NSNumber *)num {

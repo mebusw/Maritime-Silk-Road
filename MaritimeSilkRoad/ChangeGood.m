@@ -10,10 +10,10 @@
 
 @implementation ChangeGood
 
--(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {
+-(void) handle {
     DLog(@"");
     
-    [observer.stateStack change:[[[ChangeGood alloc] init] autorelease]];
+    [_observer.stateStack change:[[[ChangeGood alloc] init] autorelease]];
 }
 
 @end

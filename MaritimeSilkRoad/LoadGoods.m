@@ -8,7 +8,7 @@
 
 #import "LoadGoods.h"
 #import "ChangeGood.h"
-#import "AskingForLoadGood.h"
+
 
 
 @implementation LoadGoods
@@ -17,32 +17,26 @@
 -(void) enter {
     DLog(@"%d", _gameBoard.remainingTurns);
 
-    _gameBoard.isDialogging = NO;
-    _gameBoard.isInfoboxing = NO;
-    
-    [self lookAtNewTurn];
-}
-
-
--(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard {
-    DLog(@"");
-    _observer = observer;
-    _gameBoard = gameBoard;
-    
-}
-
--(void) lookAtNewTurn {
-    if (_gameBoard.remainingTurns > 0) {
-        _gameBoard.isDialogging = YES;
-        
-        [_observer.stateStack push:[[AskingForLoadGood alloc] initWithObserver:_observer gameBoard:_gameBoard]];
-        
+    if (_gameBoard.remainingTurns > 0) {      
         [_observer chooseAGoodType];
     } else {
-        [_observer.stateStack change:[[[ChangeGood alloc] init] autorelease]];
+        [_observer.stateStack change:[[[ChangeGood alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
     }
-    
+
 }
+
+
+-(void) handle {
+    DLog(@"%d", _gameBoard.chosenGoodType);
+    [_gameBoard.pool fetchAToken:_gameBoard.chosenGoodType];
+    [[_gameBoard currentPlayer] loadGoodToShip:_gameBoard.chosenGoodType atIndex:((_gameBoard.remainingTurns - 1) / _gameBoard.playerCount)];    
+    
+    [_gameBoard nextPlayer];
+    _gameBoard.remainingTurns -= 1;
+    
+    [_observer.stateStack change:[[[LoadGoods alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+}
+
 
 
 -(void) exit {

@@ -17,9 +17,10 @@
     GameBoard *_gameBoard;
 }
 
--(id) initWithObserver:(GameLayer*)gameLayer gameBoard:(GameBoard*)gameBoard;
 
--(void) handle:(GameLayer*)observer gameBoard:(GameBoard*)gameBoard;
+-(id) initWithObserver:(GameLayer*)aGameLayer gameBoard:(GameBoard*)aGameBoard;
+
+-(void) handle;
 -(void) enter;
 -(void) exit;
 
