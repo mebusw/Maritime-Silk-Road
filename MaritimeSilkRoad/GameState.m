@@ -22,7 +22,7 @@
 }
 
 -(void) enter {
-    DLog(@">>>");
+
 }
 
 -(void) handle {
@@ -30,7 +30,7 @@
 }
 
 -(void) exit {
-    DLog(@"<<<");    
+  
 }
 
 

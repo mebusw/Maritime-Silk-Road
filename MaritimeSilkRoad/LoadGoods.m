@@ -8,17 +8,23 @@
 
 #import "LoadGoods.h"
 #import "ChangeGood.h"
-
-
-
+#import "Player.h"
+#import "AI.h"
+        
 @implementation LoadGoods
 
 
 -(void) enter {
     DLog(@"%d", _gameBoard.remainingTurns);
 
-    if (_gameBoard.remainingTurns > 0) {      
-        [_observer chooseAGoodType];
+    if (_gameBoard.remainingTurns > 0) {
+        if ([_gameBoard.currentPlayer isKindOfClass:[Human class]]) {
+            [_observer chooseAGoodType];
+        } else {
+            AI *ai = [[[AI alloc] initWithGameBoard:_gameBoard] autorelease];
+            [ai chooseAGoodType];
+            [self handle];
+        }
     } else {
         [_observer.stateStack change:[[[ChangeGood alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
     }

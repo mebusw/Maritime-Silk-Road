@@ -123,11 +123,11 @@ Player *_activePlayer;
     
     
     labelSpecials = [CCLabelTTF labelWithString:STR(@"w%d c%d t%d s%d", _gameBoard.pool.specialCards[kSpecialWorker], _gameBoard.pool.specialCards[kSpecialConcession], _gameBoard.pool.specialCards[kSpecialTrade], _gameBoard.pool.specialCards[kSpecialShip]) fontName:FONT_NAME fontSize:16];
-    labelSpecials.position = ccp(400, 220);
+    labelSpecials.position = ccp(400, 270);
     [self addChild:labelSpecials z:Z_BOARD];
 
     labelDeck = [CCLabelTTF labelWithString:STR(@"Deck %d", _gameBoard.pool.remainingCards) fontName:FONT_NAME fontSize:16];
-    labelDeck.position = ccp(400, 240);
+    labelDeck.position = ccp(400, 300);
     [self addChild:labelDeck z:Z_BOARD];  
     
 
