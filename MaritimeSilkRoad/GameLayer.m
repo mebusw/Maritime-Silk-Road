@@ -212,7 +212,7 @@ Player *_activePlayer;
 
 #pragma mark - dialog and input
 
-- (void) chooseAGoodType {
+- (void) chooseAGoodFromPool {
     Dialog *dialog = [Dialog dialogWithGoodCounts:_gameBoard.pool.token target:self selector:@selector(didChooseFromDialog:)];
     [self addChild:dialog z:Z_MOST_FRONT tag:DIALOG_GOODS];
 }
@@ -220,6 +220,18 @@ Player *_activePlayer;
 -(void) chooseForPhase1 {
     Dialog *dialog = [Dialog dialogWithPhase:PHASE1 target:self selector:@selector(didChooseFromDialog:)];
     [self addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];
+}
+
+-(void) chooseAShipFromHand {
+    
+}
+
+-(void) chooseASpecialFromPool {
+    
+}
+
+-(void) chooseForPhase2 {
+    
 }
 
 -(void) didChooseFromDialog:(NSNumber*)number {

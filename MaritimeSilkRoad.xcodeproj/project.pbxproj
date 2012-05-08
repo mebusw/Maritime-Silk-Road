@@ -170,15 +170,23 @@
 		8F79C639153AFAAE0018873A /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C638153AFAAE0018873A /* GameBoard.m */; };
 		8F79C63E153AFB070018873A /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C63D153AFB070018873A /* GameState.m */; };
 		8F79C641153AFE3E0018873A /* Preparing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C640153AFE3E0018873A /* Preparing.m */; };
-		8F79C644153AFE7C0018873A /* ChangeGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C643153AFE7C0018873A /* ChangeGood.m */; };
+		8F79C644153AFE7C0018873A /* ChangeGoodFromPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C643153AFE7C0018873A /* ChangeGoodFromPool.m */; };
 		8F79C649153B058F0018873A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F79C647153B053E0018873A /* libOCMock.a */; };
 		8F79C64E153B0A320018873A /* Market.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C64D153B0A320018873A /* Market.m */; };
 		8F79C651153B0B920018873A /* GameBoardTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C650153B0B920018873A /* GameBoardTest.m */; };
 		8F79C652153B0D3A0018873A /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C638153AFAAE0018873A /* GameBoard.m */; };
 		8F7A145B1545A4630095BB34 /* PlayerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7A145A1545A4630095BB34 /* PlayerTest.m */; };
 		8F7B1A961543A01A005972FD /* Preparing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C640153AFE3E0018873A /* Preparing.m */; };
-		8F7B1A971543A01D005972FD /* ChangeGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C643153AFE7C0018873A /* ChangeGood.m */; };
+		8F7B1A971543A01D005972FD /* ChangeGoodFromPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C643153AFE7C0018873A /* ChangeGoodFromPool.m */; };
 		8F7B1A981543A02D005972FD /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C63D153AFB070018873A /* GameState.m */; };
+		8FBA397A1558923900CF0A2B /* BuySpecial.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA39791558923900CF0A2B /* BuySpecial.m */; };
+		8FBA397E1558924800CF0A2B /* JustPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA397D1558924800CF0A2B /* JustPass.m */; };
+		8FBA39811558962D00CF0A2B /* ChangeGoodToShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA39801558962C00CF0A2B /* ChangeGoodToShip.m */; };
+		8FBA398215589ADC00CF0A2B /* ChangeGoodToShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA39801558962C00CF0A2B /* ChangeGoodToShip.m */; };
+		8FBA398315589AE000CF0A2B /* BuySpecial.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA39791558923900CF0A2B /* BuySpecial.m */; };
+		8FBA398415589AE200CF0A2B /* JustPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA397D1558924800CF0A2B /* JustPass.m */; };
+		8FBA398515589AED00CF0A2B /* Phase1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7715521555276400CDF740 /* Phase1.m */; };
+		8FBA398615589B0600CF0A2B /* Phase2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F771555155527F900CDF740 /* Phase2.m */; };
 		8FBDA24214D44AF3002EC68B /* InfoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA24114D44AF3002EC68B /* InfoBox.m */; };
 		8FC0D95114DD3F0A00E44914 /* cardBack-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94514DD3F0A00E44914 /* cardBack-small.png */; };
 		8FC0D95214DD3F0A00E44914 /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC0D94614DD3F0A00E44914 /* cardBack.png */; };
@@ -496,8 +504,8 @@
 		8F79C63D153AFB070018873A /* GameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
 		8F79C63F153AFE3E0018873A /* Preparing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preparing.h; sourceTree = "<group>"; };
 		8F79C640153AFE3E0018873A /* Preparing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preparing.m; sourceTree = "<group>"; };
-		8F79C642153AFE7C0018873A /* ChangeGood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeGood.h; sourceTree = "<group>"; };
-		8F79C643153AFE7C0018873A /* ChangeGood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeGood.m; sourceTree = "<group>"; };
+		8F79C642153AFE7C0018873A /* ChangeGoodFromPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeGoodFromPool.h; sourceTree = "<group>"; };
+		8F79C643153AFE7C0018873A /* ChangeGoodFromPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeGoodFromPool.m; sourceTree = "<group>"; };
 		8F79C647153B053E0018873A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
 		8F79C64C153B0A320018873A /* Market.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Market.h; sourceTree = "<group>"; };
 		8F79C64D153B0A320018873A /* Market.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Market.m; sourceTree = "<group>"; };
@@ -505,6 +513,12 @@
 		8F79C650153B0B920018873A /* GameBoardTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoardTest.m; sourceTree = "<group>"; };
 		8F7A14591545A4630095BB34 /* PlayerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerTest.h; sourceTree = "<group>"; };
 		8F7A145A1545A4630095BB34 /* PlayerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTest.m; sourceTree = "<group>"; };
+		8FBA39781558923900CF0A2B /* BuySpecial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuySpecial.h; sourceTree = "<group>"; };
+		8FBA39791558923900CF0A2B /* BuySpecial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuySpecial.m; sourceTree = "<group>"; };
+		8FBA397C1558924800CF0A2B /* JustPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JustPass.h; sourceTree = "<group>"; };
+		8FBA397D1558924800CF0A2B /* JustPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JustPass.m; sourceTree = "<group>"; };
+		8FBA397F1558962C00CF0A2B /* ChangeGoodToShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeGoodToShip.h; sourceTree = "<group>"; };
+		8FBA39801558962C00CF0A2B /* ChangeGoodToShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeGoodToShip.m; sourceTree = "<group>"; };
 		8FBDA24014D44AF3002EC68B /* InfoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBox.h; sourceTree = "<group>"; };
 		8FBDA24114D44AF3002EC68B /* InfoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBox.m; sourceTree = "<group>"; };
 		8FC0D94514DD3F0A00E44914 /* cardBack-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cardBack-small.png"; path = "Resources/cardBack-small.png"; sourceTree = "<group>"; };
@@ -1022,8 +1036,14 @@
 				8F2435DE1543B4C20090DC68 /* LoadGoods.m */,
 				8F7715511555276400CDF740 /* Phase1.h */,
 				8F7715521555276400CDF740 /* Phase1.m */,
-				8F79C642153AFE7C0018873A /* ChangeGood.h */,
-				8F79C643153AFE7C0018873A /* ChangeGood.m */,
+				8F79C642153AFE7C0018873A /* ChangeGoodFromPool.h */,
+				8F79C643153AFE7C0018873A /* ChangeGoodFromPool.m */,
+				8FBA397F1558962C00CF0A2B /* ChangeGoodToShip.h */,
+				8FBA39801558962C00CF0A2B /* ChangeGoodToShip.m */,
+				8FBA39781558923900CF0A2B /* BuySpecial.h */,
+				8FBA39791558923900CF0A2B /* BuySpecial.m */,
+				8FBA397C1558924800CF0A2B /* JustPass.h */,
+				8FBA397D1558924800CF0A2B /* JustPass.m */,
 				8F771554155527F900CDF740 /* Phase2.h */,
 				8F771555155527F900CDF740 /* Phase2.m */,
 			);
@@ -1316,13 +1336,16 @@
 				8F79C639153AFAAE0018873A /* GameBoard.m in Sources */,
 				8F79C63E153AFB070018873A /* GameState.m in Sources */,
 				8F79C641153AFE3E0018873A /* Preparing.m in Sources */,
-				8F79C644153AFE7C0018873A /* ChangeGood.m in Sources */,
+				8F79C644153AFE7C0018873A /* ChangeGoodFromPool.m in Sources */,
 				8F79C64E153B0A320018873A /* Market.m in Sources */,
 				8F2435DF1543B4C20090DC68 /* LoadGoods.m in Sources */,
 				8FCF7C8E1552AD8F0015E630 /* StateStack.m in Sources */,
 				8F77154E15551EF000CDF740 /* AI.m in Sources */,
 				8F7715531555276400CDF740 /* Phase1.m in Sources */,
 				8F771556155527FA00CDF740 /* Phase2.m in Sources */,
+				8FBA397A1558923900CF0A2B /* BuySpecial.m in Sources */,
+				8FBA397E1558924800CF0A2B /* JustPass.m in Sources */,
+				8FBA39811558962D00CF0A2B /* ChangeGoodToShip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1338,7 +1361,7 @@
 				8F792119153C5B23007188F6 /* MarketTest.m in Sources */,
 				8F79211A153C5DF5007188F6 /* Market.m in Sources */,
 				8F7B1A961543A01A005972FD /* Preparing.m in Sources */,
-				8F7B1A971543A01D005972FD /* ChangeGood.m in Sources */,
+				8F7B1A971543A01D005972FD /* ChangeGoodFromPool.m in Sources */,
 				8F7B1A981543A02D005972FD /* GameState.m in Sources */,
 				8F2435DB1543AD120090DC68 /* Player.m in Sources */,
 				8F2435E01543B4C20090DC68 /* LoadGoods.m in Sources */,
@@ -1347,6 +1370,11 @@
 				8FCF7C8F1552ADDB0015E630 /* StateStack.m in Sources */,
 				8F78B0AF1554C2C800CBB929 /* LoadGoodsStateTest.m in Sources */,
 				8F7715501555268000CDF740 /* AI.m in Sources */,
+				8FBA398215589ADC00CF0A2B /* ChangeGoodToShip.m in Sources */,
+				8FBA398315589AE000CF0A2B /* BuySpecial.m in Sources */,
+				8FBA398415589AE200CF0A2B /* JustPass.m in Sources */,
+				8FBA398515589AED00CF0A2B /* Phase1.m in Sources */,
+				8FBA398615589B0600CF0A2B /* Phase2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

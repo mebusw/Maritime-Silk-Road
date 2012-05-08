@@ -38,9 +38,10 @@
 
 
 
-- (void) chooseAGoodType;
+-(void) chooseAGoodFromPool;
 -(void) chooseForPhase1;
--(void) chooseForChangeGood;
+-(void) chooseAShipFromHand;
+-(void) chooseASpecialFromPool;
 -(void) chooseForPhase2;
 
 

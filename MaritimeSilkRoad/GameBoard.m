@@ -13,7 +13,7 @@
 
 @synthesize pool, players, market;
 @synthesize playerCount, startPlayerIndex, activePlayerIndex;
-@synthesize chosenAction, chosenMarket, chosenOption, chosenSpecialType;
+@synthesize chosenAction, chosenMarket, chosenOption, chosenSpecialType, chosenTo, chosenFrom;
 @synthesize remainingTurns, isDialogging, isInfoboxing;
 
 -(void) buildGameBoardWithPlayerNumber: (NSUInteger) playerNbr {

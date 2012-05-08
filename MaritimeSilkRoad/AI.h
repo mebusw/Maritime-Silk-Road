@@ -13,9 +13,10 @@
 
 
 -(id) initWithGameBoard:(GameBoard*) gameBoard;
-- (void) chooseAGoodType;
+-(void) chooseAGoodFromPool;
 -(void) chooseForPhase1;
--(void) chooseForChangeGood;
+-(void) chooseAShipFromHand;
+-(void) chooseASpecialFromPool;
 -(void) chooseForPhase2;
 
 @end

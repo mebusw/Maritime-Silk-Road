@@ -20,7 +20,7 @@ GameBoard *_gameBoard;
     return self;
 }
 
-- (void) chooseAGoodType {
+- (void) chooseAGoodFromPool {
     //stupid AI start >>>>
 	GoodTypeEnum rnd;
     do {
@@ -40,18 +40,19 @@ GameBoard *_gameBoard;
     _gameBoard.chosenOption = rnd;    
 }
 
--(void) chooseForChangeGood {
+
+- (void) chooseAShipFromHand {
     //stupid AI start >>>>
-	int rnd;
-    rnd = (NSInteger) (CCRANDOM_0_1() * _gameBoard.pool.specialCards[kSpecialShip]);
+	GoodTypeEnum rnd;
+    do {
+        rnd = (NSInteger) (CCRANDOM_0_1() * [_gameBoard currentPlayer].specials[kSpecialShip]);
+    } while (_gameBoard.pool.token[rnd] <= 0);
     //stupid AI end <<<<
-
-    _gameBoard.chosenOption = rnd;    
-
+    
+    _gameBoard.chosenOption = rnd;
 }
 
-
--(void) chooseForPhase2 {
+-(void) chooseASpecialFromPool {
     //stupid AI start >>>>
 	int rnd;
     do {
@@ -63,6 +64,13 @@ GameBoard *_gameBoard;
 
 }
 
-
+-(void) chooseForPhase2 {
+	//stupid AI start >>>>
+	ActionEnum rnd;
+    rnd = (NSInteger) (CCRANDOM_0_1() * 1);
+    //stupid AI end <<<<
+    
+    _gameBoard.chosenOption = rnd;    
+}
 
 @end

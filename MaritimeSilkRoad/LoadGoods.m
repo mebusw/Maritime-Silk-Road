@@ -7,7 +7,6 @@
 //
 
 #import "LoadGoods.h"
-#import "ChangeGood.h"
 #import "Player.h"
 #import "AI.h"
 #import "Phase1.h"
@@ -20,10 +19,10 @@
 
     if (_gameBoard.remainingTurns > 0) {
         if ([_gameBoard.currentPlayer isKindOfClass:[Human class]]) {
-            [_observer chooseAGoodType];
+            [_observer chooseAGoodFromPool];
         } else {
             AI *ai = [[[AI alloc] initWithGameBoard:_gameBoard] autorelease];
-            [ai chooseAGoodType];
+            [ai chooseAGoodFromPool];
             [self handle];
         }
     } else {

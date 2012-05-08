@@ -9,6 +9,7 @@
 #import "Phase1.h"
 #import "Phase2.h"
 #import "AI.h"
+#import "ChangeGoodFromPool.h"
 
 @implementation Phase1
 
@@ -34,9 +35,24 @@
 
 -(void) handle {
     DLog(@"%d", _gameBoard.chosenOption);
-    [_gameBoard.pool fetchAToken:_gameBoard.chosenOption];
-    [[_gameBoard currentPlayer] loadGoodToShip:_gameBoard.chosenOption atIndex:((_gameBoard.remainingTurns - 1) / _gameBoard.playerCount)];    
+    GameState *next;
+    switch (_gameBoard.chosenOption) {
+        case 0:
+            next = [[[ChangeGoodFromPool alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease];
+            break;
+        case 1:
+            next = [[[ChangeGoodFromPool alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease];            
+            break;
+        case 2:
+            [_gameBoard nextPlayer];
+            _gameBoard.remainingTurns -= 1;
+            next = [[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease];
+            break;
+    }
     
+//    [_gameBoard.pool fetchAToken:_gameBoard.chosenOption];
+//    [[_gameBoard currentPlayer] loadGoodToShip:_gameBoard.chosenOption atIndex:((_gameBoard.remainingTurns - 1) / _gameBoard.playerCount)];    
+//    
     [_gameBoard nextPlayer];
     _gameBoard.remainingTurns -= 1;
     
