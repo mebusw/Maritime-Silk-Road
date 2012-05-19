@@ -31,7 +31,7 @@
     DLog(@"%d", _gameBoard.chosenOption);
     _gameBoard.chosenFrom = _gameBoard.chosenOption;
     
-    [_observer.stateStack change:[[[ChangeGoodToShip alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+    [_gameBoard.stateStack change:[[[ChangeGoodToShip alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
 }
 
 

@@ -26,7 +26,7 @@
             [self handle];
         }
     } else {
-        [_observer.stateStack change:[[[Phase2 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+        [_gameBoard.stateStack change:[[[Phase2 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
     }
     
 }
@@ -54,7 +54,7 @@
 //    
 
     
-    [_observer.stateStack change:next];
+    [_gameBoard.stateStack change:next];
 }
 
 

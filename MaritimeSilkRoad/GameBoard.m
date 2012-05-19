@@ -7,11 +7,11 @@
 //
 
 #import "GameBoard.h"
-
+#import "Preparing.h"
 
 @implementation GameBoard
 
-@synthesize pool, players, market;
+@synthesize pool, players, market, stateStack;
 @synthesize playerCount, startPlayerIndex, activePlayerIndex;
 @synthesize chosenAction, chosenMarket, chosenOption, chosenSpecialType, chosenTo, chosenFrom;
 @synthesize remainingTurns, isDialogging, isInfoboxing;
@@ -68,6 +68,12 @@
 		DLog(@"market got good card %d",  good);
         [market changeGood:good atIndex:i];
 	}
+}
+
+-(void) startGameLogic:(id<PlayerInputProtocol>) gameLayer {
+    stateStack = [[StateStack alloc] init];
+    [stateStack push:[[Preparing alloc] initWithObserver:gameLayer gameBoard:self]];
+
 }
 
 @end

@@ -41,7 +41,7 @@
     [_gameBoard nextPlayer];
     _gameBoard.remainingTurns -= 1;
     
-    [_observer.stateStack change:[[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+    [_gameBoard.stateStack change:[[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
 }
 
 

@@ -27,7 +27,7 @@
         }
     } else {
         _gameBoard.remainingTurns = _gameBoard.playerCount;
-        [_observer.stateStack change:[[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+        [_gameBoard.stateStack change:[[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
     }
 
 }
@@ -43,7 +43,7 @@
     
     
 
-    [_observer.stateStack change:[[[LoadGoods alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+    [_gameBoard.stateStack change:[[[LoadGoods alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
 }
 
 

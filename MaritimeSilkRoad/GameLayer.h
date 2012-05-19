@@ -15,18 +15,16 @@
 #import "StateStack.h"
 #import "GameState.h"
 #import "GameBoard.h"
-
+#import "PlayerInputProtocol.h"
 
 @class ShipsPanel;
 @class GameState;
 @class StateStack;
 
-@interface GameLayer : CCLayer {
+@interface GameLayer : CCLayer <PlayerInputProtocol>{
 
 }
 @property BOOL isDialoging; //if dialog is open, then no need to schedule for next state
-@property GameStateEnum gameState;
-@property (nonatomic, retain) StateStack *stateStack;
 
 
 +(CCScene *) sceneWithPlayerNumber: (NSUInteger) playerNbr;
@@ -37,12 +35,6 @@
 - (id) initWithPlayerNumber: (NSUInteger) playerNbr;
 
 
-
--(void) chooseAGoodFromPool;
--(void) chooseForPhase1;
--(void) chooseAShipFromHand;
--(void) chooseASpecialFromPool;
--(void) chooseForPhase2;
 
 
 -(void) didChooseAShip:(int)shipIndex;

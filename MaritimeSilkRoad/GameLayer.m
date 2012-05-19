@@ -18,8 +18,7 @@
 @implementation GameLayer
 
 @synthesize isDialoging;
-@synthesize gameState;
-@synthesize stateStack;
+
 
 #define Z_MOST_FRONT    1000
 #define Z_MOST_BACK     -1000
@@ -80,10 +79,8 @@ Player *_activePlayer;
         
         //start game logic
         [self scheduleUpdate];
-        stateStack = [[StateStack alloc] init];
-        [stateStack push:[[Preparing alloc] initWithObserver:self gameBoard:_gameBoard]];
+        [_gameBoard startGameLogic:self];
 
-    
                 
     }
     return self;
@@ -195,7 +192,6 @@ Player *_activePlayer;
 
 
 - (void) dealloc {
-    [stateStack release];
     [_gameBoard release];
 	[super dealloc];
 }
@@ -203,8 +199,9 @@ Player *_activePlayer;
 
 #pragma mark - state handlers
 
+
 -(void) handleRequest {
-    [[stateStack top] handle];
+    [[_gameBoard.stateStack top] handle];
 }
 
 
@@ -272,7 +269,7 @@ Player *_activePlayer;
     
     DLog(@"goodType=%d ", goodType);
     _gameBoard.chosenOption = goodType;
-    [[stateStack top] handle];
+    //[[stateStack top] handle];
 
 //        case kP11ChangeGood: {
 //            [_gameBoard.pool fetchAToken: goodType];
@@ -293,22 +290,22 @@ Player *_activePlayer;
 - (void) didChooseActionForPhase1: (NSNumber *)num {
     ActionEnum action = [num intValue];
     DLog(@"action %d", action);
-    switch (action) {
-        case kActionChangeGood:
-            
-            gameState = kP11ChangeGood;
-
-            break;
-        case kActionBuySpecials:
-            gameState = kP12BuySpecial;
-            
-            break;
-        case kActionPass:
-            gameState = kP13Pass;
-            break;
-        default:
-            break;
-    }
+//    switch (action) {
+//        case kActionChangeGood:
+//            
+//            gameState = kP11ChangeGood;
+//
+//            break;
+//        case kActionBuySpecials:
+//            gameState = kP12BuySpecial;
+//            
+//            break;
+//        case kActionPass:
+//            gameState = kP13Pass;
+//            break;
+//        default:
+//            break;
+//    }
 
 
     [InfoBox infoBoxWithMsg:STR(@"%@ chooses action for phase1 %d", _activePlayer.name, action) above:self];
@@ -329,7 +326,7 @@ Player *_activePlayer;
     
     [_gameBoard nextPlayer];
     _phaseTurns--;
-    gameState = kPhase1;
+    //gameState = kPhase1;
 }
 
 - (void) didChooseYesNo: (NSNumber *)num  {

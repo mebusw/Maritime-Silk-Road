@@ -13,10 +13,10 @@
 
 
 
--(id) initWithObserver:(GameLayer*)aGameLayer gameBoard:(GameBoard*)aGameBoard {
+-(id) initWithObserver:(id<PlayerInputProtocol>)anObserver gameBoard:(GameBoard*)aGameBoard {
     if (self = [super init]) {
         _gameBoard = aGameBoard;
-        _observer = aGameLayer;
+        _observer = anObserver;
     }
     return self;
 }

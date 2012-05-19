@@ -9,16 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "GameBoard.h"
 #import "GameLayer.h"
+#import "PlayerInputProtocol.h"
 
-@class GameLayer;
+@class GameBoard;
 
 @interface GameState : NSObject {
-    GameLayer *_observer;
+    id<PlayerInputProtocol> _observer;
     GameBoard *_gameBoard;
 }
 
 
--(id) initWithObserver:(GameLayer*)aGameLayer gameBoard:(GameBoard*)aGameBoard;
+-(id) initWithObserver:(id<PlayerInputProtocol>)anObserver gameBoard:(GameBoard*)aGameBoard;
 
 -(void) handle;
 -(void) enter;

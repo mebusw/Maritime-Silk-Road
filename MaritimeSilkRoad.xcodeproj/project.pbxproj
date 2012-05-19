@@ -537,6 +537,7 @@
 		8FCF7C891552AD390015E630 /* StateStackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateStackTest.m; sourceTree = "<group>"; };
 		8FCF7C8C1552AD8F0015E630 /* StateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateStack.h; sourceTree = "<group>"; };
 		8FCF7C8D1552AD8F0015E630 /* StateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateStack.m; sourceTree = "<group>"; };
+		8FD6FCF015674204001094A6 /* PlayerInputProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerInputProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1061,6 +1062,7 @@
 				4A76DADD149C9B020029B908 /* ShipsPanel.m */,
 				4A76DAE0149CA46C0029B908 /* HandMarketPanel.h */,
 				4A76DAE1149CA46C0029B908 /* HandMarketPanel.m */,
+				8FD6FCF015674204001094A6 /* PlayerInputProtocol.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";

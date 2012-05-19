@@ -15,7 +15,7 @@
 -(void) enter {
     DLog(@"");
     _gameBoard.remainingTurns = 2 * _gameBoard.playerCount;
-    [_observer.stateStack change:[[[LoadGoods alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+    [_gameBoard.stateStack change:[[[LoadGoods alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
 
 }
 

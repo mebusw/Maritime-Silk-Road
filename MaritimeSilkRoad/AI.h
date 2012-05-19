@@ -8,15 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "GameBoard.h"
+#import "PlayerInputProtocol.h"
 
-@interface AI : NSObject
+@interface AI : NSObject<PlayerInputProtocol>
 
 
 -(id) initWithGameBoard:(GameBoard*) gameBoard;
--(void) chooseAGoodFromPool;
--(void) chooseForPhase1;
--(void) chooseAShipFromHand;
--(void) chooseASpecialFromPool;
--(void) chooseForPhase2;
+
 
 @end

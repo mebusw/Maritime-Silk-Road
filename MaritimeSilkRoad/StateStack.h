@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "GameState.h"
+#import "GameBoard.h"
 
 @class GameState;
+@class GameBoard;
 
 @interface StateStack : NSObject {
     

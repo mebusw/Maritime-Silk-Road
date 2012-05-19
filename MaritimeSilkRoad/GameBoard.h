@@ -12,10 +12,15 @@
 #import "Pool.h"
 #import "Player.h"
 #import "Market.h"
+#import "StateStack.h"
+#import "PlayerInputProtocol.h"
+
+@class StateStack;
 
 @interface GameBoard : NSObject {
 
 }
+@property (nonatomic, retain) StateStack* stateStack;
 
 @property (nonatomic, retain) Pool* pool;
 @property (nonatomic, retain) NSMutableArray* players;
@@ -40,5 +45,6 @@
 -(void) buildGameBoardWithPlayerNumber: (NSUInteger) playerNbr;
 
 - (void)prepare;
+- (void) startGameLogic:(id<PlayerInputProtocol>) gameLayer;
 
 @end
