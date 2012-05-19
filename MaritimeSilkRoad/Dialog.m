@@ -82,7 +82,7 @@
 	Dialog *dialog = [[Dialog alloc] initWithTarget:target sel:sel];
     CGSize size = dialog.contentSize;
     
-    CCLabelTTF *title = [CCLabelTTF labelWithString:@"Choose A good from unused tokens" fontName:FONT_NAME fontSize:16];
+    CCLabelTTF *title = [CCLabelTTF labelWithString:@"Choose A good from pool" fontName:FONT_NAME fontSize:16];
     title.color = ccRED;
     [dialog addChild:title];
     title.position = ccp(size.width / 2, size.height - 15);
@@ -123,7 +123,7 @@
 	Dialog *dialog = [[[Dialog alloc] initWithTarget:target sel:sel] autorelease];
     CGSize size = dialog.contentSize;
     
-    CCLabelTTF *title = [CCLabelTTF labelWithString:@"Choose A special card from unused cards" fontName:FONT_NAME fontSize:16];
+    CCLabelTTF *title = [CCLabelTTF labelWithString:@"Choose A special card from pool" fontName:FONT_NAME fontSize:16];
     title.color = ccRED;
     [dialog addChild:title];
     title.position = ccp(size.width / 2, size.height - 15);
@@ -162,7 +162,7 @@
 	Dialog *dialog = [[[Dialog alloc] initWithTarget:target sel:sel] autorelease];
     CGSize size = dialog.contentSize;
     
-    CCLabelTTF *title = [CCLabelTTF labelWithString:@"Choose A good from unused tokens" fontName:FONT_NAME fontSize:16];
+    CCLabelTTF *title = [CCLabelTTF labelWithString:@"Choose one of your ship" fontName:FONT_NAME fontSize:16];
     title.color = ccRED;
     [dialog addChild:title];
     title.position = ccp(size.width / 2, size.height - 15);

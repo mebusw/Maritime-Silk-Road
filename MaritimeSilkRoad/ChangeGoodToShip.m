@@ -28,13 +28,16 @@
 }
 
 -(void) handle {
-    DLog(@"%d", _gameBoard.chosenOption);
-    _gameBoard.chosenTo = _gameBoard.chosenOption;
+    int targetShip = _gameBoard.chosenOption;
+    GoodTypeEnum newGood = _gameBoard.chosenFrom;
+    GoodTypeEnum oldGood = _gameBoard.currentPlayer.ships[targetShip];
+    DLog(@"want good %d to good %d on ship[%d]", newGood, oldGood, targetShip);    
     
+    [_gameBoard.pool fetchAToken:newGood];
+    [[_gameBoard currentPlayer] loadGoodToShip:newGood atIndex:targetShip];    
+    [_gameBoard.pool putAToken:oldGood];
+
     
-    //    [_gameBoard.pool fetchAToken:_gameBoard.chosenOption];
-    //    [[_gameBoard currentPlayer] loadGoodToShip:_gameBoard.chosenOption atIndex:((_gameBoard.remainingTurns - 1) / _gameBoard.playerCount)];    
-    //    
     [_gameBoard nextPlayer];
     _gameBoard.remainingTurns -= 1;
     

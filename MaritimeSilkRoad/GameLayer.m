@@ -71,20 +71,18 @@ Player *_activePlayer;
         
         _gameBoard = [[GameBoard alloc] init];
         [_gameBoard buildGameBoardWithPlayerNumber:playerNbr];
+        [_gameBoard prepare];
         
 		_playerCount = playerNbr;        
-        
-        stateStack = [[StateStack alloc] init];
-        [stateStack push:[[Preparing alloc] initWithObserver:self gameBoard:_gameBoard]];
-        //TODO should move Preparing to a builder of GameBoard
-        
-        [self handleRequest];
-		
+        	
 
         [self createViews];
         
         //start game logic
-		[self scheduleUpdate];
+        [self scheduleUpdate];
+        stateStack = [[StateStack alloc] init];
+        [stateStack push:[[Preparing alloc] initWithObserver:self gameBoard:_gameBoard]];
+
     
                 
     }
@@ -152,12 +150,12 @@ Player *_activePlayer;
 }
 
 - (void) update: (ccTime)dt {
-
-	if (NO == isDialoging) {
+    [self updateViews];
+	
+    if (NO == isDialoging) {
         handMarketPanel.isTouchEnabled = YES;
         shipsPanel.isTouchEnabled = YES;
-        
-        [self updateViews];
+
     }
     else {
         handMarketPanel.isTouchEnabled = NO;
@@ -223,7 +221,8 @@ Player *_activePlayer;
 }
 
 -(void) chooseAShipFromHand {
-    
+    Dialog *dialog = [Dialog dialogWithShips:_gameBoard.currentPlayer.ships count:_gameBoard.currentPlayer.specials[kSpecialShip] target:self selector:@selector(didChooseFromDialog:)];
+    [self addChild:dialog z:Z_MOST_FRONT tag:DIALOG_GOODS];    
 }
 
 -(void) chooseASpecialFromPool {

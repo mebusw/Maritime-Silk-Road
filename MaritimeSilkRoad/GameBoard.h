@@ -39,5 +39,6 @@
 -(Player*) currentPlayer;
 -(void) buildGameBoardWithPlayerNumber: (NSUInteger) playerNbr;
 
+- (void)prepare;
 
 @end
