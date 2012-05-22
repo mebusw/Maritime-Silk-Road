@@ -19,6 +19,9 @@
 @implementation HandMarketPanel
 @synthesize isBtnFinishVisible;
 
+static NSString *images[] = {IMG_GOOD_CHINA, IMG_GOOD_GLAZE, IMG_GOOD_ORE, IMG_GOOD_PERFUME, IMG_GOOD_SILK, IMG_GOOD_TEA};
+
+
 -(id) initWithHuman:(Human*) human market:(Market*)market {
 	if( (self=[super init]) ) {
 		self.isTouchEnabled = YES;
@@ -53,7 +56,6 @@
         //  market
         //   [3][4][5]
         //   [0][1][2]
-        NSString *images[] = {IMG_GOOD_CHINA, IMG_GOOD_GLAZE, IMG_GOOD_ORE, IMG_GOOD_PERFUME, IMG_GOOD_SILK, IMG_GOOD_TEA};
         [self removeChildByTag:CHILD_MARKET cleanup:YES];
         int marketIndex = 0;
         for (int row = 0; row < 2; row++) {
@@ -135,8 +137,9 @@
         CGPoint touchLocation = [touch locationInView: [touch view]];
         touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
         GoodTypeEnum touchedCard = [self srcCardForTouch:touch];
+        DLog(@"touchedCard %d", touchedCard);
         if (kGoodNone != touchedCard) {
-            touchingCard = [CCSprite spriteWithFile:IMG_GOOD_GLAZE];
+            touchingCard = [CCSprite spriteWithFile:images[touchedCard]];
             [self addChild:touchingCard z:1 tag:TOUCHING_CARD];
             touchingCard.position = [self convertToNodeSpace:touchLocation];
             state = kPanelTouchingCard;

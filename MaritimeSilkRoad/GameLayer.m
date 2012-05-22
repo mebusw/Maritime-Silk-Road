@@ -227,7 +227,8 @@ Player *_activePlayer;
 }
 
 -(void) chooseForPhase2 {
-    
+    Dialog *dialog = [Dialog dialogWithPhase:PHASE2 target:self selector:@selector(didChooseFromDialog:)];
+    [self addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];
 }
 
 -(void) didChooseFromDialog:(NSNumber*)number {

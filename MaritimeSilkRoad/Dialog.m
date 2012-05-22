@@ -211,10 +211,12 @@
 
     Dialog *dialog = [[[Dialog alloc] initWithTarget:target sel:sel] autorelease];
     CCMenu *menu;
+    CCLabelTTF *title;
     
 	switch(phase) {
 		case PHASE1:
-			for (int i = 0; i < 3; i++) {
+            title = [CCLabelTTF labelWithString:@"Phase 1" fontName:FONT_NAME fontSize:16];
+    		for (int i = 0; i < 3; i++) {
 				CCLabelTTF *label = [CCLabelTTF labelWithString:phase1Actions[i] fontName:FONT_NAME fontSize:16];
 				CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
 				items[i] = itm;
@@ -223,7 +225,8 @@
 			menu = [CCMenu menuWithItems:items[0], items[1], items[2], nil];
 			break;
 		case PHASE2:
-			for (int i = 0; i < 2; i++) {
+            title = [CCLabelTTF labelWithString:@"Phase 2" fontName:FONT_NAME fontSize:16];
+    		for (int i = 0; i < 2; i++) {
 				CCLabelTTF *label = [CCLabelTTF labelWithString:phase2Actions[i] fontName:FONT_NAME fontSize:16];
 				CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
 				items[i] = itm;
@@ -235,8 +238,12 @@
 			NSAssert(NO, @"Other phase not supported.");
 	}
 		
-	[menu alignItemsVertically];
+    title.color = ccRED;
+    [dialog addChild:title];
     CGSize size = dialog.contentSize;
+    title.position = ccp(size.width / 2, size.height - 15);
+
+	[menu alignItemsVertically];
 	menu.position = ccp(size.width / 2, size.height / 2);
 
     [dialog addChild:menu];

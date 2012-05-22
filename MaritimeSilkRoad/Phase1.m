@@ -27,6 +27,7 @@
             [self handle];
         }
     } else {
+        _gameBoard.remainingTurns = _gameBoard.playerCount;
         [_gameBoard.stateStack change:[[[Phase2 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
     }
     
@@ -50,11 +51,7 @@
             break;
     }
     
-//    [_gameBoard.pool fetchAToken:_gameBoard.chosenOption];
-//    [[_gameBoard currentPlayer] loadGoodToShip:_gameBoard.chosenOption atIndex:((_gameBoard.remainingTurns - 1) / _gameBoard.playerCount)];    
-//    
-
-    
+   
     [_gameBoard.stateStack change:next];
 }
 
