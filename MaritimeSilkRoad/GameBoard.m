@@ -60,6 +60,7 @@
             [pool fetchASpecial:kSpecialShip];
 			[player addSpecial:kSpecialShip];			
 		}
+        player.coin = 11;
 	}
     
 	// distribute 6 good cards to market

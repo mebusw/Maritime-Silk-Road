@@ -66,6 +66,7 @@ typedef enum {
 } 	GoodTypeEnum;
 
 typedef enum {
+    kSpecialNone = -1,
 	kSpecialShip = 0,
 	kSpecialTrade,
     kSpecialConcession,

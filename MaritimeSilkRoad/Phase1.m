@@ -10,6 +10,7 @@
 #import "Phase2.h"
 #import "AI.h"
 #import "ChangeGoodFromPool.h"
+#import "BuySpecial.h"
 
 @implementation Phase1
 
@@ -40,7 +41,7 @@
             next = [[[ChangeGoodFromPool alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease];
             break;
         case 1:
-            next = [[[ChangeGoodFromPool alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease];            
+            next = [[[BuySpecial alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease];            
             break;
         case 2:
             [_gameBoard nextPlayer];

@@ -29,17 +29,25 @@
 
 
 -(void) handle {
-    DLog(@"%d", _gameBoard.chosenOption);
-    GameState *next;
+
+    SpecialTypeEnum special = _gameBoard.chosenOption;
+    DLog(@"special %d", special);
+    
+    if(kSpecialNone == special) {
+        //
+    } else {
+        [_gameBoard.pool fetchASpecial:special];
+        [_gameBoard.currentPlayer addSpecial:special];
+        static int pricesOfSpecials[] = {10, 8, 11, 12};
+        _gameBoard.currentPlayer.coin -= pricesOfSpecials[special];
+        
+        
+        [_gameBoard nextPlayer];
+        _gameBoard.remainingTurns -= 1;        
+    }
+    [_gameBoard.stateStack change:[[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];        
 
     
-    //    [_gameBoard.pool fetchAToken:_gameBoard.chosenOption];
-    //    [[_gameBoard currentPlayer] loadGoodToShip:_gameBoard.chosenOption atIndex:((_gameBoard.remainingTurns - 1) / _gameBoard.playerCount)];    
-    //    
-    [_gameBoard nextPlayer];
-    _gameBoard.remainingTurns -= 1;
-    
-    [_gameBoard.stateStack change:[[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
 }
 
 

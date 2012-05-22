@@ -117,8 +117,8 @@
  =   ...
  ===================
  */
-+ (Dialog*) dialogWithSpecials:(int*)specials target:(id)target selector:(SEL)sel {
-    CCMenuItem *items[SPECIAL_TYPE_COUNT];
++ (Dialog*) dialogWithSpecials:(int*)specials coin:(int)coin target:(id)target selector:(SEL)sel {
+
     
 	Dialog *dialog = [[[Dialog alloc] initWithTarget:target sel:sel] autorelease];
     CGSize size = dialog.contentSize;
@@ -134,13 +134,19 @@
 		NSString *str = [NSString stringWithFormat:@"%@(%d)", [Dialog specialNameMapping:i], specials[i]];
 		CCLabelTTF *label = [CCLabelTTF labelWithString:str fontName:FONT_NAME fontSize:16];
 		CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
-		items[i] = itm;
 		itm.tag = i;
+        static int pricesOfSpecials[] = {10, 8, 11, 12};
+        itm.isEnabled = (coin < pricesOfSpecials[i]) ? NO : YES;
         [menu addChild:itm];
 	}
     
+    CCLabelTTF *label = [CCLabelTTF labelWithString:@"Cancel" fontName:FONT_NAME fontSize:16];
+    CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
+    itm.tag = -1;
+    [menu addChild:itm];
     
-	[menu alignItemsHorizontally];
+    
+	[menu alignItemsVertically];
 	menu.position = ccp(size.width / 2, size.height / 2);
     
 	[dialog addChild:menu z:1];

@@ -182,7 +182,6 @@ Player *_activePlayer;
 
     [labelYourCoin setString:STR(@"Coin %d", human.coin)];
     [labelYourSpecials setString:STR(@"w%d c%d t%d", human.specials[kSpecialWorker], human.specials[kSpecialConcession], human.specials[kSpecialTrade])];
-    [labelYourCoin setString:STR(@"Coin %d", human.coin)];
     [labelSpecials setString:STR(@"w%d c%d t%d s%d", _gameBoard.pool.specialCards[kSpecialWorker], _gameBoard.pool.specialCards[kSpecialConcession], _gameBoard.pool.specialCards[kSpecialTrade], _gameBoard.pool.specialCards[kSpecialShip])];
     [labelDeck setString:STR(@"Deck %d", _gameBoard.pool.remainingCards)];  
     
@@ -223,7 +222,8 @@ Player *_activePlayer;
 }
 
 -(void) chooseASpecialFromPool {
-    
+    Dialog *dialog = [Dialog dialogWithSpecials:_gameBoard.pool.specialCards coin:_gameBoard.currentPlayer.coin target:self selector:@selector(didChooseFromDialog:)];
+    [self addChild:dialog z:Z_MOST_FRONT tag:DIALOG_GOODS];
 }
 
 -(void) chooseForPhase2 {
@@ -240,16 +240,6 @@ Player *_activePlayer;
 #pragma mark -
 
 
-
-- (void) p11ChangeGood {
-	DLog(@"turn=%d %@", _phaseTurns, _activePlayer);
-    //TODO isDialoging
-    [_activePlayer chooseAShipForAction11];
-}
-
-- (void) p12BuySpecial {
-    [_activePlayer chooseASpecialForAction12FromPool:_gameBoard.pool];
-}
 
 
 -(void) displayFinalScore {
@@ -269,43 +259,13 @@ Player *_activePlayer;
     
     DLog(@"goodType=%d ", goodType);
     _gameBoard.chosenOption = goodType;
-    //[[stateStack top] handle];
 
-//        case kP11ChangeGood: {
-//            [_gameBoard.pool fetchAToken: goodType];
-//            GoodTypeEnum goodOnChosenShip = _activePlayer.ships[_chosenShip];
-//            _activePlayer.ships[_chosenShip] = goodType;
-//            [_gameBoard.pool putAToken:goodOnChosenShip];
-//            
-//            [InfoBox infoBoxWithMsg:STR(@"%@ chooses good type %d", _activePlayer.name, goodType) above:self];
-//
-//            
-//            [_gameBoard nextPlayer];
-//            _phaseTurns--;
-//            gameState = kPhase1;
-//            break;
-//        }
 }
 
 - (void) didChooseActionForPhase1: (NSNumber *)num {
     ActionEnum action = [num intValue];
     DLog(@"action %d", action);
-//    switch (action) {
-//        case kActionChangeGood:
-//            
-//            gameState = kP11ChangeGood;
-//
-//            break;
-//        case kActionBuySpecials:
-//            gameState = kP12BuySpecial;
-//            
-//            break;
-//        case kActionPass:
-//            gameState = kP13Pass;
-//            break;
-//        default:
-//            break;
-//    }
+
 
 
     [InfoBox infoBoxWithMsg:STR(@"%@ chooses action for phase1 %d", _activePlayer.name, action) above:self];
@@ -318,7 +278,7 @@ Player *_activePlayer;
     
     [_gameBoard.pool fetchASpecial:special];
     [_activePlayer addSpecial:special];
-    int pricesOfSpecials[] = {10, 8, 11, 12};
+    static int pricesOfSpecials[] = {10, 8, 11, 12};
     _activePlayer.coin -= pricesOfSpecials[special];
     
 
