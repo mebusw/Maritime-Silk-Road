@@ -10,11 +10,14 @@
 #import "cocos2d.h"
 #import "Player.h"
 #import "Market.h"
+#import "GameBoard.h"
 
 typedef enum {
     kPanelTouchingCard,
     kPanelWaiting,
 } PanelTouchStates;
+
+@class GameBoard;
 
 @interface HandMarketPanel : CCLayer
 {
@@ -26,10 +29,11 @@ typedef enum {
     Human *_human;
     Market *_market;
     BOOL needRefresh;
+    GameBoard *_gameBoard;
 }
 @property (nonatomic) BOOL isBtnFinishVisible;
 
--(id) initWithHuman:(Human*) human market:(Market*)market;
+-(id) initWithGameBoard:(GameBoard*) gameBoard;
 -(void) refresh;
 -(void) setMarketAtIndex:(int)index good:(GoodTypeEnum)good;
 

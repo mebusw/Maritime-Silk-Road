@@ -25,6 +25,8 @@
 @property (nonatomic, retain) Pool* pool;
 @property (nonatomic, retain) NSMutableArray* players;
 @property (nonatomic, retain) Market* market;
+@property (nonatomic, retain) Player* winner;
+
 
 @property (nonatomic, readonly) int activePlayerIndex;
 @property (nonatomic, readonly) int playerCount;

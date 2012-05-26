@@ -9,6 +9,8 @@
 #import "TakeCard.h"
 #import "Phase2.h"
 #import "Player.h"
+#import "Gameover.h"
+
 @implementation TakeCard
 
 
@@ -28,19 +30,30 @@
     
     for (int i = 0; i < 57; i++) {
         GoodTypeEnum good = [_gameBoard.pool fetchAGood];
+        if (kGoodNone == good) {
+            break;
+        }
         DLog(@"player %@ got good card %d", [_gameBoard currentPlayer], good);
         [[_gameBoard currentPlayer] addCardToHand:good];
     }
-    [self checkForWin];
-    [_gameBoard nextPlayer];
-    _gameBoard.remainingTurns--;
+    if ([self checkForWin]) {
+        
+        [_gameBoard.stateStack change:[[[Gameover alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];    
+        
+        
+    } else {
+        [_gameBoard nextPlayer];
+        _gameBoard.remainingTurns--;
+        
+        [_gameBoard.stateStack change:[[[Phase2 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];    
     
-    [_gameBoard.stateStack change:[[[Phase2 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];    
-
+    }
+    
     
 }
 
 -(bool) checkForWin {
+    DLog(@"checkForWin");
     int maxCoin = 0;
     Player *winner;
     if (_gameBoard.pool.remainingCards <= 0) {
@@ -50,7 +63,7 @@
                 winner = player;
             }
         }
-        DLog(@"winner is %@ with coin %d", winner, maxCoin);
+        _gameBoard.winner = winner;
         return YES;
     } else {
         return NO;

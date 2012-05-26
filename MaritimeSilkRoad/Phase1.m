@@ -11,6 +11,7 @@
 #import "AI.h"
 #import "ChangeGoodFromPool.h"
 #import "BuySpecial.h"
+#import "JustPass.h"
 
 @implementation Phase1
 
@@ -45,9 +46,7 @@
             next = [[[BuySpecial alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease];            
             break;
         case 2:
-            [_gameBoard nextPlayer];
-            _gameBoard.remainingTurns -= 1;
-            next = [[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease];
+            next = [[[JustPass alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]; 
             break;
     }
     

@@ -8,6 +8,8 @@
 
 #import "Sell.h"
 #import "AI.h"
+#import "Phase2.h"
+#import "Phase1.h"
 
 @implementation Sell
 
@@ -16,10 +18,10 @@
     
     if (_gameBoard.remainingTurns > 0) {
         if ([_gameBoard.currentPlayer isKindOfClass:[Human class]]) {
-            [_observer chooseASpecialFromPool];
+            [_observer chooseToSell];
         } else {
             AI *ai = [[[AI alloc] initWithGameBoard:_gameBoard] autorelease];
-            [ai chooseASpecialFromPool];
+            [ai chooseToSell];
             [self handle];
         }
     }
@@ -45,7 +47,10 @@
 //        _gameBoard.remainingTurns -= 1;        
 //    }
 //    [_gameBoard.stateStack change:[[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];        
-//    
+//   
+    [_gameBoard nextPlayer];
+    _gameBoard.remainingTurns -= 1;
+    [_gameBoard.stateStack change:[[[Phase2 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
     
 }
 

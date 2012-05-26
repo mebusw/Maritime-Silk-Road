@@ -17,5 +17,7 @@
 -(void) chooseAShipFromHand;
 -(void) chooseASpecialFromPool;
 -(void) chooseForPhase2;
+-(void) chooseToSell;
+
 
 @end

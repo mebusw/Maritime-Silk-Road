@@ -73,4 +73,20 @@ GameBoard *_gameBoard;
     _gameBoard.chosenOption = rnd;    
 }
 
+-(void) chooseToSell {
+    //stupid AI start >>>>
+	GoodTypeEnum rnd;
+    do {
+        rnd = (NSInteger) (CCRANDOM_0_1() * [_gameBoard currentPlayer].specials[kSpecialShip]);
+    } while ([_gameBoard currentPlayer].ships[rnd] <= 0);
+    int rndMarket = (NSInteger) (CCRANDOM_0_1() * MARKET_SIZE);
+    //stupid AI end <<<<
+    
+    _gameBoard.chosenFrom = rnd;
+    //TODO
+    _gameBoard.chosenOption = 1;
+    _gameBoard.chosenTo = rndMarket;
+}
+
+
 @end

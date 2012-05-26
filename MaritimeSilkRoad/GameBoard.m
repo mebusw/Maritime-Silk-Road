@@ -11,7 +11,7 @@
 
 @implementation GameBoard
 
-@synthesize pool, players, market, stateStack;
+@synthesize pool, players, market, stateStack, winner;
 @synthesize playerCount, startPlayerIndex, activePlayerIndex;
 @synthesize chosenAction, chosenMarket, chosenOption, chosenSpecialType, chosenTo, chosenFrom;
 @synthesize remainingTurns, isDialogging, isInfoboxing;

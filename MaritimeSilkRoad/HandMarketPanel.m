@@ -22,12 +22,13 @@
 static NSString *images[] = {IMG_GOOD_CHINA, IMG_GOOD_GLAZE, IMG_GOOD_ORE, IMG_GOOD_PERFUME, IMG_GOOD_SILK, IMG_GOOD_TEA};
 
 
--(id) initWithHuman:(Human*) human market:(Market*)market {
+-(id) initWithGameBoard:(GameBoard*) gameBoard {
 	if( (self=[super init]) ) {
 		self.isTouchEnabled = YES;
 		state = kPanelWaiting;
-        _human = human;
-        _market = market;
+        _gameBoard = gameBoard;
+        _human = [[gameBoard players] objectAtIndex:0];
+        _market = gameBoard.market;
         NSString *images[] = {IMG_GOOD_CHINA, IMG_GOOD_GLAZE, IMG_GOOD_ORE, IMG_GOOD_PERFUME, IMG_GOOD_SILK, IMG_GOOD_TEA};
         
         for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
@@ -138,6 +139,8 @@ static NSString *images[] = {IMG_GOOD_CHINA, IMG_GOOD_GLAZE, IMG_GOOD_ORE, IMG_G
         touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
         GoodTypeEnum touchedCard = [self srcCardForTouch:touch];
         DLog(@"touchedCard %d", touchedCard);
+        _gameBoard.chosenFrom = touchedCard;
+        
         if (kGoodNone != touchedCard) {
             touchingCard = [CCSprite spriteWithFile:images[touchedCard]];
             [self addChild:touchingCard z:1 tag:TOUCHING_CARD];
@@ -167,6 +170,11 @@ static NSString *images[] = {IMG_GOOD_CHINA, IMG_GOOD_GLAZE, IMG_GOOD_ORE, IMG_G
             id funcn = [CCCallFuncN actionWithTarget:self selector:@selector(removeTouchingCard)];
             id pulse = [CCSequence actions:spawn, funcn, nil];
             [touchingCard runAction:pulse];
+            
+            _gameBoard.chosenTo = marketIndex;
+            //TODO
+            _gameBoard.chosenOption = 1;
+            [[self parent] handleRequest]; 
         }
     }
     
