@@ -283,5 +283,43 @@
 	return dialog;
 }
 
+#pragma mark - score board
+
++ (Dialog*) dialogWithScoresOfPlayers:(NSArray*)players target:(id)target selector:(SEL)sel {
+
+    
+	Dialog *dialog = [[[Dialog alloc] initWithTarget:target sel:sel] autorelease];
+    CGSize size = dialog.contentSize;
+    
+    CCLabelTTF *title = [CCLabelTTF labelWithString:@"Final Coins" fontName:FONT_NAME fontSize:16];
+    title.color = ccRED;
+    [dialog addChild:title];
+    title.position = ccp(size.width / 2, size.height - 15);
+    
+	CCMenu *menu = [CCMenu menuWithItems:nil];
+    
+    static NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
+    for (int i = 0; i < [players count]; i++) {
+        NSString *str = [NSString stringWithFormat:@"%@:   %d", names[i], ((Player*)[players objectAtIndex:i]).coin];
+		CCLabelTTF *label = [CCLabelTTF labelWithString:str fontName:FONT_NAME fontSize:16];
+		CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:nil];
+
+        [menu addChild:itm];
+	}
+    
+    CCLabelTTF *okLabel = [CCLabelTTF labelWithString:@"OK, play again" fontName:FONT_NAME fontSize:16];
+    CCMenuItemLabel *okItm = [CCMenuItemLabel itemWithLabel:okLabel target:dialog selector:@selector(menuTapped:)];
+    [menu addChild:okItm];
+    
+    
+	[menu alignItemsVertically];
+	menu.position = ccp(size.width / 2, size.height / 2);
+    
+	[dialog addChild:menu z:1];
+	
+    [dialog animateShowing];
+	
+	return dialog;
+}
 
 @end

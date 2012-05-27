@@ -9,7 +9,7 @@
 #import "TakeCard.h"
 #import "Phase2.h"
 #import "Player.h"
-#import "Gameover.h"
+
 
 @implementation TakeCard
 
@@ -38,7 +38,7 @@
     }
     if ([self checkForWin]) {
         
-        [_gameBoard.stateStack change:[[[Gameover alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];    
+        [_observer displayFinalScore];
         
         
     } else {

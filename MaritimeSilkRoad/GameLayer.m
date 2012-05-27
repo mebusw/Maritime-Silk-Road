@@ -46,6 +46,8 @@ GameBoard *_gameBoard;
 
 int _playerCount;
 Player *_activePlayer;
+static NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
+
 
 + (CCScene *) sceneWithPlayerNumber: (NSUInteger) _playerNbr {
     
@@ -105,7 +107,7 @@ Player *_activePlayer;
     NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
     for (int i = 0; i < _gameBoard.playerCount; i++) {
         labelPlayers[i] = [CCLabelTTF labelWithString:names[i] fontName:FONT_NAME fontSize:16];
-        labelPlayers[i].position = ccp(40, 260 - i * 30);
+        labelPlayers[i].position = ccp(50, 260 - i * 30);
         [self addChild:labelPlayers[i] z:Z_BOARD tag:(10 + i)];
     }
 
@@ -164,7 +166,7 @@ Player *_activePlayer;
     Human *human = [_gameBoard.players objectAtIndex:0];
     
     //update players' labels
-    NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
+
     for (int i = 0; i < _gameBoard.playerCount; i++) {
         Player *p = [_gameBoard.players objectAtIndex:i];
         
@@ -249,7 +251,8 @@ Player *_activePlayer;
 
 
 -(void) displayFinalScore {
-    //when game over
+    Dialog *dialog = [Dialog dialogWithScoresOfPlayers:_gameBoard.players target:self selector:@selector(pauseTapped:)];
+    [self addChild:dialog z:Z_MOST_FRONT tag:DIALOG_ACTIONS];
     
 }
 

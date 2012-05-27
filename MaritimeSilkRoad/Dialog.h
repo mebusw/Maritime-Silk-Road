@@ -20,5 +20,6 @@
 + (Dialog*) dialogWithNo:(BOOL)hasNo target:(id)target selector:(SEL)sel;
 + (Dialog*) dialogWithShips:(int*)ships count:(int)count target:(id)target selector:(SEL)sel;
 + (Dialog*) dialogWithSpecials:(int*)specials coin:(int)coin target:(id)target selector:(SEL)sel;
++ (Dialog*) dialogWithScoresOfPlayers:(NSArray*)players target:(id)target selector:(SEL)sel;
 
 @end
