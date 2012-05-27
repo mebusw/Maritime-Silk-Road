@@ -36,10 +36,6 @@
 
 
 
-
--(void) didChooseAShip:(int)shipIndex;
--(void) didChooseASpecial: (NSNumber *)num;
-
 -(void) handleRequest; 
 
 @end

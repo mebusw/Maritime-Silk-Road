@@ -78,8 +78,6 @@
     int shipIndex = [self destShipForTouch:touch];
     DLog(@"shipIndex %d", shipIndex);
 
-    GameLayer *gameLayer = (GameLayer*)(self.parent);
-    [gameLayer didChooseAShip:shipIndex];
     
     state = kShipWaiting;
 }

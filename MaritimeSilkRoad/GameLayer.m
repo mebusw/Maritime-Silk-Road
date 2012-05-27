@@ -45,7 +45,6 @@ HandMarketPanel *handMarketPanel;
 GameBoard *_gameBoard;
 
 int _playerCount;
-Player *_activePlayer;
 static NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
 
 
@@ -260,53 +259,6 @@ static NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
 - (void) pauseTapped: (CCMenuItem  *) menuItem {
     DLog(@"%@", menuItem);
     [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:0.5f scene:[HelloWorldLayer scene]]];
-}
-
-
-- (void) didChooseAGoodType: (NSNumber *)num {
-    GoodTypeEnum goodType = [num intValue];
-    
-    DLog(@"goodType=%d ", goodType);
-    _gameBoard.chosenOption = goodType;
-
-}
-
-- (void) didChooseActionForPhase1: (NSNumber *)num {
-    ActionEnum action = [num intValue];
-    DLog(@"action %d", action);
-
-
-
-    [InfoBox infoBoxWithMsg:STR(@"%@ chooses action for phase1 %d", _activePlayer.name, action) above:self];
- 
-}
-
--(void) didChooseASpecial: (NSNumber *)num {
-    SpecialTypeEnum special = [num intValue];
-    DLog(@"special %d", special);
-    
-    [_gameBoard.pool fetchASpecial:special];
-    [_activePlayer addSpecial:special];
-    static int pricesOfSpecials[] = {10, 8, 11, 12};
-    _activePlayer.coin -= pricesOfSpecials[special];
-    
-
-    [InfoBox infoBoxWithMsg:STR(@"%@ chooses special %d", _activePlayer.name, special) above:self];
-    
-    [_gameBoard nextPlayer];
-    _phaseTurns--;
-    //gameState = kPhase1;
-}
-
-- (void) didChooseYesNo: (NSNumber *)num  {
-    BOOL isYes = [num intValue];
-	DLog(@"isYes %d", isYes);
-}
-
--(void) didChooseAShip: (int)shipIndex {
-	DLog(@"ship %d", shipIndex);    
-    _chosenShip = shipIndex;
-    [_activePlayer chooseAGoodTypeFromPool:_gameBoard.pool];
 }
 
 @end
