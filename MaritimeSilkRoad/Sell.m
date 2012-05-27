@@ -31,23 +31,13 @@
 
 -(void) handle {
     
-//    SpecialTypeEnum special = _gameBoard.chosenOption;
-//    DLog(@"special %d", special);
-//    
-//    if(kSpecialNone == special) {
-//        //
-//    } else {
-//        [_gameBoard.pool fetchASpecial:special];
-//        [_gameBoard.currentPlayer addSpecial:special];
-//        static int pricesOfSpecials[] = {10, 8, 11, 12};
-//        _gameBoard.currentPlayer.coin -= pricesOfSpecials[special];
-//        
-//        
-//        [_gameBoard nextPlayer];
-//        _gameBoard.remainingTurns -= 1;        
-//    }
-//    [_gameBoard.stateStack change:[[[Phase1 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];        
-//   
+    [[_gameBoard currentPlayer] playCardOfType:_gameBoard.chosenFrom quantity:_gameBoard.chosenOption];
+    [_gameBoard.market changeGood:_gameBoard.chosenFrom atIndex:_gameBoard.chosenTo];
+    
+
+    
+    [_gameBoard currentPlayer].coin += _gameBoard.chosenOption * [_gameBoard.market countOfGood:_gameBoard.chosenFrom];
+    
     [_gameBoard nextPlayer];
     _gameBoard.remainingTurns -= 1;
     [_gameBoard.stateStack change:[[[Phase2 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];

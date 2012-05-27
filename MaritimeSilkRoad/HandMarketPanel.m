@@ -49,7 +49,7 @@ static NSString *images[] = {IMG_GOOD_CHINA, IMG_GOOD_GLAZE, IMG_GOOD_ORE, IMG_G
 }
 
 - (void) refresh {
-    if (needRefresh) {
+    if (_gameBoard.market.needRefresh) {
         for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
             [labelHands[i] setString:STR(@"%d", _human.cardHand[i])];
         }
@@ -70,16 +70,10 @@ static NSString *images[] = {IMG_GOOD_CHINA, IMG_GOOD_GLAZE, IMG_GOOD_ORE, IMG_G
             }
         }
     }    
-    needRefresh = NO;
+    _gameBoard.market.needRefresh = NO;
       
 }
 
--(void) setMarketAtIndex:(int)index good:(GoodTypeEnum)good {
-    DLog(@"index %d good %d", index, good);
-    [_market changeGood:good atIndex:index];
-    
-    needRefresh = YES;
-}
 
 
 - (void) onExit

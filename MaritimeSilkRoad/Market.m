@@ -11,6 +11,7 @@
 
 @implementation Market
 
+@synthesize needRefresh;
 
 -(id) init {
     if (self = [super init]) {
@@ -27,7 +28,7 @@
 
 -(void) changeGood:(GoodTypeEnum)good atIndex:(int) index {
     _goodCards[index] = good;
-  
+    needRefresh = YES;
 }
 
 

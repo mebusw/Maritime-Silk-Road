@@ -31,7 +31,7 @@
 
 - (id)initWithDelegate:(id) delegate;
 - (bool) addCardToHand: (GoodTypeEnum)goodType;
-- (bool) playCardOfType: (GoodTypeEnum)goodType;
+- (bool) playCardOfType: (GoodTypeEnum)goodType quantity:(int)quantity;
 - (bool) addSpecial: (SpecialTypeEnum)specialType;
 - (bool) loadGoodToShip: (GoodTypeEnum)goodType atIndex:(NSUInteger)ship;
 - (int) cardHandCount;

@@ -73,9 +73,10 @@
 	return true;
 }
 
-- (bool) playCardOfType: (GoodTypeEnum)goodType {
+- (bool) playCardOfType: (GoodTypeEnum)goodType quantity:(int)quantity {
 	if (cardHand[goodType] > 0) {
         cardHand[goodType]--;
+        //TODO quantity
         return true;
     } else {
         return false;

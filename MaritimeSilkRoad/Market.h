@@ -12,6 +12,7 @@
     int _goodCards[MARKET_SIZE];
 }
 
+@property (nonatomic) bool needRefresh;
 
 -(void) changeGood:(GoodTypeEnum)good atIndex:(int) index;
 -(GoodTypeEnum) goodAtIndex:(int) index;

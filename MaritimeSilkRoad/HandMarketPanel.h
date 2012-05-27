@@ -35,6 +35,6 @@ typedef enum {
 
 -(id) initWithGameBoard:(GameBoard*) gameBoard;
 -(void) refresh;
--(void) setMarketAtIndex:(int)index good:(GoodTypeEnum)good;
+
 
 @end
