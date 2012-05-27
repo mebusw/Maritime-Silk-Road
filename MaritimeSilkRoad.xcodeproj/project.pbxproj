@@ -153,6 +153,8 @@
 		8F2435DB1543AD120090DC68 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3502A8146FEC59003C6DF9 /* Player.m */; };
 		8F2435DF1543B4C20090DC68 /* LoadGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2435DE1543B4C20090DC68 /* LoadGoods.m */; };
 		8F2435E01543B4C20090DC68 /* LoadGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2435DE1543B4C20090DC68 /* LoadGoods.m */; };
+		8F3D7C0815722BAA00B7B1DF /* Sell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F92D060156BDB6E004ACC54 /* Sell.m */; };
+		8F3D7C0915722BB600B7B1DF /* TakeCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F92D05C156BD252004ACC54 /* TakeCard.m */; };
 		8F5D58A914D0FADA004DE70E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A79975A146C18BB001550C8 /* SenTestingKit.framework */; };
 		8F5D58AA14D0FADA004DE70E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E8B6014663EA9003BEC0B /* UIKit.framework */; };
 		8F5D58AB14D0FADA004DE70E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E8B6214663EA9003BEC0B /* Foundation.framework */; };
@@ -1389,6 +1391,8 @@
 				8FBA398415589AE200CF0A2B /* JustPass.m in Sources */,
 				8FBA398515589AED00CF0A2B /* Phase1.m in Sources */,
 				8FBA398615589B0600CF0A2B /* Phase2.m in Sources */,
+				8F3D7C0815722BAA00B7B1DF /* Sell.m in Sources */,
+				8F3D7C0915722BB600B7B1DF /* TakeCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

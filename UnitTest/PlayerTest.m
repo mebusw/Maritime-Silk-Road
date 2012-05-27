@@ -38,7 +38,7 @@ Player *player;
     [player addCardToHand:kGoodOre];
     STAssertEquals(2, player.cardHand[kGoodOre], nil);
     
-    [player playCardOfType:kGoodOre];
+    [player playCardOfType:kGoodOre quantity:1];
     STAssertEquals(1, player.cardHand[kGoodOre], nil);
 }
 
