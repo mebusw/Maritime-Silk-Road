@@ -169,9 +169,9 @@ static NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
     for (int i = 0; i < _gameBoard.playerCount; i++) {
         Player *p = [_gameBoard.players objectAtIndex:i];
         
-        NSMutableString *str = [NSMutableString stringWithFormat:@"%@ %d=", names[i], [p cardHandCount]];
+        NSMutableString *str = [NSMutableString stringWithFormat:@"%@ %d:", names[i], [p cardHandCount]];
         for (int j = 0; j < p.specials[kSpecialShip]; j++) {	
-            [str appendFormat:@"%d ", p.ships[j]];
+            [str appendFormat:@"(%d)", p.ships[j]];
         }
         [labelPlayers[i] setString:str]; 
     }

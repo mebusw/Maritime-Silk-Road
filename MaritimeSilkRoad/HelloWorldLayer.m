@@ -62,6 +62,34 @@
     CCMenu *menu = [CCMenu menuWithItems:itmStart, nil];
     [self addChild:menu];
     
+    /////// GCD /////////
+    
+    int(^aBlock)(int, int) = ^(int a, int b) {
+        return a + b;
+    };
+    DLog(@"running a block: %d", aBlock(2, 3));
+    
+    dispatch_queue_t myQueue = dispatch_queue_create("com.mebusw", NULL);
+    __block NSString *s = @"abc";
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //[textField setStringValue:@"Done doing something long and involved"];
+        DLog(@"Done doing something long and involved --main %@", s);
+    });
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //[self goDoSomethingLongAndInvolved];
+        DLog(@"Done doing something long and involved --outer %@", s);
+        s = @"def";
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //[textField setStringValue:@"Done doing something long and involved"];
+            DLog(@"Done doing something long and involved --inner main %@", s);
+        });
+        dispatch_async(myQueue, ^{
+            //[textField setStringValue:@"Done doing something long and involved"];
+            DLog(@"Done doing something long and involved --inner myqueue %@", s);
+        });
+    });
+    
+    
 }
 
 - (void) startTapped: (CCMenuItem  *) menuItem {
