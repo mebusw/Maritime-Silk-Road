@@ -1003,6 +1003,8 @@
 		8F5D58AC14D0FADA004DE70E /* UnitTest */ = {
 			isa = PBXGroup;
 			children = (
+				8FCF7C881552AD390015E630 /* StateStackTest.h */,
+				8FCF7C891552AD390015E630 /* StateStackTest.m */,
 				8F5D58B214D0FADA004DE70E /* UnitTest.h */,
 				8F5D58B314D0FADA004DE70E /* UnitTest.m */,
 				8F5D58AD14D0FADA004DE70E /* Supporting Files */,
@@ -1014,8 +1016,6 @@
 				8F792118153C5B23007188F6 /* MarketTest.m */,
 				8F7A14591545A4630095BB34 /* PlayerTest.h */,
 				8F7A145A1545A4630095BB34 /* PlayerTest.m */,
-				8FCF7C881552AD390015E630 /* StateStackTest.h */,
-				8FCF7C891552AD390015E630 /* StateStackTest.m */,
 				8F78B0AD1554C2C800CBB929 /* LoadGoodsStateTest.h */,
 				8F78B0AE1554C2C800CBB929 /* LoadGoodsStateTest.m */,
 			);
