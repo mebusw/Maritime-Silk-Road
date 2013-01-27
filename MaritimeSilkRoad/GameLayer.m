@@ -46,7 +46,7 @@ GameBoard *_gameBoard;
 
 int _playerCount;
 static NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
-
+static NSString *goodNames[GOOD_TYPE_COUNT] = {@"China", @"Glaze", @"Ore", @"Perfume", @"Silk", @"Tea"};
 
 + (CCScene *) sceneWithPlayerNumber: (NSUInteger) _playerNbr {
     
@@ -112,8 +112,8 @@ static NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
 
                              
     for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
-        labelTokens[i] = [CCLabelTTF labelWithString:STR(@"=%d", _gameBoard.pool.token[i]) fontName:FONT_NAME fontSize:16];
-        labelTokens[i].position = ccp(440, 145 - i * 20);
+        labelTokens[i] = [CCLabelTTF labelWithString:STR(@"%@%d", [goodNames[i] substringToIndex:1], _gameBoard.pool.token[i]) fontName:FONT_NAME fontSize:16];
+        labelTokens[i].position = ccp(430, 145 - i * 20);
         [self addChild:labelTokens[i] z:Z_BOARD tag:(20 + i)];
     }
     
@@ -128,16 +128,16 @@ static NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
     
 
     labelYourCoin = [CCLabelTTF labelWithString:@"Coin 000" fontName:FONT_NAME fontSize:16];
-    labelYourCoin.position = ccp(30, 50);
+    labelYourCoin.position = ccp(30, 40);
     [self addChild:labelYourCoin z:Z_BOARD];
     
     labelYourSpecials = [CCLabelTTF labelWithString:@"w0 c0 t0" fontName:FONT_NAME fontSize:16];
-    labelYourSpecials.position = ccp(30, 70);
+    labelYourSpecials.position = ccp(30, 55);
     [self addChild:labelYourSpecials z:Z_BOARD];
     
         
     handMarketPanel = [[[HandMarketPanel alloc] initWithGameBoard:_gameBoard] autorelease];
-    handMarketPanel.position = ccp(size.width / 2, size.height / 2);
+    handMarketPanel.position = ccp(size.width / 2 - 50, size.height / 2 - 20);
     [self addChild:handMarketPanel z:Z_BOARD];
 
     shipsPanel = [[[ShipsPanel alloc] initWithHuman:[_gameBoard.players objectAtIndex:0]] autorelease];
@@ -169,15 +169,15 @@ static NSString *names[MAX_PLAYER] = {@"You", @"Alice", @"Bob", @"Carl"};
     for (int i = 0; i < _gameBoard.playerCount; i++) {
         Player *p = [_gameBoard.players objectAtIndex:i];
         
-        NSMutableString *str = [NSMutableString stringWithFormat:@"%@ %d:", names[i], [p cardHandCount]];
+        NSMutableString *str = [NSMutableString stringWithFormat:@"%@[%d]:", names[i], [p cardHandCount]];
         for (int j = 0; j < p.specials[kSpecialShip]; j++) {	
-            [str appendFormat:@"(%d)", p.ships[j]];
+            [str appendFormat:@"-%@", [goodNames[p.ships[j]] substringToIndex:1]];
         }
         [labelPlayers[i] setString:str]; 
     }
     //update lables of tokens in pool
     for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
-        [labelTokens[i] setString:[NSString stringWithFormat:@"%d", _gameBoard.pool.token[i]]];
+        [labelTokens[i] setString:[NSString stringWithFormat:STR(@"%@%d", [goodNames[i] substringToIndex:1], _gameBoard.pool.token[i])]];
     }
     
 

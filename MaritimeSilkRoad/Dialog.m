@@ -15,6 +15,8 @@
 @implementation Dialog
 @synthesize _target, _sel, title;
 
+static NSString *goodNames[GOOD_TYPE_COUNT] = {@"China", @"Glaze", @"Ore", @"Perfume", @"Silk", @"Tea"};
+
 -(id) initWithTarget:(id)target sel:(SEL)sel {
     self = [super initWithFile:IMG_DIALOG];
     if (self) {
@@ -23,6 +25,7 @@
         CGSize parentSize = ((CCNode*)target).contentSize;
         self.position = ccp(parentSize.width / 2, parentSize.height / 2);
         ((GameLayer*)_target).isDialoging = YES;
+        
     }
     
     return self;
@@ -31,7 +34,7 @@
 
 - (void) animateShowing {
     id fadeIn = [CCFadeIn actionWithDuration:0.1];
-	id scale1 = [CCSpawn actions:fadeIn, [CCScaleTo actionWithDuration:0.1 scale:0.5], nil];
+	id scale1 = [CCSpawn actions:fadeIn, [CCScaleTo actionWithDuration:0.07 scale:0.8], nil];
 	id scale2 = [CCScaleTo actionWithDuration:0.4 scale:1.05];
 	id scale3 = [CCScaleTo actionWithDuration:0.2 scale:1.0];
 	id pulse = [CCSequence actions:scale1, scale2, scale3, nil];
@@ -56,10 +59,7 @@
     [self removeFromParentAndCleanup:YES];
 }
 
-+ (NSString*) goodNameMapping: (GoodTypeEnum)type {
-    static NSString *goodNames[GOOD_TYPE_COUNT] = {@"China", @"Glaze", @"Ore", @"Perfume", @"Silk", @"Tea"};
-    return goodNames[type];
-}
+
 
 + (NSString*) specialNameMapping: (SpecialTypeEnum)type {
     static NSString *specialNames[SPECIAL_TYPE_COUNT] = {@"Ship", @"Trade", @"Concession", @"Worker"};
@@ -88,7 +88,7 @@
     title.position = ccp(size.width / 2, size.height - 15);
 
 	for (int i = 0; i < GOOD_TYPE_COUNT; i++) {
-		NSString *str = [NSString stringWithFormat:@"%@ (%d)", [Dialog goodNameMapping:i], goodCounts[i]];
+		NSString *str = [NSString stringWithFormat:@"%@ (%d)", goodNames[i], goodCounts[i]];
 		CCLabelTTF *label = [CCLabelTTF labelWithString:str fontName:FONT_NAME fontSize:16];
 		CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
 		items[i] = itm;
@@ -176,7 +176,7 @@
 	CCMenu *menu = [CCMenu menuWithItems:nil];
     
     for (int i = 0; i < count; i++) {
-		NSString *str = [NSString stringWithFormat:@"(%d)", ships[i]];
+		NSString *str = [NSString stringWithFormat:@"%@", goodNames[ships[i]]];
 		CCLabelTTF *label = [CCLabelTTF labelWithString:str fontName:FONT_NAME fontSize:16];
 		CCMenuItemLabel *itm = [CCMenuItemLabel itemWithLabel:label target:dialog selector:@selector(menuTapped:)];
 		items[i] = itm;
@@ -185,7 +185,7 @@
 	}
     
     
-	[menu alignItemsHorizontally];
+	[menu alignItemsVertically];
 	menu.position = ccp(size.width / 2, size.height / 2);
     
 	[dialog addChild:menu z:1];

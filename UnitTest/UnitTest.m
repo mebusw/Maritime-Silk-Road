@@ -34,6 +34,34 @@
     DLog(@"rnd=%f %d", f, (NSInteger)f);
 }
 
+- (void)testSyntaxSugarOfiOS6SDK {
+    NSArray *array = @[ @"object1", @"object2", @"object3" ];
+    STAssertEquals(@"object2", array[1], nil);
+    
+    NSDictionary *dict = @{@"key1": @"value1", @"key2": @"value2", @"key3": @"value3" };
+    STAssertEquals(@"value2", dict[@"key2"], nil);
+    
+    NSNumber *number = @12345;
+    STAssertEqualObjects(@12345, number, nil);
+    STAssertEquals(12345, [number intValue], nil);
+    
+    // @synthesize is not needed any more
+    
+    typedef enum Week:NSUInteger{
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    } Week;
+    
+    NSUInteger weekday = Monday;
+    STAssertEquals(Monday, weekday, nil);
+    
+}
+
 /*
 -(void) testOCMockExample {
     MasterViewController *controller = [[MasterViewController alloc] init];

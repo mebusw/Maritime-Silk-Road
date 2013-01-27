@@ -8,12 +8,12 @@
 
 #import "cocos2d.h"
 @interface Dialog : CCSprite {
-    
+
 }
 @property (nonatomic, assign) id _target;
 @property (nonatomic, assign) SEL _sel;
 @property (nonatomic, assign) NSString *title;
-
+@property (nonatomic, retain) NSArray *GoodNames;
 
 + (Dialog*) dialogWithGoodCounts:(int*)goodCounts target:(id)target selector:(SEL)sel;
 + (Dialog*) dialogWithPhase:(int)phase target:(id)target selector:(SEL)sel;
