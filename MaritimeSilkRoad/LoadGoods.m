@@ -36,6 +36,8 @@
 -(void) handle {
     DLog(@"%d", _gameBoard.chosenOption);
     [_gameBoard.pool fetchAToken:_gameBoard.chosenOption];
+    
+    //TODO should load to an empty ship
     [[_gameBoard currentPlayer] loadGoodToShip:_gameBoard.chosenOption atIndex:((_gameBoard.remainingTurns - 1) / _gameBoard.playerCount)];    
     
     [_gameBoard nextPlayer];
