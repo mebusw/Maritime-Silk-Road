@@ -46,7 +46,7 @@
 -(Player*) currentPlayer;
 -(void) buildGameBoardWithPlayerNumber: (NSUInteger) playerNbr;
 
-- (void)prepare;
+- (void)prepareForPlayerNumber: (NSUInteger) playerNbr;
 - (void) startGameLogic:(id<PlayerInputProtocol>) gameLayer;
 
 @end

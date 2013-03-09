@@ -70,8 +70,7 @@ static NSString *goodNames[GOOD_TYPE_COUNT] = {@"China", @"Glaze", @"Ore", @"Per
 		DLog(@"player nbr=%d", playerNbr);
         
         _gameBoard = [[GameBoard alloc] init];
-        [_gameBoard buildGameBoardWithPlayerNumber:playerNbr];
-        [_gameBoard prepare];
+        [_gameBoard prepareForPlayerNumber:playerNbr];
         
 		_playerCount = playerNbr;        
         	
