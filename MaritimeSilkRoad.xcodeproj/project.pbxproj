@@ -183,6 +183,7 @@
 		8F7B1A981543A02D005972FD /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79C63D153AFB070018873A /* GameState.m */; };
 		8F92D05D156BD252004ACC54 /* TakeCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F92D05C156BD252004ACC54 /* TakeCard.m */; };
 		8F92D061156BDB6F004ACC54 /* Sell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F92D060156BDB6E004ACC54 /* Sell.m */; };
+		8FB7241116EF5C6500D08516 /* Phase1Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB7240F16EF518A00D08516 /* Phase1Test.m */; };
 		8FBA397A1558923900CF0A2B /* BuySpecial.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA39791558923900CF0A2B /* BuySpecial.m */; };
 		8FBA397E1558924800CF0A2B /* JustPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA397D1558924800CF0A2B /* JustPass.m */; };
 		8FBA39811558962D00CF0A2B /* ChangeGoodToShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA39801558962C00CF0A2B /* ChangeGoodToShip.m */; };
@@ -521,6 +522,8 @@
 		8F92D05C156BD252004ACC54 /* TakeCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeCard.m; sourceTree = "<group>"; };
 		8F92D05F156BDB6E004ACC54 /* Sell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sell.h; sourceTree = "<group>"; };
 		8F92D060156BDB6E004ACC54 /* Sell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sell.m; sourceTree = "<group>"; };
+		8FB7240E16EF518A00D08516 /* Phase1Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phase1Test.h; sourceTree = "<group>"; };
+		8FB7240F16EF518A00D08516 /* Phase1Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phase1Test.m; sourceTree = "<group>"; };
 		8FBA39781558923900CF0A2B /* BuySpecial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuySpecial.h; sourceTree = "<group>"; };
 		8FBA39791558923900CF0A2B /* BuySpecial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuySpecial.m; sourceTree = "<group>"; };
 		8FBA397C1558924800CF0A2B /* JustPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JustPass.h; sourceTree = "<group>"; };
@@ -1003,6 +1006,10 @@
 		8F5D58AC14D0FADA004DE70E /* UnitTest */ = {
 			isa = PBXGroup;
 			children = (
+				8FB7240E16EF518A00D08516 /* Phase1Test.h */,
+				8FB7240F16EF518A00D08516 /* Phase1Test.m */,
+				8F78B0AD1554C2C800CBB929 /* LoadGoodsStateTest.h */,
+				8F78B0AE1554C2C800CBB929 /* LoadGoodsStateTest.m */,
 				8FCF7C881552AD390015E630 /* StateStackTest.h */,
 				8FCF7C891552AD390015E630 /* StateStackTest.m */,
 				8F5D58B214D0FADA004DE70E /* UnitTest.h */,
@@ -1016,8 +1023,6 @@
 				8F792118153C5B23007188F6 /* MarketTest.m */,
 				8F7A14591545A4630095BB34 /* PlayerTest.h */,
 				8F7A145A1545A4630095BB34 /* PlayerTest.m */,
-				8F78B0AD1554C2C800CBB929 /* LoadGoodsStateTest.h */,
-				8F78B0AE1554C2C800CBB929 /* LoadGoodsStateTest.m */,
 			);
 			path = UnitTest;
 			sourceTree = "<group>";
@@ -1393,6 +1398,7 @@
 				8FBA398615589B0600CF0A2B /* Phase2.m in Sources */,
 				8F3D7C0815722BAA00B7B1DF /* Sell.m in Sources */,
 				8F3D7C0915722BB600B7B1DF /* TakeCard.m in Sources */,
+				8FB7241116EF5C6500D08516 /* Phase1Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
