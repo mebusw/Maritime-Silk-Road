@@ -56,7 +56,18 @@
     [_gameBoard.stateStack change:next];
 }
 
-
+-(void) didChooseAction:(GameStateEnum) action {
+    switch (action) {
+        case kP11ChangeGood:
+            [_gameBoard.stateStack transiteTo:@"PHASE11"];
+            break;
+        case kP12BuySpecial:
+            [_gameBoard.stateStack transiteTo:@"PHASE12"];
+            break;            
+        default:
+            break;
+    }
+}
 
 -(void) exit {
 

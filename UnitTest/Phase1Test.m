@@ -13,9 +13,10 @@
 @implementation Phase1Test
 
 
-Phase1 *state;
+Phase1 *statePhase1;
 GameBoard *gb;
 id mockView;
+id spyStateStack;
 
 - (void)setUp
 {
@@ -25,12 +26,14 @@ id mockView;
     gb.remainingTurns = 1;
     
     mockView = [OCMockObject mockForProtocol:@protocol(PlayerInputProtocol)];
-    state = [[Phase1 alloc] initWithObserver:mockView gameBoard:gb];
+    statePhase1 = [[Phase1 alloc] initWithObserver:mockView gameBoard:gb];
+    spyStateStack = [OCMockObject mockForClass:[StateStack class]];
+    gb.stateStack = spyStateStack;
 }
 
 - (void)tearDown
 {
-    [state release];
+    [statePhase1 release];
     [gb release];
     [super tearDown];
 }
@@ -40,22 +43,35 @@ id mockView;
     gb.remainingTurns = 1;
     [[mockView expect] chooseForPhase1];
     
-    [state enter];
+    [statePhase1 enter];
   
     STAssertEquals(0, gb.remainingTurns, nil);
 }
 
 - (void)testEnter_recoverTurnsAndchangeToPhase2WhenNoTurns {
     gb.remainingTurns = 0;
-    id spyStateStack = [OCMockObject mockForClass:[StateStack class]];
-    gb.stateStack = spyStateStack;
     [[spyStateStack expect] transiteTo:@"PHASE2"];
     
-    [state enter];
+    [statePhase1 enter];
 
     STAssertEquals(1, gb.remainingTurns, nil);
     [spyStateStack verify];
+}
 
+- (void)testDidChooseAction_phase11 {
+    [[spyStateStack expect] transiteTo:@"PHASE11"];
+    
+    [statePhase1 didChooseAction: kP11ChangeGood];
+    
+    [spyStateStack verify];
+}
+
+- (void)testDidChooseAction_phase12 {
+    [[spyStateStack expect] transiteTo:@"PHASE12"];
+    
+    [statePhase1 didChooseAction: kP12BuySpecial];
+    
+    [spyStateStack verify];
 }
 
 /*

@@ -11,4 +11,6 @@
 
 @interface Phase1 : GameState
 
+-(void) didChooseAction:(GameStateEnum) action;
+
 @end
