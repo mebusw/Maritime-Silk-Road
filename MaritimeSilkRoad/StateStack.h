@@ -22,4 +22,7 @@
 -(GameState*) pop;
 -(void) change:(GameState*) state;
 
+-(void) transiteTo:(NSString*)stateName;
+-(void) addState:(GameState*)aState forName:(NSString*)name;
+
 @end

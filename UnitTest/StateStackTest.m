@@ -112,5 +112,15 @@ StateStack *stack;
         
 }
 
+-(void) testTransiteTo {
+    id stateDummy = [OCMockObject mockForClass:[GameState class]];
+    [stack addState:stateDummy forName:@"DUMMY"];
+    [[stateDummy expect] enter];
+    
+    [stack transiteTo:@"DUMMY"];
+
+    [stateDummy verify];
+}
+
 
 @end

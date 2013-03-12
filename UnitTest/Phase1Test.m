@@ -36,13 +36,26 @@ id mockView;
 }
 
 
-- (void)testEnter_promptToCHooseActionIfRemainsTurns {
+- (void)testEnter_WhenRemainsTurns_reduceTurnAndPromptToCHooseAction {
+    gb.remainingTurns = 1;
     [[mockView expect] chooseForPhase1];
     
     [state enter];
   
-    [mockView verify];
-//    STAssertEquals(4, gb.pool.token[kGoodOre], nil);
+    STAssertEquals(0, gb.remainingTurns, nil);
+}
+
+- (void)testEnter_recoverTurnsAndchangeToPhase2WhenNoTurns {
+    gb.remainingTurns = 0;
+    id spyStateStack = [OCMockObject mockForClass:[StateStack class]];
+    gb.stateStack = spyStateStack;
+    [[spyStateStack expect] transiteTo:@"PHASE2"];
+    
+    [state enter];
+
+    STAssertEquals(1, gb.remainingTurns, nil);
+    [spyStateStack verify];
+
 }
 
 /*

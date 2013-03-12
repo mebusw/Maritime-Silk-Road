@@ -27,9 +27,11 @@
             [ai chooseForPhase1];
             [self handle];
         }
+        _gameBoard.remainingTurns--;
     } else {
         _gameBoard.remainingTurns = _gameBoard.playerCount;
-        [_gameBoard.stateStack change:[[[Phase2 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+//        [_gameBoard.stateStack change:[[[Phase2 alloc] initWithObserver:_observer gameBoard:_gameBoard] autorelease]];
+        [_gameBoard.stateStack transiteTo:@"PHASE2"];
     }
     
 }
